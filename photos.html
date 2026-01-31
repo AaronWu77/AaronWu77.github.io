@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的摄影集 | Photography</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-glow"></div>
+    <div class="header">
+        <h1>光影瞬间</h1>
+        <p>捕捉生活中的每一个精彩时刻</p>
+        <a href="index.html" style="font-size: 14px; margin-top: 20px; display: inline-block;">&larr; 返回主页</a>
+    </div>
+
+    <!-- 摄影作品展示区 -->
+    <div class="gallery-container">
+        <!-- 照片 1：示例 - 如何使用本地图片 -->
+        <!-- 步骤：把你的照片重命名为 photo1.jpg，放入 images 文件夹即可 -->
+        <div class="photo-item">
+            <img src="images/photo1.jpg" onerror="this.src='https://picsum.photos/id/1018/800/600';this.onerror=null;" alt="自然风光">
+            <div class="photo-overlay">
+                <span>山野之间 (本地)</span>
+            </div>
+        </div>
+        <!-- 照片 2 -->
+        <div class="photo-item">
+            <img src="https://picsum.photos/id/1015/600/800" alt="河流">
+            <div class="photo-overlay">
+                <span>静谧河流</span>
+            </div>
+        </div>
+        <!-- 照片 3 -->
+        <div class="photo-item">
+            <img src="https://picsum.photos/id/1019/800/500" alt="城市">
+            <div class="photo-overlay">
+                <span>城市一角</span>
+            </div>
+        </div>
+        <!-- 照片 4 -->
+        <div class="photo-item">
+            <img src="https://picsum.photos/id/1016/700/700" alt="对角线">
+            <div class="photo-overlay">
+                <span>几何之美</span>
+            </div>
+        </div>
+        <!-- 照片 5 -->
+        <div class="photo-item">
+            <img src="https://picsum.photos/id/1025/800/800" alt="宠物">
+            <div class="photo-overlay">
+                <span>可爱的狗</span>
+            </div>
+        </div>
+        <!-- 照片 6 -->
+        <div class="photo-item">
+            <img src="https://picsum.photos/id/1033/600/900" alt="夜景">
+            <div class="photo-overlay">
+                <span>城市夜行</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 灯箱（点击看大图的容器，默认隐藏） -->
+    <div id="lightbox" class="lightbox">
+        <span class="close-btn">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+        <div id="caption"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

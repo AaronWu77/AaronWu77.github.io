@@ -1,68 +1,305 @@
-/* 设置全局基础样式 */
+/* ==========================================================================
+   Cyberpunk Theme - Global Styles
+   Tema: High-Tech, Dark, Neon Purple, Glitch
+   ========================================================================== */
+
+/* 设置全局基础样式 - 黑色底色，等宽字体更有科技感 */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    max-width: 800px;
+    background-color: #050505; /* 极黑背景 */
+    color: #e0e0e0;
+    font-family: 'Courier New', Courier, monospace; /* 复古终端字体 */
+    max-width: 1000px;
     margin: 0 auto;
     padding: 20px;
     line-height: 1.6;
-    color: #333;
-    background-color: #f9f9f9;
-    transition: background-color 0.3s, color 0.3s;
+    overflow-x: hidden; /* 防止光效溢出出现滚动条 */
+    position: relative;
+    min-height: 100vh;
+}
+
+/* --- 动态赛博朋克背景 --- */
+/* (原有的 CSS 背景已移除，改为使用 JavaScript Canvas 实现更复杂的随机激光效果) */
+
+/* 依然保留一个基础的呼吸光晕，作为 Canvas 的底层氛围 */
+.background-glow {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 60vw;
+    height: 60vh;
+    transform: translate(-50%, -50%);
+    /* 调低了不透明度，让 Canvas 激光更明显 */
+    background: radial-gradient(circle, rgba(138, 43, 226, 0.1) 0%, transparent 60%);
+    z-index: -3; /* 放在最底层 */
+    animation: pulse 6s ease-in-out infinite alternate;
+    pointer-events: none;
 }
 
 /* 头部样式 */
 .header {
     text-align: center;
-    margin-bottom: 40px;
-    margin-top: 40px;
+    padding: 60px 0;
+    margin-bottom: 20px;
+    position: relative;
 }
 
-/* 头像样式 */
+/* 霓虹标题 */
+.header h1 {
+    font-size: 3.5rem;
+    font-weight: 900;
+    margin-bottom: 10px;
+    color: #fff;
+    /* text-transform: uppercase;  已移除强制大写 */
+    letter-spacing: 4px;
+    text-shadow: 
+        0 0 5px #fff,
+        0 0 10px #fff,
+        0 0 20px #bc13fe,
+        0 0 40px #bc13fe,
+        0 0 80px #bc13fe; /* 强烈的紫色霓虹光圈 */
+    animation: neon-flicker 3s infinite alternate; /* 微微闪烁 */
+}
+
+.header p {
+    color: #00f3ff; /* 赛博蓝 */
+    letter-spacing: 2px;
+    text-shadow: 0 0 5px rgba(0, 243, 255, 0.7);
+}
+
+/* 头像样式 - 全息投影感 */
 .avatar {
-    width: 150px;
-    height: 150px;
+    width: 160px;
+    height: 160px;
     border-radius: 50%;
     object-fit: cover;
-    border: 4px solid #fff;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border: 2px solid #00f3ff;
+    box-shadow: 0 0 20px #00f3ff, inset 0 0 20px #00f3ff;
+    filter: contrast(1.2) brightness(1.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* 内容区块样式 - 添加了白色背景和阴影，看起来像卡片 */
+.avatar:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 40px #00f3ff, inset 0 0 30px #00f3ff;
+}
+
+/* 内容区块样式 */
 .section {
-    margin: 30px 0;
-    padding: 25px;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    transition: background-color 0.3s;
+    margin: 60px 0;
 }
 
-/* 标题样式 */
-h1, h2, h3 {
-    color: #2c3e50;
-}
-
-/* 链接样式 */
-a {
-    color: #3498db;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-/* 深色模式样式 - 稍后通过 JavaScript 触发 */
-.dark-mode {
-    background-color: #1a1a1a;
-    color: #e0e0e0;
-}
-
-.dark-mode .section {
-    background-color: #2d2d2d;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-}
-
-.dark-mode h1, .dark-mode h2, .dark-mode h3 {
+.section h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    border-left: 5px solid #bc13fe;
+    padding-left: 15px;
     color: #fff;
+    text-shadow: 0 0 10px #bc13fe;
+}
+
+/* --- 核心：Grid 网格布局 (保持之前的布局但换皮肤) --- */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.project-card {
+    background: rgba(20, 20, 20, 0.7); /* 半透明黑 */
+    padding: 30px;
+    border: 1px solid #333;
+    border-radius: 4px; /* 硬朗的直角或微圆角 */
+    position: relative;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+    overflow: hidden; /* 隐藏发光边框溢出 */
+}
+
+/* 卡片悬停特效 - 边框发光 */
+.project-card:hover {
+    transform: translateY(-5px);
+    border-color: #bc13fe;
+    box-shadow: 
+        0 0 10px rgba(188, 19, 254, 0.4), 
+        inset 0 0 20px rgba(188, 19, 254, 0.1);
+}
+
+/* 装饰性的小角标 */
+.project-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(45deg, transparent 50%, #00f3ff 50%);
+    opacity: 0.5;
+}
+
+.project-card h3 {
+    margin-top: 0;
+    font-size: 1.5rem;
+    color: #00f3ff;
+}
+
+.project-card p {
+    color: #aaa;
+}
+
+.project-card a {
+    display: inline-block;
+    margin-top: 15px;
+    font-weight: bold;
+    color: #bc13fe;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    padding: 5px 10px;
+    border: 1px solid #bc13fe;
+    transition: all 0.3s;
+}
+
+.project-card a:hover {
+    background-color: #bc13fe;
+    color: #000;
+    box-shadow: 0 0 15px #bc13fe;
+}
+
+/* 链接通用样式 */
+.section ul li a, p a {
+    color: #00f3ff;
+    text-decoration: none;
+    border-bottom: 1px dashed #00f3ff;
+    transition: text-shadow 0.3s;
+}
+.section ul li a:hover, p a:hover {
+    text-shadow: 0 0 8px #00f3ff;
+}
+
+/* --- 摄影集样式适配 --- */
+.gallery-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    column-count: 3;
+    column-gap: 20px;
+}
+
+@media (max-width: 800px) { .gallery-container { column-count: 2; } }
+@media (max-width: 500px) { .gallery-container { column-count: 1; } }
+
+.photo-item {
+    break-inside: avoid;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;
+    border: 1px solid #333;
+    transition: border-color 0.3s;
+}
+
+.photo-item:hover {
+    border-color: #00f3ff;
+    box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
+}
+
+.photo-item img {
+    width: 100%;
+    display: block;
+    filter: grayscale(30%); /* 让照片稍微带点冷感 */
+    transition: all 0.5s ease;
+}
+
+.photo-item:hover img {
+    transform: scale(1.05);
+    filter: grayscale(0%); /* 悬停恢复原色 */
+}
+
+.photo-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.85); /* 更深的遮罩 */
+    color: #00f3ff;
+    padding: 15px;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: all 0.3s;
+    border-top: 1px solid #00f3ff;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+}
+
+.photo-item:hover .photo-overlay {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- 灯箱效果 (保持功能，适配暗黑风) --- */
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.95); /* 更黑的背景 */
+    backdrop-filter: blur(10px);
+}
+.lightbox.show { opacity: 1; }
+.lightbox-content {
+    margin: 60px auto;
+    display: block;
+    width: 80%;
+    max-width: 1000px;
+    max-height: 80vh;
+    border: 2px solid #333;
+    box-shadow: 0 0 30px rgba(188, 19, 254, 0.2);
+}
+#caption {
+    color: #00f3ff;
+    text-shadow: 0 0 5px #00f3ff;
+    font-family: 'Courier New', monospace;
+    text-align: center;
+    margin-top: 10px;
+}
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    cursor: pointer;
+    text-shadow: 0 0 10px #ff00de;
+}
+
+/* --- 关键帧动画定义 --- */
+@keyframes neon-flicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        text-shadow: 
+            0 0 5px #fff,
+            0 0 10px #fff,
+            0 0 20px #bc13fe,
+            0 0 40px #bc13fe,
+            0 0 80px #bc13fe;
+        opacity: 1;
+    }
+    20%, 24%, 55% {
+        text-shadow: none;
+        opacity: 0.8;
+    }
+}
+
+@keyframes pulse {
+    0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.5; }
+    100% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.8; }
+}
+
+@keyframes scanlines {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 0% 100%; }
 }
