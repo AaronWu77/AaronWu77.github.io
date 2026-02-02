@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reading Papers - Yuchen Wu</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* 针对论文列表的特定样式 */
+        .paper-list-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .paper-item {
+            background: rgba(20, 20, 20, 0.7); /* 半透明黑背景 */
+            border: 1px solid #333;
+            border-left: 3px solid #bc13fe; /* 紫色左边框 */
+            padding: 25px;
+            margin-bottom: 30px;
+            border-radius: 4px;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .paper-item:hover {
+            transform: translateX(10px); /* 悬停时轻微右移 */
+            border-color: #00f3ff;
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.1);
+            border-left-color: #00f3ff;
+        }
+
+        .paper-title {
+            font-size: 1.5rem;
+            color: #fff;
+            margin-bottom: 10px;
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(188, 19, 254, 0.5);
+        }
+
+        .paper-abstract {
+            color: #ccc;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .paper-meta {
+            font-size: 0.8rem;
+            color: #666;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .read-btn {
+            display: inline-block;
+            padding: 8px 20px;
+            background: transparent;
+            border: 1px solid #bc13fe;
+            color: #bc13fe;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+        }
+
+        .read-btn:hover {
+            background: #bc13fe;
+            color: #000;
+            box-shadow: 0 0 15px #bc13fe;
+        }
+        
+        /* 装饰性编号 */
+        .paper-number {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 3rem;
+            color: rgba(255, 255, 255, 0.05); /* 非常淡的背景字 */
+            font-weight: 900;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- 背景光效 -->
+    <div class="background-glow"></div>
+    
+    <div class="header">
+        <h1>Reading Papers</h1>
+        <p>Exploration & Insights in Computer Science</p>
+        <a href="index.html" style="color: #bc13fe; text-decoration: none; border: 1px solid #bc13fe; padding: 5px 10px; font-size: 0.8rem; margin-top: 15px; display: inline-block; transition: all 0.3s;">&larr; Back to Home</a>
+    </div>
+
+    <div class="section paper-list-container">
+        
+        <!-- Paper 1 -->
+        <div class="paper-item">
+            <div class="paper-number">01</div>
+            <div class="paper-title">Attention Is All You Need</div>
+            <div class="paper-meta">Vaswani et al., 2025 | CVPR</div>
+            <div class="paper-abstract">
+                The dominant sequence transduction models are based on complex recurrent or convolutional neural networks that include an encoder and a decoder. The best performing models also connect the encoder and decoder through an attention mechanism. We propose a new simple network architecture, the Transformer, based solely on attention mechanisms, dispensing with recurrence and convolutions entirely.
+            </div>
+            <a href="./ReadingPaper/paper-transformer.html" class="read-btn">Read Notes &rarr;</a>
+        </div>
+
+        <!-- Paper 2 -->
+        <div class="paper-item">
+            <div class="paper-number">02</div>
+            <div class="paper-title">Attention Is All You Need</div>
+            <div class="paper-meta">Vaswani et al., 2025 | CVPR</div>
+            <div class="paper-abstract">
+                The dominant sequence transduction models are based on complex recurrent or convolutional neural networks that include an encoder and a decoder. The best performing models also connect the encoder and decoder through an attention mechanism. We propose a new simple network architecture, the Transformer, based solely on attention mechanisms, dispensing with recurrence and convolutions entirely.
+            </div>
+            <a href="./ReadingPaper/paper-transformer.html" class="read-btn">Read Notes &rarr;</a>
+        </div>
+
+        <!-- Paper 3 -->
+        <div class="paper-item">
+            <div class="paper-number">03</div>
+            <div class="paper-title">Attention Is All You Need</div>
+            <div class="paper-meta">Vaswani et al., 2025 | CVPR</div>
+            <div class="paper-abstract">
+                The dominant sequence transduction models are based on complex recurrent or convolutional neural networks that include an encoder and a decoder. The best performing models also connect the encoder and decoder through an attention mechanism. We propose a new simple network architecture, the Transformer, based solely on attention mechanisms, dispensing with recurrence and convolutions entirely.
+            </div>
+            <a href="./ReadingPaper/paper-transformer.html" class="read-btn">Read Notes &rarr;</a>
+        </div>
+
+        <!-- Paper 4 -->
+        <div class="paper-item">
+            <div class="paper-number">04</div>
+            <div class="paper-title">Attention Is All You Need</div>
+            <div class="paper-meta">Vaswani et al., 2025 | CVPR</div>
+            <div class="paper-abstract">
+                The dominant sequence transduction models are based on complex recurrent or convolutional neural networks that include an encoder and a decoder. The best performing models also connect the encoder and decoder through an attention mechanism. We propose a new simple network architecture, the Transformer, based solely on attention mechanisms, dispensing with recurrence and convolutions entirely.
+            </div>
+            <a href="./ReadingPaper/paper-transformer.html" class="read-btn">Read Notes &rarr;</a>
+        </div>
+
+        <!-- Paper 5 -->
+        <div class="paper-item">
+            <div class="paper-number">05</div>
+            <div class="paper-title">Attention Is All You Need</div>
+            <div class="paper-meta">Vaswani et al., 2025 | CVPR</div>
+            <div class="paper-abstract">
+                The dominant sequence transduction models are based on complex recurrent or convolutional neural networks that include an encoder and a decoder. The best performing models also connect the encoder and decoder through an attention mechanism. We propose a new simple network architecture, the Transformer, based solely on attention mechanisms, dispensing with recurrence and convolutions entirely.
+            </div>
+            <a href="./ReadingPaper/paper-transformer.html" class="read-btn">Read Notes &rarr;</a>
+        </div>
+
+        <!-- Paper 6 -->
+        <div class="paper-item">
+            <div class="paper-number">06</div>
+            <div class="paper-title">Attention Is All You Need</div>
+            <div class="paper-meta">Vaswani et al., 2025 | CVPR</div>
+            <div class="paper-abstract">
+                The dominant sequence transduction models are based on complex recurrent or convolutional neural networks that include an encoder and a decoder. The best performing models also connect the encoder and decoder through an attention mechanism. We propose a new simple network architecture, the Transformer, based solely on attention mechanisms, dispensing with recurrence and convolutions entirely.
+            </div>
+            <a href="./ReadingPaper/paper-transformer.html" class="read-btn">Read Notes &rarr;</a>
+        </div>
+
+        <!-- Paper 7 -->
+        <div class="paper-item">
+            <div class="paper-number">07</div>
+            <div class="paper-title">Attention Is All You Need</div>
+            <div class="paper-meta">Vaswani et al., 2025 | CVPR</div>
+            <div class="paper-abstract">
+                The dominant sequence transduction models are based on complex recurrent or convolutional neural networks that include an encoder and a decoder. The best performing models also connect the encoder and decoder through an attention mechanism. We propose a new simple network architecture, the Transformer, based solely on attention mechanisms, dispensing with recurrence and convolutions entirely.
+            </div>
+            <a href="./ReadingPaper/paper-transformer.html" class="read-btn">Read Notes &rarr;</a>
+        </div>
+
+        <!-- Paper 8 -->
+        <div class="paper-item">
+            <div class="paper-number">08</div>
+            <div class="paper-title">Attention Is All You Need</div>
+            <div class="paper-meta">Vaswani et al., 2025 | CVPR</div>
+            <div class="paper-abstract">
+                The dominant sequence transduction models are based on complex recurrent or convolutional neural networks that include an encoder and a decoder. The best performing models also connect the encoder and decoder through an attention mechanism. We propose a new simple network architecture, the Transformer, based solely on attention mechanisms, dispensing with recurrence and convolutions entirely.
+            </div>
+            <a href="./ReadingPaper/paper-transformer.html" class="read-btn">Read Notes &rarr;</a>
+        </div>
+
+        <!-- Paper 9 -->
+        <div class="paper-item">
+            <div class="paper-number">09</div>
+            <div class="paper-title">Attention Is All You Need</div>
+            <div class="paper-meta">Vaswani et al., 2025 | CVPR</div>
+            <div class="paper-abstract">
+                The dominant sequence transduction models are based on complex recurrent or convolutional neural networks that include an encoder and a decoder. The best performing models also connect the encoder and decoder through an attention mechanism. We propose a new simple network architecture, the Transformer, based solely on attention mechanisms, dispensing with recurrence and convolutions entirely.
+            </div>
+            <a href="./ReadingPaper/paper-transformer.html" class="read-btn">Read Notes &rarr;</a>
+        </div>
+
+        <!-- Paper 10 -->
+        <div class="paper-item">
+            <div class="paper-number">10</div>
+            <div class="paper-title">Attention Is All You Need</div>
+            <div class="paper-meta">Vaswani et al., 2025 | CVPR</div>
+            <div class="paper-abstract">
+                The dominant sequence transduction models are based on complex recurrent or convolutional neural networks that include an encoder and a decoder. The best performing models also connect the encoder and decoder through an attention mechanism. We propose a new simple network architecture, the Transformer, based solely on attention mechanisms, dispensing with recurrence and convolutions entirely.
+            </div>
+            <a href="./ReadingPaper/paper-transformer.html" class="read-btn">Read Notes &rarr;</a>
+        </div>
+
+        <!-- Paper 11 -->
+        <div class="paper-item">
+            <div class="paper-number">11</div>
+            <div class="paper-title">Attention Is All You Need</div>
+            <div class="paper-meta">Vaswani et al., 2025 | CVPR</div>
+            <div class="paper-abstract">
+                The dominant sequence transduction models are based on complex recurrent or convolutional neural networks that include an encoder and a decoder. The best performing models also connect the encoder and decoder through an attention mechanism. We propose a new simple network architecture, the Transformer, based solely on attention mechanisms, dispensing with recurrence and convolutions entirely.
+            </div>
+            <a href="./ReadingPaper/paper-transformer.html" class="read-btn">Read Notes &rarr;</a>
+        </div>
+
+        <!-- Paper 12 -->
+        <div class="paper-item">
+            <div class="paper-number">12</div>
+            <div class="paper-title">Attention Is All You Need</div>
+            <div class="paper-meta">Vaswani et al., 2025 | CVPR</div>
+            <div class="paper-abstract">
+                The dominant sequence transduction models are based on complex recurrent or convolutional neural networks that include an encoder and a decoder. The best performing models also connect the encoder and decoder through an attention mechanism. We propose a new simple network architecture, the Transformer, based solely on attention mechanisms, dispensing with recurrence and convolutions entirely.
+            </div>
+            <a href="./ReadingPaper/paper-transformer.html" class="read-btn">Read Notes &rarr;</a>
+        </div>
+
+        <!-- Paper 13 -->
+        <div class="paper-item">
+            <div class="paper-number">13</div>
+            <div class="paper-title">Attention Is All You Need</div>
+            <div class="paper-meta">Vaswani et al., 2025 | CVPR</div>
+            <div class="paper-abstract">
+                The dominant sequence transduction models are based on complex recurrent or convolutional neural networks that include an encoder and a decoder. The best performing models also connect the encoder and decoder through an attention mechanism. We propose a new simple network architecture, the Transformer, based solely on attention mechanisms, dispensing with recurrence and convolutions entirely.
+            </div>
+            <a href="./ReadingPaper/paper-transformer.html" class="read-btn">Read Notes &rarr;</a>
+        </div>
+
+        <!-- Paper 14 -->
+        <div class="paper-item">
+            <div class="paper-number">14</div>
+            <div class="paper-title">Attention Is All You Need</div>
+            <div class="paper-meta">Vaswani et al., 2025 | CVPR</div>
+            <div class="paper-abstract">
+                The dominant sequence transduction models are based on complex recurrent or convolutional neural networks that include an encoder and a decoder. The best performing models also connect the encoder and decoder through an attention mechanism. We propose a new simple network architecture, the Transformer, based solely on attention mechanisms, dispensing with recurrence and convolutions entirely.
+            </div>
+            <a href="./ReadingPaper/paper-transformer.html" class="read-btn">Read Notes &rarr;</a>
+        </div>
+
+    </div>
+
+    <!-- 交互脚本 -->
+    <script src="script.js"></script>
+</body>
+</html>
