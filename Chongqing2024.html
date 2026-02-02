@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2024 重庆 - Photography</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* 针对单页展示流的专用样式 */
+        .photo-stream-container {
+            max-width: 1000px; /* 限制最大宽度，保证大图视觉体验 */
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .stream-item {
+            margin-bottom: 100px; /* 图片之间的充足留白 */
+            opacity: 0; /* 初始隐藏，用于淡入动画 */
+            transform: translateY(30px);
+            animation: fadeInSafe 1s forwards; /* 简单的入场动画 */
+        }
+
+        /* 简单的淡入上浮动画 */
+        @keyframes fadeInSafe {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .stream-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border: 1px solid #333;
+            box-shadow: 0 0 20px rgba(0,0,0,0.8); /* 深邃阴影 */
+            margin-bottom: 25px;
+            /* 鼠标悬停时的微光效果 */
+            transition: all 0.5s ease;
+        }
+
+        /* 悬停时图片稍微浮起并发光 */
+        .stream-img:hover {
+            box-shadow: 0 10px 40px rgba(0, 243, 255, 0.15); /* 赛博蓝光晕 */
+            border-color: #00f3ff;
+            transform: translateY(-2px);
+        }
+
+        .stream-caption {
+            font-family: 'Courier New', monospace;
+            color: #e0e0e0;
+            border-left: 3px solid #bc13fe; /* 紫色竖线装饰 */
+            padding-left: 20px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            max-width: 90%;
+        }
+        
+        .stream-meta {
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 8px;
+            padding-left: 23px; /* 缩进对齐文字 */
+            font-style: italic;
+        }
+
+        /* 悬浮返回按钮 */
+        .nav-back {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            z-index: 100;
+            background: rgba(5, 5, 5, 0.8);
+            backdrop-filter: blur(5px);
+            padding: 10px 20px;
+            border: 1px solid #bc13fe;
+            color: #bc13fe;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            box-shadow: 0 0 15px rgba(188, 19, 254, 0.2);
+        }
+        .nav-back:hover {
+            background: #bc13fe;
+            color: #000;
+            box-shadow: 0 0 25px rgba(188, 19, 254, 0.6);
+        }
+    </style>
+</head>
+<body>
+    <!-- 1. 背景光效和脚本支持 -->
+    <div class="background-glow"></div>
+    
+    <!-- 2. 返回导航 -->
+    <a href="photos.html" class="nav-back">&larr; Return to Collections</a>
+
+    <!-- 3. 页面标题 -->
+    <div class="header">
+        <h1>2024 重庆</h1>
+        <p>洪崖洞 | 重庆动物园 | TESTBED2贰厂</p>
+    </div>
+
+    <!-- 4. 图片流内容区 -->
+    <div class="photo-stream-container">
+
+        <!-- Photo 1 -->
+        <div class="stream-item" style="animation-delay: 0.3s;">
+             <img src="./images/2024 Chongqing City/Chongqing1.jpg" alt="Chongqing2024" class="stream-img">
+            <div class="stream-caption">
+                你好，重庆
+            </div>
+            <div class="stream-meta">ISO 250 | f/5.6 | 1/400s</div>
+        </div>
+
+        <!-- Photo 2 -->
+        <div class="stream-item" style="animation-delay: 0.3s;">
+             <img src="./images/2024 Chongqing City/Chongqing2.jpg" alt="Chongqing2024" class="stream-img">
+            <div class="stream-caption">
+                洪崖洞
+            </div>
+            <div class="stream-meta">ISO 800 | f/5.0 | 1/100s</div>
+        </div>
+
+        <!-- Photo 3 -->
+        <div class="stream-item" style="animation-delay: 0.3s;">
+             <img src="./images/2024 Chongqing City/Chongqing3.jpg" alt="Chongqing2024" class="stream-img">
+            <div class="stream-caption">
+                TESTBED2贰厂
+            </div>
+            <div class="stream-meta">ISO 800 | f/5.6 | 1/50s</div>
+        </div>
+
+        <!-- Photo 4 -->
+        <div class="stream-item" style="animation-delay: 0.3s;">
+             <img src="./images/2024 Chongqing City/Chongqing4.jpg" alt="Chongqing2024" class="stream-img">
+            <div class="stream-caption">
+                某座桥
+            </div>
+            <div class="stream-meta">ISO 100 | f/16.0 | 8.0s</div>
+        </div>
+
+        <!-- Photo 5 -->
+        <div class="stream-item" style="animation-delay: 0.3s;">
+             <img src="./images/2024 Chongqing City/Chongqing5.jpg" alt="Chongqing2024" class="stream-img">
+            <div class="stream-caption">
+                南纪门轨道大桥
+            </div>
+            <div class="stream-meta">ISO 200 | f/8.0 | 1/1250s</div>
+        </div>
+
+        <!-- Photo 6 -->
+        <div class="stream-item" style="animation-delay: 0.3s;">
+             <img src="./images/2024 Chongqing City/Chongqing6.jpg" alt="Chongqing2024" class="stream-img">
+            <div class="stream-caption">
+                夜操场
+            </div>
+            <div class="stream-meta">ISO 640 | f/4.0 | 1/25s</div>
+        </div>
+
+        <!-- Photo 7 -->
+        <div class="stream-item" style="animation-delay: 0.3s;">
+             <img src="./images/2024 Chongqing City/Chongqing7.jpg" alt="Chongqing2024" class="stream-img">
+            <div class="stream-caption">
+                时光邮局
+            </div>
+            <div class="stream-meta">ISO 800 | f/5.6 | 1/800s</div>
+        </div>
+
+        <!-- Photo 8 -->
+        <div class="stream-item" style="animation-delay: 0.3s;">
+            <img src="./images/2024 Chongqing City/Chongqing8.jpg" alt="Chongqing2024" class="stream-img">
+            <div class="stream-caption">
+                时光邮局
+            </div>
+            <div class="stream-meta">ISO 800 | f/5.6 | 1/500s</div>
+        </div>
+
+        <!-- Photo 9 -->
+        <div class="stream-item" style="animation-delay: 0.3s;">
+            <img src="./images/2024 Chongqing City/Chongqing9.jpg" alt="Chongqing2024" class="stream-img">
+            <div class="stream-caption">
+                时光邮局
+            </div>
+            <div class="stream-meta">ISO 800 | f/5.6 | 1/250s</div>
+        </div>
+
+        <!-- Photo 10 -->
+        <div class="stream-item" style="animation-delay: 0.3s;">
+             <img src="./images/2024 Chongqing City/Chongqing10.jpg" alt="Chongqing2024" class="stream-img">
+            <div class="stream-caption">
+                重庆动物园
+            </div>
+            <div class="stream-meta">ISO 400 | f/5.6 | 1/200s</div>
+        </div>
+        
+        <!-- Photo 11 -->
+        <div class="stream-item" style="animation-delay: 0.3s;">
+             <img src="./images/2024 Chongqing City/Chongqing11.jpg" alt="Chongqing2024" class="stream-img">
+            <div class="stream-caption">
+                重庆动物园
+            </div>
+            <div class="stream-meta">ISO 400 | f/5.6 | 1/320s</div>
+        </div>
+    </div>
+
+    <!-- 5. 引入交互脚本 -->
+    <script src="script.js"></script>
+</body>
+</html>

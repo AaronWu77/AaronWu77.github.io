@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cats - Photography</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* 针对单页展示流的专用样式 */
+        .photo-stream-container {
+            max-width: 1000px; /* 限制最大宽度，保证大图视觉体验 */
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .stream-item {
+            margin-bottom: 100px; /* 图片之间的充足留白 */
+            opacity: 0; /* 初始隐藏，用于淡入动画 */
+            transform: translateY(30px);
+            animation: fadeInSafe 1s forwards; /* 简单的入场动画 */
+        }
+
+        /* 简单的淡入上浮动画 */
+        @keyframes fadeInSafe {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .stream-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border: 1px solid #333;
+            box-shadow: 0 0 20px rgba(0,0,0,0.8); /* 深邃阴影 */
+            margin-bottom: 25px;
+            /* 鼠标悬停时的微光效果 */
+            transition: all 0.5s ease;
+        }
+
+        /* 悬停时图片稍微浮起并发光 */
+        .stream-img:hover {
+            box-shadow: 0 10px 40px rgba(0, 243, 255, 0.15); /* 赛博蓝光晕 */
+            border-color: #00f3ff;
+            transform: translateY(-2px);
+        }
+
+        .stream-caption {
+            font-family: 'Courier New', monospace;
+            color: #e0e0e0;
+            border-left: 3px solid #bc13fe; /* 紫色竖线装饰 */
+            padding-left: 20px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            max-width: 90%;
+        }
+        
+        .stream-meta {
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 8px;
+            padding-left: 23px; /* 缩进对齐文字 */
+            font-style: italic;
+        }
+
+        /* 悬浮返回按钮 */
+        .nav-back {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            z-index: 100;
+            background: rgba(5, 5, 5, 0.8);
+            backdrop-filter: blur(5px);
+            padding: 10px 20px;
+            border: 1px solid #bc13fe;
+            color: #bc13fe;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            box-shadow: 0 0 15px rgba(188, 19, 254, 0.2);
+        }
+        .nav-back:hover {
+            background: #bc13fe;
+            color: #000;
+            box-shadow: 0 0 25px rgba(188, 19, 254, 0.6);
+        }
+    </style>
+</head>
+<body>
+    <!-- 1. 背景光效和脚本支持 -->
+    <div class="background-glow"></div>
+    
+    <!-- 2. 返回导航 -->
+    <a href="photos.html" class="nav-back">&larr; Return to Collections</a>
+
+    <!-- 3. 页面标题 -->
+    <div class="header">
+        <h1>Cats</h1>
+        <p>Cats, Cats, Cats !!!</p>
+    </div>
+
+    <!-- 4. 图片流内容区 -->
+    <div class="photo-stream-container">
+
+        <!-- Photo 1 -->
+        <div class="stream-item" style="animation-delay: 0.3s;">
+             <img src="./images/Cats/Cats1.jpg" alt="Cats1" class="stream-img">
+            <div class="stream-caption">
+                A Cat
+            </div>
+            <div class="stream-meta">Sony A6700 + Sony A6700 + Sigma Contemperary 56mm F1.4 DC DN</div>
+            <div class="stream-meta">ISO 800 | f/2.5 | 1/1250s</div>
+        </div>
+
+        <!-- Photo 2 -->
+        <div class="stream-item" style="animation-delay: 0.3s;">
+             <img src="./images/Cats/Cats2.jpg" alt="Cats2" class="stream-img">
+            <div class="stream-caption">
+                Another Cat
+            </div>
+            <div class="stream-meta">Sony A6700 + Sony A6700 + Sony E PZ 18-105mm F4.0 G OSS</div>
+            <div class="stream-meta">ISO 800 | f/6.3 | 1/800s</div>
+        </div>
+
+        <!-- Photo 3 -->
+        <div class="stream-item" style="animation-delay: 0.3s;">
+             <img src="./images/Cats/Cats3.jpg" alt="Cats3" class="stream-img">
+            <div class="stream-caption">
+                A Cat
+            </div>
+            <div class="stream-meta">Sony A6700 + Sony A6700 + Sony E PZ 18-105mm F4.0 G OSS</div>
+            <div class="stream-meta">ISO 800 | f/6.3 | 1/800s</div>
+        </div>
+
+        <!-- Photo 4 -->
+        <div class="stream-item" style="animation-delay: 0.3s;">
+             <img src="./images/Cats/Cats4.jpg" alt="Cats4" class="stream-img">
+            <div class="stream-caption">
+                Another Cat
+            </div>
+            <div class="stream-meta">Sony A6700 + Sony A6700 + Sony E PZ 18-105mm F4.0 G OSS</div>
+            <div class="stream-meta">ISO 800 | f/6.3 | 1/800s</div>
+        </div>
+
+        <!-- Photo 5 -->
+        <div class="stream-item" style="animation-delay: 0.3s;">
+             <img src="./images/Cats/Cats5.jpg" alt="Cats5" class="stream-img">
+            <div class="stream-caption">
+                A Cat
+            </div>
+            <div class="stream-meta">Sony A6700 + Sony A6700 + Sony E PZ 18-105mm F4.0 G OSS</div>
+            <div class="stream-meta">ISO 800 | f/6.3 | 1/800s</div>
+        </div>
+
+        <!-- Photo 6 -->
+        <div class="stream-item" style="animation-delay: 0.3s;">
+             <img src="./images/Cats/Cats6.jpg" alt="Cats6" class="stream-img">
+            <div class="stream-caption">
+                Another Cat
+            </div>
+            <div class="stream-meta">Sony A6700 + Sony A6700 + Sony E PZ 18-105mm F4.0 G OSS</div>
+            <div class="stream-meta">ISO 800 | f/4.0 | 1/500s</div>
+        </div>
+
+        <!-- Photo 7 -->
+        <div class="stream-item" style="animation-delay: 0.3s;">
+             <img src="./images/Cats/Cats7.jpg" alt="Cats7" class="stream-img">
+            <div class="stream-caption">
+                A Cat
+            </div>
+            <div class="stream-meta">Sony A6700 + Sony A6700 + Sony E PZ 18-105mm F4.0 G OSS</div>
+            <div class="stream-meta">ISO 800 | f/4.0 | 1/500s</div>
+        </div>
+
+        <!-- Photo 8 -->
+        <div class="stream-item" style="animation-delay: 0.3s;">
+             <img src="./images/Cats/Cats8.jpg" alt="Cats8" class="stream-img">
+            <div class="stream-caption">
+                Another Cat
+            </div>
+            <div class="stream-meta">Sony A6700 + Sony A6700 + Sony E PZ 18-105mm F4.0 G OSS</div>
+            <div class="stream-meta">ISO 800 | f/4.0 | 1/1000s</div>
+        </div>
+
+        <!-- Photo 9 -->
+        <div class="stream-item" style="animation-delay: 0.3s;">
+             <img src="./images/Cats/Cats9.jpg" alt="Cats9" class="stream-img">
+            <div class="stream-caption">
+                A Cat
+            </div>
+            <div class="stream-meta">Sony A6700 + Sony A6700 + Sony E PZ 18-105mm F4.0 G OSS</div>
+            <div class="stream-meta">ISO 800 | f/5.6 | 1/1250s</div>
+        </div>
+
+        <!-- Photo 10 -->
+        <div class="stream-item" style="animation-delay: 0.3s;">
+             <img src="./images/Cats/Cats10.jpg" alt="Cats10" class="stream-img">
+            <div class="stream-caption">
+                Another Cat
+            </div>
+            <div class="stream-meta">Sony A6700 + Sony A6700 + Sony E PZ 18-105mm F4.0 G OSS</div>
+            <div class="stream-meta">ISO 1600 | f/4.0 | 1/400s</div>
+        </div>
+        
+        <!-- Photo 11 -->
+        <div class="stream-item" style="animation-delay: 0.3s;">
+             <img src="./images/Cats/Cats11.jpg" alt="Cats11" class="stream-img">
+            <div class="stream-caption">
+                A Cat
+            </div>
+            <div class="stream-meta">Sony A6700 + Sony A6700 + Sony E PZ 18-105mm F4.0 G OSS</div>
+            <div class="stream-meta">ISO 1600 | f/4.0 | 1/400s</div>
+        </div>
+
+        <!-- Photo 12 -->
+        <div class="stream-item" style="animation-delay: 0.3s;">
+             <img src="./images/Cats/Cats12.jpg" alt="Cats12" class="stream-img">
+            <div class="stream-caption">
+                Another Cat
+            </div>
+            <div class="stream-meta">Sony A6700 + Sony A6700 + Sony E PZ 18-105mm F4.0 G OSS</div>
+            <div class="stream-meta">ISO 800 | f/4.0 | 1/400s</div>
+        </div>
+    </div>
+
+    <!-- 5. 引入交互脚本 -->
+    <script src="script.js"></script>
+</body>
+</html>
