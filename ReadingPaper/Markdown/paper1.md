@@ -439,4 +439,4 @@ We identify multiple limitations. First, when applied to out of distribution dat
 
 这两个局限性有望通过增加上下文长度和训练数据解决。此外，模型目前采用 3 自由度导航动作，未来可扩展至 6 自由度导航，甚至控制机械臂关节等更复杂的动作空间，这也是未来的研究方向。
 
-## 6. Discussion
+
