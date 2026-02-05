@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Note: Attention Is All You Need</title>
+    <title>Paper: Navigation World Models</title>
     <link rel="stylesheet" href="style.css">
     <!-- 引入 marked.js 用于 Markdown 渲染 -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
@@ -112,8 +112,18 @@
             border-radius: 4px;
             border: 1px solid #333;
             margin: 20px 0;
+            transition: all 0.3s ease; /* 添加过渡效果 */
         }
-        
+
+        /* [新增] 图片排版样式：支持文字环绕和缩放 */
+        .markdown-body img.align-right { float: right; margin: 0 0 20px 20px; clear: right; }
+        .markdown-body img.align-left { float: left; margin: 0 20px 20px 0; clear: left; }
+        .markdown-body img.width-small { max-width: 30%; min-width: 200px; }
+        .markdown-body img.width-medium { max-width: 50%; min-width: 300px; }
+        .markdown-body img.width-large { max-width: 80%; }
+        /* 清除浮动，防止下方内容重叠 */
+        .markdown-body::after { content: ""; display: table; clear: both; }
+
         .markdown-body ul, .markdown-body ol {
             padding-left: 20px;
             margin-bottom: 20px;
@@ -168,9 +178,48 @@
                 // 正则匹配: ![...](...)，排除 http, //, / 开头的绝对路径
                 markdownText = markdownText.replace(/!\[([^\]]*)\]\(((?!http|\/\/|\/)[^\)]+)\)/g, '![$1](' + markdownDir + '$2)');
 
-                // 使用 marked.js 进行转换，并填入 div
-                document.getElementById('markdown-output').innerHTML = marked.parse(markdownText);
+                // [新增] 保护 LaTeX 公式逻辑
+                // marked.js 可能会误把公式中的 _ 解析为斜体，或把 \| 解析为 |，导致 MathJax 渲染失败
+                // 策略：先将公式替换为临时占位符，markdown 渲染后再还原
+                const mathPlaceholder = [];
+                const protectMath = (str) => {
+                    // 匹配 $$...$$ 块级公式
+                    str = str.replace(/\$\$([\s\S]*?)\$\$/g, function (match) {
+                        mathPlaceholder.push(match);
+                        return "%%%MATH_BLOCK_" + (mathPlaceholder.length - 1) + "%%%";
+                    });
+                    // 匹配 $...$ 行内公式
+                    str = str.replace(/\$([^\n\$]+?)\$/g, function (match) {
+                        mathPlaceholder.push(match);
+                        return "%%%MATH_INLINE_" + (mathPlaceholder.length - 1) + "%%%";
+                    });
+                    return str;
+                };
+
+                // 1. 保护公式
+                const protectedText = protectMath(markdownText);
+
+                // 2. 渲染 Markdown
+                let htmlContent = marked.parse(protectedText);
+
+                // 3. 还原公式
+                htmlContent = htmlContent.replace(/%%%MATH_(BLOCK|INLINE)_(\d+)%%%/g, function (match, type, id) {
+                    return mathPlaceholder[id];
+                });
+
+                // 填入 div
+                document.getElementById('markdown-output').innerHTML = htmlContent;
                 
+                // [新增] 自动根据 Alt 文本处理图片布局 (Right/Left/Small/Medium)
+                document.querySelectorAll('#markdown-output img').forEach(img => {
+                    const alt = img.alt.toLowerCase(); // 获取转换小写后的 alt 文本
+                    if (alt.includes('right')) img.classList.add('align-right');
+                    if (alt.includes('left')) img.classList.add('align-left');
+                    if (alt.includes('small')) img.classList.add('width-small');
+                    if (alt.includes('medium')) img.classList.add('width-medium');
+                    if (alt.includes('large')) img.classList.add('width-large');
+                });
+
                 // [新增] 通知 MathJax 重新渲染新插入的公式
                 if (window.MathJax) {
                     MathJax.typesetPromise && MathJax.typesetPromise();
