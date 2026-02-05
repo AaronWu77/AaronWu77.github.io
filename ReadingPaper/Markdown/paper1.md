@@ -336,6 +336,8 @@ Implementation Details. In the default experimental setting we use a CDiT-XL of 
 
 训练完成后，每个模型采样 5 次，报告均值和标准差结果。XL 规模模型在 8 台 H100 机器上训练（每台机器配备 8 块 GPU）。除非另有说明，其他设置与 $DiT- */2$ 模型一致。
 
+---
+
 ### 4.2. Ablations
 
 Models are evaluated on single-step 4 seconds future prediction on validation set trajectories on the known environment RECON. We evaluate the performance against the ground truth frame by measuring LPIPS, DreamSim, and PSNR. We provide qualitative examples in Figure 3.
