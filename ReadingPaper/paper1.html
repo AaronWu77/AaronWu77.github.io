@@ -128,8 +128,15 @@
     <!-- 同样引入背景光效 -->
     <div class="background-glow"></div>
     <!-- 导航栏 -->
-    <div style="max-width: 900px; margin: 20px auto; padding: 0 30px;">
-        <a href="../ReadingPapers.html" style="color: #bc13fe; text-decoration: none; border: 1px solid #bc13fe;padding: 5px 10px; font-size: 0.8rem; margin-top: 15px; display: inline-block; transition: all 0.3s;">&larr; Back to Paper List</a>
+    <div style="max-width: 900px; margin: 20px auto; padding: 0 30px; display: flex; justify-content: space-between; align-items: center;">
+        <!-- Left: Back -->
+        <a href="../ReadingPapers.html" style="color: #bc13fe; text-decoration: none; border: 1px solid #bc13fe; padding: 5px 10px; font-size: 0.8rem; display: inline-block; transition: all 0.3s;">&larr; Back to List</a>
+        
+        <!-- Center: Paper Link -->
+        <a href="https://arxiv.org/abs/2412.03572" style="color: #00f3ff; text-decoration: none; border: 1px solid #00f3ff; padding: 5px 10px; font-size: 0.8rem; display: inline-block; transition: all 0.3s;">Paper Link</a>
+
+        <!-- Right: Project Link -->
+        <a href="https://www.amirbar.net/nwm/" style="color: #bc13fe; text-decoration: none; border: 1px solid #bc13fe; padding: 5px 10px; font-size: 0.8rem; display: inline-block; transition: all 0.3s;">Project Link &rarr;</a>
     </div>
 
     <!-- 笔记容器 -->
@@ -144,7 +151,7 @@
     <script src="script.js"></script>
     <script>
         // 定义要加载的 Markdown 文件路径
-        const markdownFile = './Markdown/example.md';
+        const markdownFile = './Markdown/paper1.md';
 
         // 使用 fetch API 读取外部 Markdown 文件
         fetch(markdownFile)
@@ -155,6 +162,12 @@
                 return response.text();
             })
             .then(markdownText => {
+                // 解释：例如 Markdown 文件在 ./Markdown/ 目录下，
+                // 其中的 ![img](pic.png) 会被替换为 ![img](./Markdown/pic.png)
+                const markdownDir = markdownFile.substring(0, markdownFile.lastIndexOf('/') + 1);
+                // 正则匹配: ![...](...)，排除 http, //, / 开头的绝对路径
+                markdownText = markdownText.replace(/!\[([^\]]*)\]\(((?!http|\/\/|\/)[^\)]+)\)/g, '![$1](' + markdownDir + '$2)');
+
                 // 使用 marked.js 进行转换，并填入 div
                 document.getElementById('markdown-output').innerHTML = marked.parse(markdownText);
                 
@@ -166,7 +179,7 @@
             .catch(error => {
                 console.error('Error loading markdown file:', error);
                 document.getElementById('markdown-output').innerHTML = 
-                    '<p style="color: red; text-align: center;">Error loading note content. Please ensure "example.md" exists and you are running on a local server (or GitHub Pages).</p>';
+                    '<p style="color: red; text-align: center;">Error loading note content. Please ensure "paper1.md" exists and you are running on a local server (or GitHub Pages).</p>';
             });
             
         // 注意：MathJax 公式渲染需要额外插件，上面只是纯文本展示公式
