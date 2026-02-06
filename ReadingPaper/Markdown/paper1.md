@@ -157,6 +157,7 @@ One challenge that may arise is the entanglement of actions and time. For exampl
 ### 3.2 Diffusion Transformer as World Model
 
 ![alt text left medium](image2.png)
+
 Conditional Diffusion Transformer Architecture. The architecture we use is a temporally autoregressive transformer model utilizing the efficient CDiT block (see Figure 2), which is applied →N times over the input sequence of latents with input action conditioning
 
 CDiT enables time-efficient autoregressive modeling by constraining the attention in the first attention block only to tokens from the target frame which is being denoised. To condition on tokens from past frames, we incorporate a cross-attention layer, such that every query token from the current target attends to tokens from past frames, which are used as keys and values. The cross-attention then contextualizes the representations using a skip connection layer.
@@ -379,6 +380,7 @@ We evaluate how well our model follows ground truth actions and predicts future 
 
 **生成质量**
 在真实动作条件下，以 4 FPS 自回归预测 16 秒视频，通过 FVD 评估视频质量，并与 DIAMOND 比较。图 6 结果表明，NWM 生成的视频质量更高。
+
 ![alt text](image4.png)
 
 表 2. 目标条件视觉导航结果。报告 RECON 数据集上 2 秒轨迹预测的 ATE 和 RPE。与现有方法 NoMaD 和 GNM 相比，NWM 在所有指标上均有提升。
