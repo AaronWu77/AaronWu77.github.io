@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper: Navigation World Models</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- 引入 marked.js 用于 Markdown 渲染 -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <!-- [新增] 引入 MathJax 用于渲染 LaTeX 公式 -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']], // 识别行内公式 $...$
+                displayMath: [['$$', '$$'], ['\\[', '\\]']] // 识别块级公式 $$...$$
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        /* Markdown 内容区域的特定样式，适配 Cyberpunk 主题 */
+        .note-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 30px;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px);
+            border-left: 1px solid #333;
+            border-right: 1px solid #333;
+            min-height: 80vh;
+        }
+
+        /* 渲染后的 Markdown 样式 */
+        .markdown-body {
+            color: #ccc;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .markdown-body h1, .markdown-body h2, .markdown-body h3 {
+            color: #fff;
+            margin-top: 1.5em;
+            margin-bottom: 0.8em;
+            text-shadow: 0 0 10px rgba(188, 19, 254, 0.3);
+        }
+
+        .markdown-body h1 {
+            font-size: 2.2rem;
+            border-bottom: 2px solid #bc13fe;
+            padding-bottom: 15px;
+        }
+
+        .markdown-body h2 {
+            font-size: 1.6rem;
+            border-left: 4px solid #00f3ff;
+            padding-left: 15px;
+        }
+
+        .markdown-body p {
+            margin-bottom: 1.2em;
+            text-align: justify;
+        }
+
+        .markdown-body strong {
+            color: #00f3ff;
+        }
+
+        .markdown-body em {
+            color: #bc13fe; 
+            font-style: italic;
+        }
+
+        .markdown-body blockquote {
+            border-left: 4px solid #555;
+            margin: 20px 0;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            color: #aaa;
+        }
+
+        .markdown-body code {
+            background: #222;
+            color: #ff00de;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        .markdown-body pre {
+            background: #111;
+            padding: 20px;
+            border-radius: 6px;
+            border: 1px solid #333;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+        
+        .markdown-body pre code {
+            color: #eee;
+            background: transparent;
+            padding: 0;
+        }
+
+        .markdown-body img {
+            max-width: 100%;
+            border-radius: 4px;
+            border: 1px solid #333;
+            margin: 20px 0;
+            transition: all 0.3s ease; /* 添加过渡效果 */
+        }
+
+        /* [新增] 图片排版样式：支持文字环绕和缩放 */
+        .markdown-body img.align-right { float: right; margin: 0 0 20px 20px; clear: right; }
+        .markdown-body img.align-left { float: left; margin: 0 20px 20px 0; clear: left; }
+        .markdown-body img.width-small { max-width: 30%; min-width: 200px; }
+        .markdown-body img.width-medium { max-width: 50%; min-width: 300px; }
+        .markdown-body img.width-large { max-width: 80%; }
+        /* 清除浮动，防止下方内容重叠 */
+        .markdown-body::after { content: ""; display: table; clear: both; }
+
+        .markdown-body ul, .markdown-body ol {
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .markdown-body li {
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 同样引入背景光效 -->
+    <div class="background-glow"></div>
+    <!-- 导航栏 -->
+    <div style="max-width: 900px; margin: 20px auto; padding: 0 30px; display: flex; justify-content: space-between; align-items: center;">
+        <!-- Left: Back -->
+        <a href="../CourseNotes1.html" style="color: #bc13fe; text-decoration: none; border: 1px solid #bc13fe; padding: 5px 10px; font-size: 0.8rem; display: inline-block; transition: all 0.3s;">&larr; Back to List</a>
+    </div>
+
+    <!-- 笔记容器 -->
+    <div class="note-container">
+        <!-- 这里的 ID 用于被 JS 选中 -->
+        <div id="markdown-output" class="markdown-body">
+            <p style="color: #666; text-align: center;">Loading note content...</p>
+        </div>
+    </div>
+
+    <!-- 脚本 -->
+    <script src="script.js"></script>
+    <script>
+        // 定义要加载的 Markdown 文件路径
+        const markdownFile = './Markdown/CourseNotes1-1.md';
+
+        // 使用 fetch API 读取外部 Markdown 文件
+        fetch(markdownFile)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text();
+            })
+            .then(markdownText => {
+                // 解释：例如 Markdown 文件在 ./Markdown/ 目录下，
+                // 其中的 ![img](pic.png) 会被替换为 ![img](./Markdown/pic.png)
+                const markdownDir = markdownFile.substring(0, markdownFile.lastIndexOf('/') + 1);
+                // 正则匹配: ![...](...)，排除 http, //, / 开头的绝对路径
+                markdownText = markdownText.replace(/!\[([^\]]*)\]\(((?!http|\/\/|\/)[^\)]+)\)/g, '![$1](' + markdownDir + '$2)');
+
+                // [新增] 保护 LaTeX 公式逻辑
+                // marked.js 可能会误把公式中的 _ 解析为斜体，或把 \| 解析为 |，导致 MathJax 渲染失败
+                // 策略：先将公式替换为临时占位符，markdown 渲染后再还原
+                const mathPlaceholder = [];
+                const protectMath = (str) => {
+                    // 匹配 $$...$$ 块级公式
+                    str = str.replace(/\$\$([\s\S]*?)\$\$/g, function (match) {
+                        mathPlaceholder.push(match);
+                        return "%%%MATH_BLOCK_" + (mathPlaceholder.length - 1) + "%%%";
+                    });
+                    // 匹配 $...$ 行内公式
+                    str = str.replace(/\$([^\n\$]+?)\$/g, function (match) {
+                        mathPlaceholder.push(match);
+                        return "%%%MATH_INLINE_" + (mathPlaceholder.length - 1) + "%%%";
+                    });
+                    return str;
+                };
+
+                // 1. 保护公式
+                const protectedText = protectMath(markdownText);
+
+                // 2. 渲染 Markdown
+                let htmlContent = marked.parse(protectedText);
+
+                // 3. 还原公式
+                htmlContent = htmlContent.replace(/%%%MATH_(BLOCK|INLINE)_(\d+)%%%/g, function (match, type, id) {
+                    return mathPlaceholder[id];
+                });
+
+                // 填入 div
+                document.getElementById('markdown-output').innerHTML = htmlContent;
+                
+                // [新增] 自动根据 Alt 文本处理图片布局 (Right/Left/Small/Medium)
+                document.querySelectorAll('#markdown-output img').forEach(img => {
+                    const alt = img.alt.toLowerCase(); // 获取转换小写后的 alt 文本
+                    if (alt.includes('right')) img.classList.add('align-right');
+                    if (alt.includes('left')) img.classList.add('align-left');
+                    if (alt.includes('small')) img.classList.add('width-small');
+                    if (alt.includes('medium')) img.classList.add('width-medium');
+                    if (alt.includes('large')) img.classList.add('width-large');
+                });
+
+                // [新增] 通知 MathJax 重新渲染新插入的公式
+                if (window.MathJax) {
+                    MathJax.typesetPromise && MathJax.typesetPromise();
+                }
+            })
+            .catch(error => {
+                console.error('Error loading markdown file:', error);
+                document.getElementById('markdown-output').innerHTML = 
+                    '<p style="color: red; text-align: center;">Error loading note content. Please ensure "paper1.md" exists and you are running on a local server (or GitHub Pages).</p>';
+            });
+            
+        // 注意：MathJax 公式渲染需要额外插件，上面只是纯文本展示公式
+    </script>
+</body>
+</html>

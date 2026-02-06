@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>线性代数 - Yuchen Wu</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* 针对论文列表的特定样式 */
+        .paper-list-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .paper-item {
+            background: rgba(20, 20, 20, 0.7); /* 半透明黑背景 */
+            border: 1px solid #333;
+            border-left: 3px solid #bc13fe; /* 紫色左边框 */
+            padding: 25px;
+            margin-bottom: 30px;
+            border-radius: 4px;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .paper-item:hover {
+            transform: translateX(10px); /* 悬停时轻微右移 */
+            border-color: #00f3ff;
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.1);
+            border-left-color: #00f3ff;
+        }
+
+        .paper-title {
+            font-size: 1.5rem;
+            color: #fff;
+            margin-bottom: 10px;
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(188, 19, 254, 0.5);
+        }
+
+        .paper-abstract {
+            color: #ccc;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .paper-meta {
+            font-size: 0.8rem;
+            color: #666;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .read-btn {
+            display: inline-block;
+            padding: 8px 20px;
+            background: transparent;
+            border: 1px solid #bc13fe;
+            color: #bc13fe;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+        }
+
+        .read-btn:hover {
+            background: #bc13fe;
+            color: #000;
+            box-shadow: 0 0 15px #bc13fe;
+        }
+        
+        /* 装饰性编号 */
+        .paper-number {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 3rem;
+            color: rgba(255, 255, 255, 0.05); /* 非常淡的背景字 */
+            font-weight: 900;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- 背景光效 -->
+    <div class="background-glow"></div>
+    
+    <div class="header">
+        <h1>线性代数</h1>
+        <a href="../CourseNotes.html" style="color: #bc13fe; text-decoration: none; border: 1px solid #bc13fe; padding: 5px 10px; font-size: 0.8rem; margin-top: 15px; display: inline-block; transition: all 0.3s;">&larr; Back to previous</a>
+    </div>
+
+    <div class="section paper-list-container">
+        
+        <!-- CourseNotes 1 -->
+        <div class="paper-item">
+            <div class="paper-number">01</div>
+            <div class="paper-title">第一章 线性方程组的求解</div>
+            <div class="paper-meta">2026.2.6</div>
+            <div class="paper-abstract">
+            本章主要关于线性方程组的基础概念，Gauss 消元法，矩阵的基础概念，矩阵的初等变换等知识
+            </div>
+            <a href="./CourseNotes1/CourseNotes1-1.html" class="read-btn">Read Notes &rarr;</a>
+        </div>
+
+        <!-- CourseNotes 2 -->
+        <div class="paper-item">
+            <div class="paper-number">02</div>
+            <div class="paper-title">第二章 行列式与矩阵的秩</div>
+            <div class="paper-meta">2026.2.6</div>
+            <div class="paper-abstract">
+            线性代数这门课实在是重要，不得不在大三这一年的寒假再一次回顾这门课程，希望这一份笔记可以做的尽可能的详细。书本用的是黄正达老师的《线性代数》
+            </div>
+            <a href="./CourseNotes1/CourseNotes1-2.html" class="read-btn">Read Notes &rarr;</a>
+        </div>
+
+        <!-- CourseNotes 3 -->
+        <div class="paper-item">
+            <div class="paper-number">03</div>
+            <div class="paper-title">第三章 矩阵的运算</div>
+            <div class="paper-meta">2026.2.6</div>
+            <div class="paper-abstract">
+            线性代数这门课实在是重要，不得不在大三这一年的寒假再一次回顾这门课程，希望这一份笔记可以做的尽可能的详细。书本用的是黄正达老师的《线性代数》
+            </div>
+            <a href="./CourseNotes1/CourseNotes1-3.html" class="read-btn">Read Notes &rarr;</a>
+        </div>
+
+        <!-- CourseNotes 4 -->
+        <div class="paper-item">
+            <div class="paper-number">04</div>
+            <div class="paper-title">第四章 n元向量空间</div>
+            <div class="paper-meta">2026.2.6</div>
+            <div class="paper-abstract">
+            线性代数这门课实在是重要，不得不在大三这一年的寒假再一次回顾这门课程，希望这一份笔记可以做的尽可能的详细。书本用的是黄正达老师的《线性代数》
+            </div>
+            <a href="./CourseNotes1/CourseNotes1-4.html" class="read-btn">Read Notes &rarr;</a>
+        </div>
+
+        <!-- CourseNotes 5 -->
+        <div class="paper-item">
+            <div class="paper-number">05</div>
+            <div class="paper-title">第五章 矩阵的特征值理论与相似对角化</div>
+            <div class="paper-meta">2026.2.6</div>
+            <div class="paper-abstract">
+            线性代数这门课实在是重要，不得不在大三这一年的寒假再一次回顾这门课程，希望这一份笔记可以做的尽可能的详细。书本用的是黄正达老师的《线性代数》
+            </div>
+            <a href="./CourseNotes1/CourseNotes1-5.html" class="read-btn">Read Notes &rarr;</a>
+        </div>
+
+        <!-- CourseNotes 6 -->
+        <div class="paper-item">
+            <div class="paper-number">06</div>
+            <div class="paper-title">第六章 二次型</div>
+            <div class="paper-meta">2026.2.6</div>
+            <div class="paper-abstract">
+            线性代数这门课实在是重要，不得不在大三这一年的寒假再一次回顾这门课程，希望这一份笔记可以做的尽可能的详细。书本用的是黄正达老师的《线性代数》
+            </div>
+            <a href="./CourseNotes1/CourseNotes1-6.html" class="read-btn">Read Notes &rarr;</a>
+        </div>
+
+        <!-- CourseNotes 7 -->
+        <div class="paper-item">
+            <div class="paper-number">07</div>
+            <div class="paper-title">第七章 线性空间</div>
+            <div class="paper-meta">2026.2.6</div>
+            <div class="paper-abstract">
+            线性代数这门课实在是重要，不得不在大三这一年的寒假再一次回顾这门课程，希望这一份笔记可以做的尽可能的详细。书本用的是黄正达老师的《线性代数》
+            </div>
+            <a href="./CourseNotes1/CourseNotes1-7.html.html" class="read-btn">Read Notes &rarr;</a>
+        </div>
+
+        <!-- CourseNotes 8 -->
+        <div class="paper-item">
+            <div class="paper-number">08</div>
+            <div class="paper-title">第八章 欧氏空间</div>
+            <div class="paper-meta">2026.2.6</div>
+            <div class="paper-abstract">
+            线性代数这门课实在是重要，不得不在大三这一年的寒假再一次回顾这门课程，希望这一份笔记可以做的尽可能的详细。书本用的是黄正达老师的《线性代数》
+            </div>
+            <a href="./CourseNotes1/CourseNotes1-8.html.html" class="read-btn">Read Notes &rarr;</a>
+        </div>
+
+        <!-- CourseNotes 9 -->
+        <div class="paper-item">
+            <div class="paper-number">09</div>
+            <div class="paper-title">第九章 线性映射与线性变换初步</div>
+            <div class="paper-meta">2026.2.6</div>
+            <div class="paper-abstract">
+            线性代数这门课实在是重要，不得不在大三这一年的寒假再一次回顾这门课程，希望这一份笔记可以做的尽可能的详细。书本用的是黄正达老师的《线性代数》
+            </div>
+            <a href="./CourseNotes1/CourseNotes1-9.html" class="read-btn">Read Notes &rarr;</a>
+        </div>
+
+    </div>
+
+    <!-- 交互脚本 -->
+    <script src="script.js"></script>
+</body>
+</html>
