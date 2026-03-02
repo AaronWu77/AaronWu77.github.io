@@ -193,3 +193,118 @@ Descriptor Sampling Pattern: Computing the binary descriptor for a specific pixe
 ![alt text](../../assets/images/reading-paper/image2-3.png)
 
 图 3 简单描述符响应图示例：所有处理单元存储相同的 8 位描述符。针对三个示例描述符生成响应图（均采用相同采样模式（左下）和输入图像（左上））。为进行对比，分别使用加权像素对方法和汉明距离生成响应图。高响应 “块” 可精准定位特定视觉结构，但如青色部分所示，汉明距离生成的响应图用于跟踪时可靠性较低。
+
+---
+
+## 7. Descriptor Response-Maps
+
+With each new image frame our approach generates a layout of descriptors stored across the PE array, and then computes the “response” of each PE’s stored descriptor. Descriptor response refers to how strongly the visual features represented by a specific descriptor are present at a certain location within an image. Measuring the response of a PE’s stored descriptor first involves computing the descriptor for the image at that PE’s location. The computed image descriptor is then compared to the PE’s stored descriptor. A higher similarity between the two indicates that the stored descriptor more accurately represents the local image content. Thus, as will be described, descriptor response should correlate to a measurement of this similarity.
+
+---
+
+![alt text left medium](../../assets/images/reading-paper/image2-4.png)
+
+---
+
+The PPA architecture enables the response of every PEs stored descriptor to be computed in parallel, and placed into local analogue memory, forming a “descriptor response map” spread across the PE array. Figure 3 shows simple response maps, with all PEs storing the same descriptor.
+
+---
+Measuring Descriptor Similarity and Response: A simple measure of similarity between binary descriptors is to compute the number of matching bits between their bit strings (i.e. Hamming distance), a common choice on traditional digital processing, being very cheap to compute. SCAMP-7 however has analogue computation capability, and captures images directly into its PE array as analogue data. For almost no additional cost, this analogue compute allows to also account for the raw pixel data when computing descriptor response. This is very useful for handling image regions that will not provide reliable point-feature tracking, such as low texture or highly repetitive texture regions. Descriptors inside such “ambiguous” regions will have poor temporal stability, as very slight image changes (from noise or lighting) will produce radically different descriptors from one frame to the next. Thus we do not simply measure the number of matching bits between descriptors, but also weight these matches (and penalize misses) by the magnitude of the pixel pair comparison results associated with each bit. Specifically, we compute the response R of a stored descriptor at a certain image location as follows: 
+
+$R=\sum_{i=1}^{8}\left(2 d_{i}-1\right)\left(p_{i(1)}-p_{i(2)}\right)$
+
+where $d_{i} \in{0,1}$ , is the $i^{th }$ bit of the descriptor, and $p_{i(1)}$ , $p_{i(2)} \in \Re$ are the pixel values for the $i^{th }$ pair of pixels, selected according to the descriptor’s sampling pattern. This ensures high descriptor response is only produced in image regions which can provide reliable tracking. Figure 3 shows example response maps generated using both this weighted pixel-pairs method, and the Hamming distance.
+
+---
+
+## 8. Descriptor Layout
+
+The response maps of Figure 3 are simple examples, with the same descriptor being stored inside every PE. In practice, with every captured frame, our approach generates a layout of various descriptors across the PE array. This descriptor layout enables the computed response maps to be used for both point-feature tracking and detection. Generation of this layout splits all PEs into one of two categories.
+
+---
+
+1. PEs Located Near Tracked Point-Features. Each tracked point-feature’s descriptor is spread into a local “patch” of PEs surrounding its location (i.e. around the PE the feature currently resides in). The computed response map will then have each tracked feature surrounded by responses from its own descriptor, from which the feature’s new location can be determined.
+
+2. All Remaining PEs. A single “search descriptor” is loaded into all remaining PEs, not located close to any tracked feature. The responses from this descriptor are examined to detect new point-features. To detect different features, the search descriptor itself is randomized every frame.
+
+---
+
+To generate this descriptor layout, the search descriptor is first loaded into all PEs in parallel, excluding PEs containing tracked point-features. Next the descriptors of tracked point-features are spread out from their containing PEs, across a small local patch of PEs (9 × 9). This descriptor spreading is also performed for every tracked point-feature in parallel. Figure 4 illustrates this layout, and the digital registers used with each PE for descriptor storage, and indication of a tracked feature’s location.
+
+---
+
+## 9. Patchwork Response Map
+
+The descriptor layout described in Section 7 generates response maps which have distinct patches of response, one for each tracked point-feature. Each feature’s patch is centred upon its last known location, and contains responses from its descriptor. PEs outside these patches will contain responses from the current search descriptor. When visualized these response maps have a “patchwork” like appearance as shown in Figure 5. These patchwork response maps contain sufficient information to both detect reliable new point-features, and update the locations of existing tracked point-features. They also require no additional computation: by simply storing different descriptors across the PE array, the responses used for both tracking and detecting point-features are all computed in parallel.
+
+---
+
+![alt text](../../assets/images/reading-paper/image2-5.png)
+
+---
+
+## 10. Point-Feature Detection
+
+Descriptor response is the mechanism by which our approach both detects and tracks point-features. With each new frame a patchwork response map (as described in Section 8) is computed. Feature detection involves searching for any locations where the search descriptor’s response strongly identifies some underlying visual point-feature. These locations appear as small distinct regions of high response, surrounded by low response. High response indicates the strong presence of visual features matching the search descriptor, while the surrounding low response indicates these features are distinct to a specific location (i.e. a point-feature). These high response “blobs” (such as shown in Figure 6), are prime candidates at which to initialize new point-features, as their location can be reliably tracked by the descriptor’s local response.
+
+---
+
+**Blob Detection**: To locate new point-feature candidates (and also track existing features), blob detection is performed upon each frame’s response map, at a scale of the descriptor sampling patterns size. Strong blob detection responses then represent reliable point-feature candidates. Figure 6 illustrates this process: from image, to response map, to blob detection result.
+
+**Point-Feature Initialization**: Our approach uses one digital register within each PE to signify if there is a tracked point-feature at its location, with PEs containing tracked features then also storing the descriptor of that feature (see Figure 4). This scheme, storing point-features within local PE memory, enables all features to be tracked in parallel.
+
+---
+
+To initialize new features, thresholding is performed upon the blob detection result. This is used to identify the PEs located at the centres of the strongest blobs, which are the best candidates for new point-features. New features are then added by simply setting the digital register to signify the presence of a tracked point-feature within each of these PEs.
+
+---
+
+## 11. Feature Tracking
+
+With each new captured frame the locations of tracked point-features must be updated. This is done by finding the local maximum of each feature’s descriptor response, around that feature’s previous location. The PE containing this maximum is then taken to be that of the feature’s new location. This can be viewed as similar to a gradient descent process, with each feature’s location following the local maxima of its descriptor response, which evolves in time with each captured frame. For each frame, the descriptor layout of Section 7 is generated, and used to compute the patchwork response maps of Section 8. These response maps have each tracked feature surrounded by a patch of response from its own descriptor. After performing blob detection upon this response map, a patch-wise, nonmaximum-suppression (NMS) routine is performed. This identifies the PEs of highest response within every feature’s patch, which are taken to represent each feature’s new location. This process is illustrated in Figure 6. It should be noted, that point-features are typically considered to be 1pixel in size. In practice, however, it is not necessary to ensure the NMS routine produces single pixels, just welllocated, distinct, and small cluster of pixels.
+
+---
+
+![alt text left medium](../../assets/images/reading-paper/image2-6.png)
+
+---
+
+**Dropping Weak Features**: After computing the descriptor response map for a new frame, there may exist some tracked features with no high values in their associated descriptor response patches. This indicates the visual feature associated with that point-feature’s descriptor is no longer clearly identifiable due to occlusion, lighting, or perspective changes. Such features can no longer be reliably tracked by descriptor response. The PEs containing such features are located by thresholding the response map, and their features removed by setting the digital register signifying feature presence to false.
+
+**Benefits From High Frame-Rate**: The very high speed at which our approach operates significantly simplifies feature tracking. Captured images will barely change from one frame to the next, and the motion of point-features is reduced to a gradual crawl across the PE array. Specifically two major benefits are:
+
+---
+
+1. **Reduced Motion Blur**. Motion blur in captured images is reduced significantly, if not entirely eliminated, even under violent sensor motion. This helps ensure the visual features underlying each tracked point-feature remain clear and consistent from one image to the next.
+
+2. **Reduced Feature Location Search**. As captured image will change very little from one frame to the next, so to will the locations of any tracked point-features. This allows the search for each tracked point-feature’s new location to be limited to a small region around its previous location, 9 × 9 PEs in SCAMP-7.
+
+---
+
+## 12. SCAMP Implementation
+
+The current implementation of our approach on SCAMP7 can run at just over 3000 FPS. While optimized, further code improvements may still exist . A breakdown of the total computation time per frame is given in Table 1. To put these numbers into perspective, the time taken to output a full uncompressed image from the sensor is well over 20000 µs, and even a 4-bit image requires 2700 µs. Our approach avoids such bottlenecks by performing all necessary computation entirely on-sensor, and outputting only sparse feature locations and descriptors. Examples of realtime output are shown in Figure 7, showcasing point-feature tracking under rapid motion to a degree not possible with a traditional camera sensor. It is worth noting that the SCAMP-7 chip is a research prototype, created using an old 180nm CMOS manufacturing process, with relatively low clock speeds, very restrictive memory per PE, and significantly higher power usage than what is possible using today’s state-of-the art semiconductor technology. That our approach can achieve such performance upon this device is an indication of the potential of the PPA sensor paradigm.
+
+---
+
+## 13. Evaluation
+
+An exact evaluation of our approach against traditional methods is difficult for a number of reasons. Firstly to reach its full potential, our approach must operate at very high frame-rates to ensure small inter-frame motion (at a minimum 500 FPS). This is no issue for our PPA implementation, which can capture and process images at thousands of frames per second, but the number of datasets applicable to feature-tracking captured at such frame rates is very limited. Further testing our PPA implementation upon any such dataset would involve uploading each video frame sequentially into the PPA’s PE array to emulate image capture. SCAMP-7 was never designed with this in mind, and uploading such large quantities of data is not efficient and prone to errors. As such we deemed evaluation using high frame rate datasets that would involve uploading thousands of sequential images not feasible.
+
+---
+
+We instead performed a comparison against feature tracking using a SCAMP-7 implementation of FAST keypoint detector. This is chosen also because it has speed comparable to our approach, and thus potentially able to track features under the same rapid motion. A modified implementation of [8] was used, which outputs corner point coordinates from the SCAMP-7. Simple point-feature tracking is then performed by matching each corner point with its closest corner point from the previous frame. To match corner points purely by frame-to-frame location (proximity), they must be within a small threshold distance (e.g. 5 pixels). We compare our approach against this FAST based tracking by recording the output of both approaches, viewing the same scenes, running at the same speed of 1000 FPS, using a very similar sequences of sensor motions for both approaches. Some of these motions keep parts of the scene in constant view, allowing some features to be tracked throughout the entire motion. We record how long every feature is tracked for before it is lost, with results for each motion sequence shown in Figure 8. Note, we also do not count any “poor quality” features from the FAST approach, which have lifetimes of less than 0.25 seconds. The distribution of feature lifetimes in these histograms give a sense of how reliable the approaches are comparatively. For example, under the ‘Translate’ motion, 90% of features using FAST based tracking were lost within 5 seconds, and 0% of features were tracked for over 15 seconds, compared to around 20% with our approach. It is clear from the ratio of feature lifetimes that our approach is far more reliable at tracking features for any significant length of time.
+
+---
+
+Limitations In our current implementation, only the locations and descriptors of tracked features are represented inpixel. Consequently, feature tracking has no concept of orientation and scale, making it non-invariant to rotation and scaling. While this is a significant limitation, we argue that it is not a fundamental drawback of the Descriptor-In-Pixel approach but rather a constraint imposed by the current state of PPA hardware, which remains in the early stages of development. Specifically, the limited memory within each PE makes storing additional information, such as a feature’s orientation, challenging. We expect that as future PPA devices increase memory capacity per PE, our method can be extended to support rotational and scale-invariant tracking.
+
+---
+
+![alt text left medium](../../assets/images/reading-paper/image2-7.png)
+
+---
+
+## 14. Conclusion
+
+This paper presented a novel approach for performing pointfeature detection and tracking on PPA architectures, demonstrated upon the SCAMP-7 system. Our approach is entirely performed within the pixel-processors of the PPA, and does not require external PC or micro-controller processing. We introduce the concept of Descriptor-In-Pixel which enables our approach to detect and track features by parallel computation of descriptor response across the processing array. This brings major performance benefits allowing our approach to operate at 3000 FPS, on a portable “smart camera” vision system, using around 1 watt of power, reliably tracking point-features under violent motion which renders traditional sensors unusable.
