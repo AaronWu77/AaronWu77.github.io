@@ -47,7 +47,7 @@ This issue ultimately reflects the dominant paradigm in electronic imaging, wher
 
 ---
 
-![alt text](image2-1.png)
+![alt text](../../assets/images/reading-paper/image2-1.png)
 
 图 1 智能手机与 SCAMP-7 PPA 绑定并剧烈摇晃。两设备帧率未完全同步，但可清晰看出：智能手机 60 FPS 的图像已无法使用，而我们的方法在 3000 FPS 下仍能无偏差跟踪特征。
 
@@ -107,7 +107,7 @@ Each pixel-processor does not store and execute its own program instructions, in
 
 ---
 
-![alt text left medium](image2-2.png)
+![alt text left medium](../../assets/images/reading-paper/image2-2.png)
 
 图 2 SCAMP-7 包含 256×256 个像素处理器，每个处理器可捕获光线、在本地内存寄存器中存储和处理数据，并向相邻处理器传输数据。控制器按顺序向处理器阵列发送 SIMD 指令，供其执行。
 
@@ -190,6 +190,6 @@ Descriptor Sampling Pattern: Computing the binary descriptor for a specific pixe
 
 ---
 
-![alt text](image2-3.png)
+![alt text](../../assets/images/reading-paper/image2-3.png)
 
 图 3 简单描述符响应图示例：所有处理单元存储相同的 8 位描述符。针对三个示例描述符生成响应图（均采用相同采样模式（左下）和输入图像（左上））。为进行对比，分别使用加权像素对方法和汉明距离生成响应图。高响应 “块” 可精准定位特定视觉结构，但如青色部分所示，汉明距离生成的响应图用于跟踪时可靠性较低。

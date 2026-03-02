@@ -35,7 +35,7 @@ When human agents plan, they often imagine their fu-ture trajectories considerin
 
 In this work, we propose a Navigation World Model (NWM), **trained to predict the future representation of a video frame based on past frame representation(s) and action(s)**(see Figure 1(a)). NWM is trained on video footage and navigation actions collected from various robotic agents. After training, NWM is used to plan novel navigation trajectories by simulating potential navigation plans and verifying if they reach a target goal (see Figure 1(b)). 
 
-![alt text](image.png)
+![alt text](../../assets/images/reading-paper/image.png)
 
 本文提出的 NWM 的训练目标是基于过往帧表征和动作预测视频帧的未来表征（见图 1 (a)）。NWM 采用来自多种机器人智能体的视频片段和导航动作进行训练。训练完成后，NWM 可通过模拟潜在导航方案并验证其是否抵达目标，从而规划全新导航轨迹（见图 1 (b)）。
 
@@ -156,7 +156,7 @@ One challenge that may arise is the entanglement of actions and time. For exampl
 
 ### 3.2 Diffusion Transformer as World Model
 
-![alt text left medium](image2.png)
+![alt text left medium](../../assets/images/reading-paper/image2.png)
 
 Conditional Diffusion Transformer Architecture. The architecture we use is a temporally autoregressive transformer model utilizing the efficient CDiT block (see Figure 2), which is applied →N times over the input sequence of latents with input action conditioning
 
@@ -345,7 +345,7 @@ Models are evaluated on single-step 4 seconds future prediction on validation se
 
 在已知环境 RECON 的验证集轨迹上，评估模型的单步 4 秒未来预测性能。通过 LPIPS、DreamSim 和 PSNR 衡量预测结果与真实帧的差异。定性示例见图 3。
 
-![alt text](image3.png)
+![alt text](../../assets/images/reading-paper/image3.png)
 
 ---
 **Model Size and CDiT.** We compare CDiT (see Section 3.2) with a standard DiT in which all context tokens are fed as inputs. We hypothesize that for navigating known environments, the capacity of the model is the most important, and the results in Figure 5, indicate that CDiT indeed performs better with models of up to 1B parameters, while consuming less than 2￫FLOPs. Surprisingly, even with equal amount of parameters (e.g, CDiT-L compared to DiT-XL), CDiT is $4\times$ faster and performs better.
@@ -381,7 +381,7 @@ We evaluate how well our model follows ground truth actions and predicts future 
 **生成质量**
 在真实动作条件下，以 4 FPS 自回归预测 16 秒视频，通过 FVD 评估视频质量，并与 DIAMOND 比较。图 6 结果表明，NWM 生成的视频质量更高。
 
-![alt text](image4.png)
+![alt text](../../assets/images/reading-paper/image4.png)
 
 表 2. 目标条件视觉导航结果。报告 RECON 数据集上 2 秒轨迹预测的 ATE 和 RPE。与现有方法 NoMaD 和 GNM 相比，NWM 在所有指标上均有提升。
 
@@ -424,7 +424,7 @@ Here we experiment with adding unlabeled data, and ask whether NWM can make pred
 
 本节实验通过添加无标签数据，验证 NWM 是否能在新环境中通过想象进行预测。模型在所有域内数据集及部分无标签 Ego4D 视频（仅考虑时间偏移动作）上训练。采用 CDiT-XL 模型，在斯坦福 Go 数据集及其他随机图像上测试。表 4 结果表明，在无标签数据上训练后，所有指标的视频预测性能均显著提升，生成质量更优。定性示例见图 8。与域内环境（图 3）相比，模型在未知环境中更快出现性能下降，且在生成想象环境轨迹时会出现合理的幻觉路径。
 
-![alt text](image5.png)
+![alt text](../../assets/images/reading-paper/image5.png)
 
 表 4. 额外无标签数据对未知环境性能的提升。报告未知环境（斯坦福 Go）和已知环境（RECON）的结果。评估 4 秒未来预测性能。
 
