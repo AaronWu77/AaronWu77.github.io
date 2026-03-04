@@ -38,4 +38,4 @@ Labs:
 - Lab5(2weeks, 10pt)
 - Lab6(5weeks, 25pt)
 
-:warning: Do not Delay!!!
+⚠️： Do not Delay!!!
