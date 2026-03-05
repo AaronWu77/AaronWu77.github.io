@@ -83,8 +83,6 @@ In 2000, 64 individuals participated in film club, a figure that dipped to 60 in
 
 The remaining activities started the period lower with 27 participants for amateur drama, 18 for table tennis, and 0 for musical performances (unavailable at the time). Over the next 10 years, amateur dramatics **commenced a decline** that would end at just 5 by 2020, while table tennis **underwent the inverse transformation**, **peaking at** 52 by the same year. Musical performances were only an option starting in 2005, with participants growing and levelling off to just under 20 by the end of the period.
 
-
-
 ### My version
 
 The line graph details the information concerning the statistics of participants for various activities in Melbourne between 2000 and 2020. Looking from an overall perspective, it is readily apparent that a sizable majority of the activity is Film club while Table tennis gained the most participants in 20 years.
@@ -93,9 +91,21 @@ Regarding the two most stable activities - Film club and Martial arts, the numbe
 
 For another three activities, both musical performances' and table tennis' participants increased steadily while amateur dramatics' rose to about 29 from 2000 to 2005 **before experiencing a a pronounced shift** in 2005. More specifically, the participants of table tennis rose steadily to a plateau about 20 from 2000 to 2005 and significantly increased to nearly 55 in the subsequent decade. The participants of musical performances remained 0 in 2000 and 2005 and steadily grew to 15 between 2005 and 2020.
 
+![alt text](PIC/小作文12.png)
+
+![alt text](PIC/小作文9.png) 
+
 ---
+
+## 柱状图题
+![alt text](PIC/小作文10.png) 
+
+---
+
 ## 地图题
 ![alt text](PIC/小作文4.png)
+
+![alt text](PIC/小作文11.png) 
 
 ---
 
@@ -109,3 +119,5 @@ For another three activities, both musical performances' and table tennis' parti
 
 
 ![alt text](PIC/小作文6.png) 
+
+

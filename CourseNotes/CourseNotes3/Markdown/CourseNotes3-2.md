@@ -6,7 +6,7 @@
 - **饼图**：Pie Chart
 - **表格**：Table
 - **混合图表**：Multiple Charts
-- **流程图**：process Diagram
+- **流程图**：Process Diagram
 - **地图**：Map
 
 ---

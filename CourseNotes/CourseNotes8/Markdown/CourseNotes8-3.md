@@ -115,7 +115,7 @@
 
 在写正则表的事的时候，结合符号和空符号可能会被省略，同时我们认为，**Kleene closure优先级高于结合 (concatenation)，结合 (concatenation) 优先级高于选择 (alternation)**：
 - $ab | c$ means $(a\cdot b)|c$
-- $$(a|)$ means $(a|\epsilon)$
+- $(a|)$ means $(a|\epsilon)$
 
 与此同时，我们引入更多的表示方法(abbreviations):
 - $[abcd]$ means $(a|b|c|d)$
