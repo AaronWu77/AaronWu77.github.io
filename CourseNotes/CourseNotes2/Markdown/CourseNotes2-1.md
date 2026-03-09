@@ -63,9 +63,11 @@
 ## Properties of Vector
 
 **向量 (vector)**：一种包含大小 (magnitude) 和 方向 (direction) 的表示方式
+
 **向量的分解**：可以根据直角坐标系分解为单位向量
-![alt text left medium](PIC/PIC1-1.png)
-![alt text right medium](PIC/PIC1-2.png)
+
+![alt text medium](PIC/PIC1-1.png)
+![alt text medium](PIC/PIC1-2.png)
 
 **向量的加法**：三角形/四边形法则
 
@@ -74,7 +76,7 @@
 - $\vec A \cdot \vec B = AB cos \theta=c$
 - $\vec A \times \vec B = \vec C$
 
-![alt text](PIC/PIC1-3.png)
+![alt text medium](PIC/PIC1-3.png)
 
 ## Vectors in Cartesian coordinate
 
