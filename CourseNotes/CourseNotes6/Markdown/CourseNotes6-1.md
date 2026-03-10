@@ -1,8 +1,6 @@
 # 计算机体系结构课程引入
 
----
-
-:warning: 如果需要本课程的课件以及实验文档，可以前往https://github.com/AaronWu77/Computer-Architecture 查看
+⚠️： 如果需要本课程的课件以及实验文档，可以前往https://github.com/AaronWu77/Computer-Architecture 查看
 
 ---
 
