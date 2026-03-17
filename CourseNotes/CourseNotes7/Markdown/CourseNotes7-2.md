@@ -13,7 +13,7 @@
 
 **High and Low Voltage**
 
-![alt text](PIC/2-1.png)
+![alt text](PIC/PIC2-1.png)
 
 - 对于输入和输出，高低电位的判定范围是不相同的，**宽进严出**的设计方案可以提高电路在噪音影响下的稳定性
 - 在高电位和低电位的判定范围之间还存在一个**未定义 (undefined)** 的，如果输出的电平处在浮动区间，则其认定值将是随机的
@@ -112,3 +112,35 @@ $$
 \end{align}
 $$
 
+**Decimal Codes - Binary Codes for Decimal Digits**
+
+用二进制表达信息的不同方法
+
+![alt text](PIC/PIC2-2.png)
+
+![alt text](PIC/PIC2-3.png)
+
+**Parity-Bit Error-Detection Codes**
+
+- 奇交验 (odd parity)：在数据后面加上一位校验位，校验位保证整租数据中所有的1是奇数个
+- 偶交验 (even parity)：在数据后面加上一位校验位，校验位保证整租数据中所有的1是偶数个
+
+**Character Code**
+
+- *American Standard Code for Information Interchange (ASCII)*: 94 Graphic printing and 34 Non-printing characters (7 bit)
+
+![alt text](PIC/PIC2-4.png)
+
+- *Properties of ASCII*:
+    - Digits 0 to 9 span Hexadecimal values $30_{16}$ to $39_{16}$
+    - Upper case A-Z span $41_{16}$ to $5A_{16}$
+    - Lower case a-z span $61_{16}$ to $7A_{16}$
+    - Lower to upper case translation and vice versa (occurs by flipping bit 5)
+
+- *Unicode*
+    - UTF-8: 1-4 B (Single byte compatible with ASCII)
+    - UTF-16: 2 or 4 B
+    - UTF-32: 4B
+
+UTF-8 在不同 B 编码下的区分方法
+![alt text](PIC/PIC2-5.png)

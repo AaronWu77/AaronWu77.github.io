@@ -2,6 +2,8 @@
 
 ## Overview
 
+![alt text](PIC/PIC3-2.png)
+
 **词法分析(Lexing/Scanning/Lexical Analysis)**：将程序字符流分解为记号 (Token) 序列
 - 删除字符串中不必要的部分（如空格）
 - 通常使用**正则表达式**匹配（DFA定义）
@@ -131,6 +133,109 @@
 
 - **Longest match:** The longest initial substring of the input that can match any regular expression is taken as the next token. (尽可能的匹配符合规则的最长字符串)
 - **Rule priority:** 
-比如说if8符合最长匹配规则，而if8中if已经符合IF类的规则，则匹配为IF和8
     - For a particulat longest initial substring, the first regular expression that can match determines its token-type
     - This means that the order of writing down the regular-expression rules has significance
+
+---
+
+## Finite Automata (有限状态自动机)
+
+**A finite automaton**:
+- A finite set of states
+- edges lead from one state to another
+- each edge is labeled with a symbol
+- one state is the *start state*
+- a certain of the states are distinguished as *final states* (double circles)
+
+![alt text](PIC/PIC3-3.png)
+
+**Deterministic finite automaton (DFA)**: In a DFA, no two edges leaving from the same state are labeled with the same symbol （每个状态变化的过程是确定的）
+
+**Accept and reject (DFA的接受和拒绝)**
+- Starting in the start state, for each character in the input string the automaton follows exactly one edge to get to the next state
+- The edge must be labeled with the input character
+- After making n transitions for an n-character string, if the automaton is in a final state, then *it accepts* the string.
+- If it is not in a final state, or if at some point there was no appropriately labeled edge to follow, *it rejects*.
+
+The language recognized by an automaton is the set of strings that it accepts.
+
+![alt text](PIC/PIC3-4.png)
+
+我们可以把这样一张图转变为一个表状态的表达，同时引入 *state 0 (dead state)* 表示这个接下来的字符无法被当前的自动机接受
+
+![alt text medium](PIC/PIC3-5.png)
+
+**How to recognize the longest match?**
+
+Two variables:
+- *Last-Final* (the state number of the most recent final state)
+- *Input-Position-at-Last-Final*
+
+When a dead state is reached, the variables tell what token was matched and where it ended
+
+![alt text](PIC/PIC3-6.png)
+![alt text](PIC/PIC3-7.png)
+
+---
+
+## Nonedeterministic Finite Automata (NFA)
+
+*Nonedeterministic Finite Automata (NFA)*: 
+- Have to choose one from the edges to follow out of a state
+- Have special edges labeled with $\epsilon$
+
+![alt text](PIC/PIC3-8.png)
+
+对于计算机来说，需要在NFA中进行不同路径的选择是很难的，所以NFA只用于将正则表达式先进行转换，然后在转变为DFA。接下来需要了解如何把正则表达式转换为NFA。
+
+*Thompson's Construction*
+
+![alt text](PIC/PIC3-9.png)
+
+
+**Example**
+
+- *if* {return IF;}
+- *[a-z][a-z0-9]\** {return ID;}
+- *[0-9]+* {return NUM;}
+![alt text](PIC/PIC3-10.png)
+
+理解了正则表达式如何转变为NFA之后，需要学习如何将NFA转变为DFA
+
+![alt text](PIC/PIC3-11.png)
+
+算闭包的时候一定要算 经过 $\epsilon$ 能够到达的所有状态，转换的方法可以按照上述例子中的步骤进行
+
+⚠️：这个算法的问题在于，每一次给定一个字符，比如说"in", "if", 都要做一次扫描和转化，会非常的复杂，所以要用空间换时间，来解决上述问题
+
+![alt text](PIC/PIC3-12.png)
+
+![alt text](PIC/PIC3-13.png)
+
+上述这个转化的结果中，NUM，第二行ID的两个状态可以进行合并。
+
+**关于合并**
+
+![alt text](PIC/PIC3-14.png)
+
+上面这一页PPT中所提到的判断方法，示例中2和4状态应该不是等价的，但是从逻辑上来看，2和4应该是等价的状态才对。所以要根据如下的方法来判断
+
+![alt text](PIC/PIC3-15.png)
+
+上图中自顶向下的流程对于等价类的划分更加合适，上图中第一步根据不同的状态结果（接受状态，过程状态）划分，然后再在子集之中继续进行划分
+
+---
+
+## Lex: A Lexical Analyzer Generator
+
+**The format of a Lex input file**:
+{ definitions }
+%%
+{ rules }
+%% 
+{ auxiliary routines}
+
+**Example**
+![alt text](PIC/PIC3-16.png)
+
+![alt text](PIC/PIC3-17.png)
