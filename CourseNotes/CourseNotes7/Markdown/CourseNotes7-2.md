@@ -143,4 +143,5 @@ $$
     - UTF-32: 4B
 
 UTF-8 在不同 B 编码下的区分方法
+
 ![alt text](PIC/PIC2-5.png)
