@@ -239,3 +239,32 @@ When a dead state is reached, the variables tell what token was matched and wher
 ![alt text](PIC/PIC3-16.png)
 
 ![alt text](PIC/PIC3-17.png)
+
+
+## Homework of Chapter 2
+
+**2.1** Write regular expressions for each of the following.
+a. Strings over the alphabet {a, b, c} where the first a precedes the first b.
+b. Strings over the alphabet {a, b, c} with an even number of a’s.
+c. Binary numbers that are multiples of four.
+d. Binary numbers that are greater than 101001.
+e. Strings over the alphabet {a, b, c} that don’t contain the contiguous substring baa.
+f. The language of nonnegative integer constants in C, where number beginning with 0 are octal constants and other numbers are decimal
+constants.
+g. Binary numbers n such that there exists an integer solution of $a^n+b^n = c^n$
+
+**2.2** For each of the following, explain why you’re not surprised that there is noregular expression defining it.
+a. Strings of a’s and b’s where there are more a’s than b’s.
+b. Strings of a’s and b’s that are palindromes (the same forward as backward).
+c. Syntactically correct C programs
+
+**2.5** Convert these NFAs to deterministic finite automata.
+
+![alt text](PIC/PIC2-9.png)
+
+**2.6** Find two equivalent states in the following automaton, and merge them toproduce a smaller automaton that recognizes the same language. Repeat until there are no longer equivalent states.
+
+![alt text](PIC/PIC2-10.png)
+
+Actually, the general algorithm for minimizing finite automata works in reverse. First, find all pairs of inequivalent states. States X, Y are inequivalent if
+X is final and Y is not or (by iteration) if $X \xrightarrow{*} X'$ and $Y \xrightarrow{*} Y'$ and $X', Y'$ areinequivalent. After this iteration ceases to find new pairs of inequivalent states,then X, Y are equivalent if they are not inequivalent. See Hopcroft and Ullman[1979], Theorem 3.10
