@@ -76,7 +76,7 @@
     <tbody>
         <tr>
             <td style="padding: 8px;">comment</td>
-            <td style="padding: 8px;"><code>/* I am a comment 8/</code></td>
+            <td style="padding: 8px;"><code>/* I am a comment */</code></td>
         </tr>
         <tr>
             <td style="padding: 8px;">preprocessor directive</td>
@@ -244,13 +244,19 @@ When a dead state is reached, the variables tell what token was matched and wher
 ## Homework of Chapter 2
 
 **2.1** Write regular expressions for each of the following.
+
 a. Strings over the alphabet {a, b, c} where the first a precedes the first b.
+
 b. Strings over the alphabet {a, b, c} with an even number of a’s.
+
 c. Binary numbers that are multiples of four.
+
 d. Binary numbers that are greater than 101001.
-e. Strings over the alphabet {a, b, c} that don’t contain the contiguous substring baa.
-f. The language of nonnegative integer constants in C, where number beginning with 0 are octal constants and other numbers are decimal
-constants.
+
+**e. Strings over the alphabet {a, b, c} that don’t contain the contiguous substring baa.**
+
+f. The language of nonnegative integer constants in C, where number beginning with 0 are octal constants and other numbers are decimalconstants.
+
 g. Binary numbers n such that there exists an integer solution of $a^n+b^n = c^n$
 
 **2.2** For each of the following, explain why you’re not surprised that there is noregular expression defining it.
