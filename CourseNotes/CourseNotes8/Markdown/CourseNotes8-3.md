@@ -274,3 +274,5 @@ c. Syntactically correct C programs
 
 Actually, the general algorithm for minimizing finite automata works in reverse. First, find all pairs of inequivalent states. States X, Y are inequivalent if
 X is final and Y is not or (by iteration) if $X \xrightarrow{*} X'$ and $Y \xrightarrow{*} Y'$ and $X', Y'$ areinequivalent. After this iteration ceases to find new pairs of inequivalent states,then X, Y are equivalent if they are not inequivalent. See Hopcroft and Ullman[1979], Theorem 3.10
+
+![alt text](PIC/PIC4-11.jpg) ![alt text](PIC/PIC4-12.jpg) ![alt text](PIC/PIC4-13.jpg)

@@ -165,3 +165,27 @@ $Follow(x)$ is the set of terminals that can immediately follow X: $t\in Follow(
 **Deleting , Replacing , Inserting**
 
 token错误的方法和种类不多，要么多了要么少了要么用错了
+
+
+## Quiz 2
+
+Consider the following grammar:
+```
+S -> A
+S -> B
+A -> e
+A -> f
+B -> (C)
+C -> SD
+D -> AD
+D ->
+```
+a. Calculate the Nullable, FIRST, and FOLLOW sets for nonterminals in the grammar;
+
+b. Construct the LL(1) parsing table for the grammar;
+
+c. Explain whether the grammar is LL(1) or not.
+
+
+
+![alt text](PIC/PIC4-14.jpg) ![alt text](PIC/PIC4-15.jpg) ![alt text](PIC/PIC4-16.jpg)
