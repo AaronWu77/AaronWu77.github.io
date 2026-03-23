@@ -7,20 +7,10 @@
     <link rel="stylesheet" href="../../assets/css/style.css">
     <!-- 引入 marked.js 用于 Markdown 渲染 -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-
-    <!-- [新增] 引入 MathJax 用于渲染 LaTeX 公式 -->
-    <script>
-        window.MathJax = {
-            tex: {
-                inlineMath: [['$', '$'], ['\\(', '\\)']], // 识别行内公式 $...$
-                displayMath: [['$$', '$$'], ['\\[', '\\]']] // 识别块级公式 $$...$$
-            },
-            svg: {
-                fontCache: 'global'
-            }
-        };
-    </script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <!-- 引入 KaTeX 用于渲染 LaTeX 公式 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
 
     <style>
         /* Markdown 内容区域的特定样式，适配 Cyberpunk 主题 */
@@ -213,10 +203,17 @@
                     if (alt.includes('medium')) img.classList.add('width-medium');
                     if (alt.includes('large')) img.classList.add('width-large');
                 });
-
-                // [新增] 通知 MathJax 重新渲染新插入的公式
-                if (window.MathJax) {
-                    MathJax.typesetPromise && MathJax.typesetPromise();
+                // [新增] 通知 KaTeX 渲染新插入的公式
+                if (window.renderMathInElement) {
+                    renderMathInElement(document.getElementById('markdown-output'), {
+                        delimiters: [
+                            {left: '$$', right: '$$', display: true},
+                            {left: '$', right: '$', display: false},
+                            {left: '\\(', right: '\\)', display: false},
+                            {left: '\\[', right: '\\]', display: true}
+                        ],
+                        throwOnError: false
+                    });
                 }
             })
             .catch(error => {
