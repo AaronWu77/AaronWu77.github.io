@@ -189,3 +189,44 @@ c. Explain whether the grammar is LL(1) or not.
 
 
 ![alt text](PIC/PIC4-14.jpg) ![alt text](PIC/PIC4-15.jpg) ![alt text](PIC/PIC4-16.jpg)
+
+## Homework 3-1
+
+a. Caculate nullable First and Follow for this grammar:
+```
+S -> u B D z
+B -> B v
+B -> w
+D -> E F
+E -> y
+E -> 
+F -> x
+F -> 
+```
+b. Construct the LL(1) parsing table for the grammar;
+c. Give evidence that this grammar is not LL(1).
+d. Modify the grammar as little as possinle to make it an LL(1) grammar that accepts the same language.
+
+To fix this, we need to eliminate the left recursion on `B`. 
+The original rules for `B` are:
+`B -> B v | w`
+This generates strings of the form `w`, `wv`, `wvv`, etc. ($wv^*$).
+We can rewrite this using right recursion:
+`B -> w B'`
+`B' -> v B' | ` ($\epsilon$)
+
+The modified LL(1) grammar is:
+```text
+S  -> u B D z
+B  -> w B'
+B' -> v B'
+B' -> 
+D  -> E F
+E  -> y
+E  -> 
+F  -> x
+F  -> 
+```
+This new grammar accepts the exact same language but is LL(1) conflict-free.
+
+![alt text](PIC/PIC4-17.jpg)

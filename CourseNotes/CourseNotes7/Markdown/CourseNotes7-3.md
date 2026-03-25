@@ -310,3 +310,73 @@ AB+\overline{A}C+BC &= AB+\overline{A}C+BC(1)\\
 - 直观地来看，2个1相邻可以消除一个变量，4个1两两相邻可以消除两个变量...（在表头和表尾相邻的1也可以合并）
 
 再来看下面这张图
+
+![alt text](PIC/PIC3-10.png)
+
+**Prime Implicant（主蕴涵项）**：
+
+- A *Prime Implicant* is a product term obtained by combining the *maximum possible number of adjacent squares* in the map into a rectangle with the number of squares a power of 2.
+- A prime implicant is called an *Essential Prime Implicant* if it is *the only prime implicant that covers includes one or more minterms*.
+- Prime Implicants and Essential Prime Implicants can be determined by inspection of a K-Map
+
+> 通过将**尽可能多**的相邻的 `1` 所在的方格（方格数为 $2^n$ 个）圈起来形成的一个乘积项。简单来说，就是卡诺图中“无法再扩大的最大的圈”。
+
+> **质/本质主蕴涵项 (Essential Prime Implicant)**：如果卡诺图中的某一个最小项（某个 `1`）**只被唯一的一个大圈（主蕴涵项）覆盖**，那么这个大圈就是本质主蕴涵项。它意味着这个项在最终的最简表达式中是绝对不可或缺的。
+
+![alt text](image.png)
+
+如上图中，只有左上角这两个框是 Essential Prime Implicant，因为它们覆盖的 `1` 只被它们自己覆盖，而其他的 `1` 都被多个大圈覆盖，所以其他的大圈都是非本质主蕴涵项。
+
+把他们选出来之后，再看一下剩下的 `1`，看看还有没有被覆盖的，如果有的话就选一个非本质主蕴涵项把它覆盖掉，直到所有的 `1` 都被覆盖掉为止。
+
+例：
+
+![alt text](PIC/PIC3-12.png)
+
+![alt text](PIC/PIC3-13.png)
+
+**反过来，也可以把0框起来计算**
+
+![alt text](PIC/PIC3-14.png)
+
+**无关项 (Don't Cares in K-Maps)**
+
+有时，在真值表或卡诺图中，我们会遇到一些特定的条目满足以下情况：
+- 该最小项对应的**输入值永远不会出现**；或者
+- 该最小项对应的**输出值根本不被系统使用**。
+ 
+在这些情况下，系统的输出值是不需要被严格定义为 0 或 1 的。
+相反，我们可以将这些输出值定义为**“无关项 (don't care)”**。
+通过在真值表或卡诺图中将这些位置标记为“无关项”（通常用 **“x”** 表示），我们可以更灵活地画圈，从而**降低逻辑电路的成本**（即将 x 视作 1 或 0 来帮助凑出更大的圈，如果不用的 x 则当做 0 忽略）。
+ 
+ ![alt text](PIC/PIC3-15.png)
+
+## 2.6 Additional Gates and Circuits
+
+**Buffer**
+
+- A buffer is a gate with the function $F=X$.
+
+在电路中插入一个buffer可以规整电路结构。虽然buffer本身不改变信号的逻辑值，但它可以增强信号的驱动能力，使得信号在传输过程中不易衰减，保持信号的完整性。
+
+其他的门详见表格吧
+
+![alt text](PIC/PIC3-16.png)
+
+**Transmission Gate**
+
+A transmission gate can be regarded as a switch.
+
+![alt text](PIC/PIC3-17.png)
+
+**The 3-State Buffer**
+
+![alt text](PIC/PIC3-18.png)
+
+当S=0时，输出的事IN0，当S=1时，输出的是IN1，两个 3-state buffer 组合成一个选择器。
+
+**Complex Gates**
+
+![alt text](PIC/PIC3-19.png)
+
+## 2.7 HDL Overview
