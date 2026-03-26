@@ -100,6 +100,8 @@ Diagram the LR(0) states for Grammar 3.26, build the SLR parsing table, and iden
 
 ![alt text](PIC/PIC5-16.png)
 
+![alt text](PIC/PIC5-17.jpg) ![alt text](PIC/PIC5-18.jpg) ![alt text](PIC/PIC5-19.jpg) 
+
 **T2 (3.13)**
 
 Show that this grammar is LALR(1) but not SLR:
@@ -112,6 +114,8 @@ Show that this grammar is LALR(1) but not SLR:
 4 X -> b d a
 5 M -> d
 ```
+
+![alt text](PIC/PIC5-20.jpg) ![alt text](PIC/PIC5-21.jpg) 
 
 **T3 (3.14)**
 
@@ -127,3 +131,5 @@ Show that this grammar is LL(1) but not LALR(1):
 7 F -> A
 8 A -> 
 ```
+
+![alt text](PIC/PIC5-22.jpg)
