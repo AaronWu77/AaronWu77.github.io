@@ -1,4 +1,4 @@
-# Chapter 3 Syntax Analysis
+# Chapter 3-1 Syntax Analysis
 
 ## What is syntax analysis?
 

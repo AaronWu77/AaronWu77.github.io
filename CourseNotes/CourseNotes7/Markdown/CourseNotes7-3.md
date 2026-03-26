@@ -380,3 +380,29 @@ A transmission gate can be regarded as a switch.
 ![alt text](PIC/PIC3-19.png)
 
 ## 2.7 HDL Overview
+
+**HDL（硬件描述语言）简介**
+
+- HDL（Hardware Description Language）用于描述和建模数字电路的结构和行为，常见的有 Verilog 和 VHDL。
+- HDL 代码可用于仿真（验证逻辑功能）和综合（生成门级电路）。
+- 基本结构包括模块（module/entity）、端口（input/output）、信号（wire/reg）、过程块（always/process）等。
+- 组合逻辑可用 assign（Verilog）或 concurrent assignment（VHDL）描述；时序逻辑需用时钟敏感的过程块。
+- 设计流程：编写 HDL → 仿真验证 → 综合实现 → 下载到硬件（如 FPGA）。
+- HDL 支持层次化设计，可将复杂电路分解为多个子模块。
+- 例子（Verilog）：
+    ```verilog
+    module and_gate(input A, input B, output Y);
+        assign Y = A & B;
+    endmodule
+    ```
+- 例子（VHDL）：
+    ```vhdl
+    entity and_gate is
+        Port ( A, B : in STD_LOGIC; Y : out STD_LOGIC );
+    end and_gate;
+    architecture Behavioral of and_gate is
+    begin
+        Y <= A and B;
+    end Behavioral;
+    ```
+- HDL 使数字系统的设计、验证和实现更加高效和自动化。
