@@ -1,118 +1,81 @@
-# Chapter 6 Momentum
+# Chapter 3 Force and Newton's Law
 
-## 基本概念
-**动量 (Linear Momentum)**
+## Force and Motion
 
-The momentum $\vec p$ of a body is defined as:
+**牛顿第一定律**：不受合外力的物体，将保持静止或匀速直线运动状态
+- *惯性系*：牛顿第一定律成立的参考系（如地面、匀速运动的车厢）；
+- *非惯性系*：有加速度的参考系（如加速的电梯、旋转的圆盘），此参考系中第一定律不成立。
 
-$$ \vec p = m \vec v \\
-\vec p = p_x\vec i +p_y \vec j + p_z\vec k\\
-=mv_x\vec i+mv_y\vec j+mv_z\vec k
-$$
+**牛顿第二定律**：物体的加速度与作用在它上的合外力成正比，与它的质量成反比
+$$\sum \vec F = m \vec a$$
+分量形式：
+$$\sum F_x = m a_x$$
+$$\sum F_y = m a_y$$
+$$\sum F_z = m a_z$$
 
-**Another form of Newton's second law**
+**牛顿第三定律**：作用力与反作用力大小相等，方向相反
+$$\vec F_{12} = -\vec F_{21}$$
 
-$$ \sum \vec F = m\vec a = m \frac{d\vec v}{dt}=\frac{d\vec p}{dt}$$
+**外力与内力**
 
-**冲量 (Impulse)**
+外力（$F_{ext}$​）：系统外的物体对系统内物体的作用力；
 
-$$\vec j = \int_{t_1}^{t_2}\vec F dt$$
+内力（$F_{int}$​）：系统内物体之间的相互作用力；(内力满足牛顿第三定律，系统内所有内力的合外力为零，只有外力能改变整个系统的运动状态)
 
-**Impuse and momentum**
+**Unit of Force**
 
-$$\vec p_f - \vec p_i =\int^{p_f}_{p_i}d\vec p = \int_{t_1}^{t_2}\sum \vec Fdt = \vec J\\
-\vec j = \Delta \vec p$$
+*国际单位*：牛顿（N），定义：$1N=1kg \cdot m/s^2$
 
-**动量守恒定律 (Conservation of momentum)**
-
-1. 系统所受合外力为0时，总动量不变
-2. 动量守恒时矢量守恒，可以分解为x, y, z三个方向的分量式，各个方向独立守恒
+量纲：$[F]=ML/T2$（M = 质量，L = 长度，T = 时间），用于验证力学公式的量纲一致性。
 
 ---
+## 弹性力 (Elastic Force)
 
-## 一维碰撞 (Collision in 1-D)
+弹性力是物体发生弹性形变时产生的恢复力，属于被动力
 
-**弹性碰撞 (Elastic Collision)**
+**弹力 (Spring Force)**：弹簧发生弹性形变所产生的力
+$$\vec F = -k \vec x $$
+（其中 $k$ 是弹簧常数，$\vec x$ 是弹簧的形变量）
 
-- 动量守恒+机械能守恒
-$$\begin{align} m_1v_{1i}+m_2v_{2i}&=m_1v_{1f}+m_2v_{2f}\\
-\frac{1}{2}m_1v_{1i}^2+\frac{1}{2}m_2v_{2i}^2&=\frac{1}{2}m_1v_{1f}^2+\frac{1}{2}m_2v_{2f}^2\\
-\end{align}$$
+**张力 (Tension Force)**：对于一个理想的轻绳或轻杆，张力是沿绳子或杆方向的拉力，大小相等，作用在绳子或杆两端的物体上
 
-**非弹性碰撞 (Inelastic Collision)**
+对于悬挂的物体，如果物体处于静止或匀速运动状态，张力与物体的重力等大反向：
+$$\vec T = -\vec W (W = mg)$$
 
-- 动量守恒+机械能损失
+**支持力 (Normal Force)**：接触面对物体的弹力，始终垂直于接触面（核心特点）
 
-**完全非弹性碰撞 (Comletely Inelastic Collision)**
+![alt text](PIC/PIC1-4.png)
 
-- 动量守恒+机械能损失较大（两者碰撞后粘连共速）
-$$m_1v_{1i}+m_2v_{2i}=(m_1+m_2)v_{f}$$
+$$ \vec N = mg \cos \theta $$
+（其中 $\theta$ 是斜面与水平面的夹角）
 
-**质心 (The center of mass)**
+---
+## 万有引力 (Gravitaional Force)
 
-![alt text medium left](PIC/PIC2-1.png)
+- *大小*：$F = G \frac{m_1 m_2}{r^2}$（其中 $G$ 是万有引力常数，$m_1$ 和 $m_2$ 是两个物体的质量，$r$ 是它们之间的距离）
+- *矢量形式*：$\vec F = -G \frac{m_1 m_2}{r^2} \hat r$（其中 $\hat r$ 是从一个物体指向另一个物体的单位矢量）
+- *重力与万有引力的关系*：在地球表面，重力近似等于万有引力，即 $mg = G \frac{M m}{R^2}$
 
-对于上述这个二元系统，我们可以计算关于质心的位置、速度、加速度
+---
+## 摩擦力 (Frictional Force)
 
-位置：
-$$\begin{align}
-\vec r_{cm}&=\frac{m_1\vec r_1+m_2 \vec r_2}{m_1+m_2}\\
-x_{cm}&=\frac{m_1 x_1+m_2 x_2}{m_1+m_2}\\
-y_{cm}&=\frac{m_1 y_1+m_2 y_2}{m_1+m_2}\\
-z_{cm}&=\frac{m_1 z_1+m_2 z_2}{m_1+m_2}\\
-\end{align}$$
+- 静摩擦力 (Static Friction)：$$F_s=-\sum F_{ext}\leq \mu_s N$$（当物体处于静止状态时，静摩擦力的大小等于外力的合力，但方向相反，且不超过最大静摩擦力 $F_{s,max} = μ_s N$）
+- 动摩擦力 (Kinetic Friction)：$$F_k= μ_k N$$ （当物体处于运动状态时，动摩擦力的大小等于动摩擦系数 $μ_k$ 与支持力 $N$ 的乘积，且方向与运动方向相反）
 
-速度和加速度：
+---
+## Examples
 
-$$\begin{align}
-\vec v_{cm}&=\frac{m_1\vec v_1+m_2 \vec v_2}{m_1+m_2}\\
-\vec a_{cm}&=\frac{m_1\vec a_1+m_2 \vec a_2}{m_1+m_2}\\
-\end{align}$$
+**T1.** 
+An object, located at 2R away from the center of the earth, is falling from rest vertically. R is the radius of the earth. Find the speed when it arrives at the earth’s surface. The drag force on the object by the air and the spin of the earth are ignorable.
+![medium](PIC/PIC2-2.png)
 
-**参考系的选择**
+**Answer**
 
-- **实验室参考系 (lab frame)：** 地面/静止的惯性参考系，为常规观测参考系
-- **质心参考系(cm frame)：** 以系统质心为原点的惯性参考系，特点是系统的总动量为 0，是分析碰撞的简便参考系
+---
+**T2** 
+A car moves with the velocity $v_0$ alone the x axis. If $a(t)= - ct$, how much time it passes and how far it travels when it stops?
 
-对于质心参考系来说，和新的计算优势时总动量恒为0，因为：
-- 根据质心速度的计算公式$\vec v_{cm}=\frac{m_1\vec v_{1i}+m_2 \vec v_{2i}}{m_1+m_2}$
-- 变换两个质子的速度：
-$v_{1i}'=v_{1i}-v_{cm}$
-$v_{2i}'=v_{2i}-v_{cm}$
-- 总动量：$\vec v_{cm}'=\frac{m_1\vec v_{1i}'+m_2 \vec v_{2i}'}{m_1+m_2}=0$
-- 分析碰撞的过程（弹性碰撞）：对于整个二元系统，只有内力的相互作用而没有外力的相互作用，所以质心的速度始终为0，因此为了保证这一点，在质心系中，两个质子的速度发生反转，即
-$v_{1f}'=-v_{1i}'$
-$v_{2f}'=-v_{2i}'$
-- 再通过质心系的速度求解实验室参考系下的速度
-$v_{1f}=v_{1f}'+v_{cm}$
-$v_{2f}=v_{2f}'+v_{cm}$
+---
+**T3**
+A uniform rod with the mass m and the length L is perpendicularly fixed on the rotating axis. When it rotates with a angular speed $\omega$, find the tension force of the rod at every point if the gravitation force is ignorable.
 
-# Chapter 7 Systems of Partical
-
-**质心的计算**
-
-多质子系统的质心求解方法从两个质子的系统推广而来
-
-位置：
-$$\begin{align}
-\vec r_{cm}&=\frac{m_1\vec r_1+m_2\vec r_2+\cdots + m_N\vec r_N}{m_1+m_2+\cdots +m_N} = \frac{1}{M}\sum m_i \vec r_i\\
-x_{cm}&=\frac{1}{M}\sum m_i x_i\\
-y_{cm}&=\frac{1}{M}\sum m_i y_i\\
-z_{cm}&=\frac{1}{M}\sum m_i z_i\\
-\end{align}
-$$
-
-速度和加速度：
-$$\begin{align}
-\vec v_{cm}&=\frac{1}{M}\sum m_i \vec v_i\\
-\vec a_{cm}&=\frac{1}{M}\sum m_i \vec a_i\\
-\end{align}
-$$
-
-对于一个实心的物体 (solid body) 来说，求解质心的方法需要使用微分和积分，即
-
-$$\vec r_{cm} = \frac{1}{M}\int \vec r dm\\
-x_{cm}=\frac{1}{M}\int xdm\\
-y_{cm}=\frac{1}{M}\int ydm\\
-z_{cm}=\frac{1}{M}\int zdm\\
-$$

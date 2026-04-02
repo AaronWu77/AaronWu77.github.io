@@ -17,7 +17,7 @@ A child's toy consists of three cars that are pulled in tandem (串联工作组)
 (a) the acceleration of the system
 (b) the force exerted by thesecond car on the third car
 (c) the force exerted by thefirst car on the second car.
-![alt text](PIC1-1.png)
+![alt text](./PIC/PIC3-HW-1.png)
 
 ### Answer
 
@@ -60,7 +60,7 @@ A chain consisting of five links, each with mass $100 g$, is lifted vertically w
 (a) the forces acting between adjacent links
 (b) the force F exerted on the top link by the agent lifting the chain
 (c) the net force (合力) on each link
-![alt text](PIC1-3.png)
+![alt text](./PIC/PIC3-HW-3.png)
 
 ### Answer
 **(a)** Assume the force exerted by the top adjacent to the second as $F_{12}$, it is easy to find that:
@@ -122,7 +122,7 @@ $$
 $$y_{95} = \frac{v_T^2}{g} (ln(20)-\frac{19}{20})$$
 where $v_T$ is the terminal speed. (Hint: Use the result for $y(t)$ ob-tained in Problem 17.) 
 (b) Using the terminal speed of $42 m/s$ for the baseball given in Table 4-1, calculate the 95% distance.Why does the result not agree with the value listed in Table 4-1?
-![alt text](PIC1-4.png)
+![alt text](./PIC/PIC3-HW-4.png)
 
 ### Answer
 **(a)** Using the result for $v(t)$ and $y(t)$ obtained in Problem 17:
@@ -157,7 +157,7 @@ A particle $P$ travels with constant speed on a circle of radius $3.0 m$ and com
 (c) the average velocity vector in this interval
 (d) the instantaneous velocity vector at the beginning and at the end of this interval
 (e) the instantaneous accel-eration vector at the beginning and at the end of this interval.Measure angles counterc lockwise from the $x$ axis.
-![alt text](PIC1-6.png)
+![alt text](./PIC/PIC3-HW-6.png)
 
 ### Answer
 The period is $T = 20\ s$, meaning the angular speed is $\omega = \frac{2\pi}{T} = \frac{\pi}{10}\ rad/s$, and the constant linear speed is $v = \omega R = 3.0(\frac{\pi}{10}) \approx 0.94\ m/s$. The trajectory is a circle of radius $R = 3.0\ m$ passing through the origin. We put its center at $(3.0, 0)$ so it starts at $O(0,0)$ and moves counter-clockwise.

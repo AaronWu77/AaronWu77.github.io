@@ -191,3 +191,58 @@ Example：
     </tbody>
 </table>
 
+## Control Hazards
+
+控制冒险存在的原因：
+- 分支方向判断：条件分支（如 BEQ）需要计算两个寄存器的比较结果，确定是否跳转；
+- 分支目标地址计算：无论是条件分支还是无条件分支，都需要计算跳转的目标 PC 值。
+
+> 对于 MIPS 经典 5 级流水线（IF/ID/EX/MEM/WB），分支的方向和目标地址要到 EX 阶段才能完成计算，但 IF 阶段在 ID 阶段就已经开始取下一条指令，此时无法确定取的指令是否正确，这就是控制冒险的根源。
+
+**Stall 解决控制冒险**
+- 最简单的解决方法是让分支指令在 ID 阶段暂停，直到 EX 阶段计算出分支结果后再继续执行。这样会导致性能大幅下降
+- 控制冒险的停顿会直接抬升流水线的 CPI（每条指令的时钟周期数），理想流水线 CPI=1，而插入停顿后 CPI 会显著增加，计算公式：$$\text{CPI} = 1+ \text{分支频率} \times \text{每条分支的停顿周期数}$$
+
+> 根据上述计算方法，假设分支指令占总指令的30%，经典的五级流水线每条分枝需要3个停顿周期，则CPI=1+0.3*3=1.9，性能下降近一倍。
+
+![alt text](PIC/PIC3-17.png)
+
+> 如这张图片所示，MIPS 5 级流水线（IF 取指 / ID 译码 / EX 执行 / MEM 访存 / WB 写回）
+> 分支指令`BEQ R1,R3,24` 表示如果寄存器 R1 和 R3 的值相等，则跳转到当前 PC 加上 24 的地址（即44+4+24=72）处执行下一条指令。
+> 如果分支没有选中，则按照地址顺序执行；若选中则跳转到72。
+> 但是BEQ的分支方向判断再EX阶段完成，
+
+**更好的解决方案**
+- **将分支的判断和地址计算向前移**：从 EX 阶段提前到 ID 甚至 IF 阶段，减少停顿周期；
+- **利用分支延迟槽**：将停顿周期转化为 “有用的执行周期”，由编译器填充有效指令
+- **分支预测**：提前预测分支是否跳转，降低预测正确时的停顿惩罚。
+
+**将分支计算向前移**：在 MIPS 流水线中，通过硬件改造将分支的目标地址计算和条件判断从 EX 阶段提前到 ID 阶段
+- 在 ID 阶段增加加法器，用于计算分支目标地址（基于 PC 和立即数偏移）；
+- 在 ID 阶段增加比较器，直接对从寄存器文件读出的两个操作数进行比较，完成条件判断。
+
+**分支延迟槽**：将分支的 1 个停顿周期转化为 “分支延迟槽”，由编译器在槽中填充有效指令，而非插入空指令（NOP）
+
+![alt text](PIC/PIC3-18.png)
+
+**Another Example**
+
+```
+Loop: LW R2, 0(R1)   # Load word from address in R1 to R2
+      ADD R3, R2, R4  # Add R2 and R4, store in R3
+      SW R3, 0(R1)   # Store word from R3 back to address in R1
+      DIV ...
+      ...
+      SUB R1, R1, #4 # Increment address in R1 by 4
+      BNEZ R1, Loop # Branch back to Loop if R1 != R5
+```
+
+```
+Loop: LW R2, 0(R1)   # Load word from address in R1 to R2
+      ADD R3, R2, R4  # Add R2 and R4, store in R3
+      DIV ...
+      ...
+      SUB R1, R1, #4 # Increment address in R1 by 4
+      BNEZ R1, Loop # Branch back to Loop if R1 != R5
+      SW R3, +4(R1)   # Store word from R3 back to address in R1
+```

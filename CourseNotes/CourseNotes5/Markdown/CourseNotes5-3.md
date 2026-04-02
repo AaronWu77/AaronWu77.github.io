@@ -119,3 +119,142 @@ struct  ThreadedTreeNode {
 ![alt text](PIC/PIC3-5.png)
 
 ![alt text](PIC/PIC3-6.png)
+
+## Search Tree
+
+
+**堆和完全二叉树**
+![alt text](PIC/PIC3-7.png)
+
+**二叉树的特点**
+- 二叉树的第i层最多有$2^{i-1}$个节点
+- 深度为k的二叉树最多有$2^k - 1$个节点
+- 其他详见前面的“节点计算题“章节
+
+**The Search Tree ADT**
+
+*定义*: 二叉搜索树是一种二叉树。它可能为空。如果不为空，则满足以下性质：
+- 每个节点都有一个键，该键为整数，并且键值各不相同。
+- 非空左子树中的所有键值必须小于该子树根节点的键值。
+- 非空右子树中的所有键值必须大于该子树根节点的键值。
+- 左子树和右子树也都是二叉搜索树。
+
+*Objects*: A finite ordered list with zero or more elements.
+*Operations*:
+- `SearchTree MakeEmpty(SearchTree T)`: 将树T置空
+- `Position Find(ElementType X, SearchTree T)`: 在树T中查找
+- `Position FindMin(SearchTree T)`: 查找树T中键值最小的节点
+- `Position FindMax(SearchTree T)`: 查找树T中键值最大的节点
+- `SearchTree Insert(ElementType X, SearchTree T)`: 将元素X插入
+- `SearchTree Delete(ElementType X, SearchTree T)`: 删除元素X
+- `ElementType Retrieve(Position P)`: 返回位置P处节点的键值
+
+**Implementation of Search Tree**
+
+```C
+Position  Find( ElementType X,  SearchTree T ) 
+{ 
+       if ( T == NULL ) 
+              return  NULL;  /* not found in an empty tree */
+       if ( X < T->Element )  /* if smaller than root */
+              return  Find( X, T->Left );  /* search left subtree */
+       else 
+              if ( X > T->Element )  /* if larger than root */
+                     return  Find( X, T->Right );  /* search right subtree */
+              else   /* if X == root */
+                     return  T;  /* found */
+} 
+```
+
+循环方式
+```C
+Position  Iter_Find( ElementType X,  SearchTree T ) 
+{ 
+       /* iterative version of Find */
+       while  ( T )   {
+              if  ( X == T->Element )  
+                     return T ;  /* found */
+              if  ( X < T->Element )
+                     T = T->Left ; /*move down along left path */
+              else
+                     T = T-> Right ; /* move down along right path */
+       }  /* end while-loop */
+       return  NULL ;   /* not found */
+} 
+```
+
+下面是关于FindMin和FindMax的递归实现，迭代实现与之类似
+```C
+Position  FindMin( SearchTree T ) 
+{ 
+      if ( T == NULL )   
+          return  NULL; /* not found in an empty tree */
+      else 
+          if ( T->Left == NULL )   return  T;  /* found left most */
+          else   return  FindMin( T->Left );   /* keep moving to left */
+} 
+```
+
+```C
+Position  FindMax( SearchTree T ) 
+{ 
+      if ( T != NULL ) 
+              while ( T->Right != NULL )   
+	              T = T->Right;   /* keep moving to find right most */
+      return T;  /* return NULL or the right most */
+} 
+```
+
+插入的方法
+
+![alt text](PIC/PIC3-8.png)
+
+```C
+SearchTree  Insert( ElementType X, SearchTree T ) 
+{ 
+      if ( T == NULL ) { /* Create and return a one-node tree */ 
+	T = malloc( sizeof( struct TreeNode ) ); 
+	if ( T == NULL ) 
+	   FatalError( "Out of space!!!" ); 
+	else { 
+	   T->Element = X; 
+	   T->Left = T->Right = NULL; } 
+      }  /* End creating a one-node tree */
+     else  /* If there is a tree */
+ 	if ( X < T->Element ) 
+	   T->Left = Insert( X, T->Left ); 
+	else 
+	   if ( X > T->Element ) 
+	      T->Right = Insert( X, T->Right ); 
+	   /* Else X is in the tree already; we'll do nothing */ 
+    return  T;   /* Do not forget this line!! */ 
+}
+```
+删除的方法
+
+![alt text](PIC/PIC3-9.png)
+
+```C
+SearchTree  Delete( ElementType X, SearchTree T ) 
+{    Position  TmpCell; 
+      if ( T == NULL )   Error( "Element not found" ); 
+      else  if ( X < T->Element )  /* Go left */ 
+	    T->Left = Delete( X, T->Left ); 
+               else  if ( X > T->Element )  /* Go right */ 
+	           T->Right = Delete( X, T->Right ); 
+	         else  /* Found element to be deleted */ 
+	           if ( T->Left && T->Right ) {  /* Two children */ 
+	               /* Replace with smallest in right subtree */ 
+	               TmpCell = FindMin( T->Right ); 
+	               T->Element = TmpCell->Element; 
+	               T->Right = Delete( T->Element, T->Right );  } /* End if */
+	           else {  /* One or zero child */ 
+	               TmpCell = T; 
+	               if ( T->Left == NULL ) /* Also handles 0 child */ 
+		         T = T->Right; 
+	               else  if ( T->Right == NULL )  T = T->Left; 
+	               free( TmpCell );  }  /* End else 1 or 0 child */
+      return  T; 
+}
+```
+
