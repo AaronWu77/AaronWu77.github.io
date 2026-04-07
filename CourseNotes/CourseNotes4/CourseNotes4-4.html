@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>软件工程</title>
     <link rel="stylesheet" href="../../assets/css/style.css">
+
+    <!-- 引入 highlight.js 代码高亮 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <!-- 引入 marked.js 用于 Markdown 渲染 -->
     <script src="https://cdn.jsdelivr.net/npm/marked@14.1.2/marked.min.js"></script>
     <!-- 引入 KaTeX 用于渲染 LaTeX 公式 -->
@@ -193,6 +197,9 @@
 
                 // 填入 div
                 document.getElementById('markdown-output').innerHTML = htmlContent;
+                
+                // 渲染代码高亮
+                hljs.highlightAll();
                 
                 // [新增] 自动根据 Alt 文本处理图片布局 (Right/Left/Small/Medium)
                 document.querySelectorAll('#markdown-output img').forEach(img => {

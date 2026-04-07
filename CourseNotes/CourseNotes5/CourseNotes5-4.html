@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>软件工程</title>
+    <title>数据结构基础</title>
     <link rel="stylesheet" href="../../assets/css/style.css">
 
     <!-- 引入 highlight.js 代码高亮 -->
@@ -134,7 +134,7 @@
     <!-- 导航栏 -->
     <div style="max-width: 900px; margin: 20px auto; padding: 0 30px; display: flex; justify-content: space-between; align-items: center;">
         <!-- Left: Back -->
-        <a href="../CourseNotes4.html" style="color: #bc13fe; text-decoration: none; border: 1px solid #bc13fe; padding: 5px 10px; font-size: 0.8rem; display: inline-block; transition: all 0.3s;">&larr; Back to List</a>
+        <a href="../CourseNotes5.html" style="color: #bc13fe; text-decoration: none; border: 1px solid #bc13fe; padding: 5px 10px; font-size: 0.8rem; display: inline-block; transition: all 0.3s;">&larr; Back to List</a>
     </div>
 
     <!-- 笔记容器 -->
@@ -149,7 +149,7 @@
     <script src="../../assets/js/script.js"></script>
     <script>
         // 定义要加载的 Markdown 文件路径
-        const markdownFile = './Markdown/CourseNotes4-2.md';
+        const markdownFile = './Markdown/CourseNotes5-4.md';
 
         // 使用 fetch API 读取外部 Markdown 文件
         fetch(markdownFile)
@@ -226,7 +226,7 @@
             .catch(error => {
                 console.error('Error loading markdown file:', error);
                 document.getElementById('markdown-output').innerHTML = 
-                    '<p style="color: red; text-align: center;">Error loading note content. Please ensure "CourseNotes4-1.md" exists and you are running on a local server (or GitHub Pages).</p>';
+                    '<p style="color: red; text-align: center;">Error loading note content. Please ensure "CourseNotes5-1.md" exists and you are running on a local server (or GitHub Pages).</p>';
             });
             
         // 注意：MathJax 公式渲染需要额外插件，上面只是纯文本展示公式
