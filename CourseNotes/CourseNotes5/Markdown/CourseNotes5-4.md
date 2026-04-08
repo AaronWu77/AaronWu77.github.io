@@ -108,3 +108,127 @@ ElementType  DeleteMin( PriorityQueue  H )
     return  MinElement; 
 }
 ```
+
+**Other Heap Operations**:
+
+```C
+// 最小堆结构
+#define MinData -99999999  // 哨兵（最小值）
+typedef int ElementType;
+
+struct HeapStruct {
+    int Capacity;   // 最大容量
+    int Size;       // 当前元素个数
+    ElementType *Elements; // 数组（从1开始存）
+};
+
+typedef struct HeapStruct *PriorityQueue;
+```
+
+- `DecreaseKey`：将堆中某个元素的键值减小，然后根据堆的规则进行重新排序，时间复杂度为 O(log n)。
+
+```C
+// 将位置p的元素减小到 value（value必须比原值小）
+void DecreaseKey(int p, ElementType value, PriorityQueue H) {
+    if (p < 1 || p > H->Size) return;
+    if (value > H->Elements[p]) return; // 只能减小，不能变大
+
+    H->Elements[p] = value;
+
+    // 上滤 Percolate Up
+    int i;
+    for (i = p; H->Elements[i / 2] > H->Elements[i]; i /= 2) {
+        // 父节点更大 → 交换
+        ElementType temp = H->Elements[i / 2];
+        H->Elements[i / 2] = H->Elements[i];
+        H->Elements[i] = temp;
+    }
+}
+```
+
+- `IncreaseKey`：将堆中某个元素的键值增大，然后根据堆的规则进行重新排序，时间复杂度为 O(log n)。
+
+```C
+// 将位置p的元素增大到 value（value必须比原值大）
+void IncreaseKey(int p, ElementType value, PriorityQueue H) {
+    if (p < 1 || p > H->Size) return;
+    if (value < H->Elements[p]) return; // 只能增大
+
+    H->Elements[p] = value;
+
+    // 下滤 Percolate Down
+    int i, child;
+    ElementType last = H->Elements[p];
+    for (i = p; i * 2 <= H->Size; i = child) {
+        child = i * 2;
+        // 找较小的孩子
+        if (child != H->Size && H->Elements[child + 1] < H->Elements[child]) {
+            child++;
+        }
+        if (last > H->Elements[child]) {
+            H->Elements[i] = H->Elements[child];
+        } else {
+            break;
+        }
+    }
+    H->Elements[i] = last;
+}
+```
+
+- `Delete`：
+       - 删除堆中某个元素，
+       - 先DecreaseKey到最小，
+       - 然后上浮到根，
+       - 最后DeleteMin，
+       - 时间复杂度为 O(log n)。
+
+```C
+// 删除位置 p 的元素
+void Delete(int p, PriorityQueue H) {
+    // 第一步：把p位置改成最小值 → 自动上浮到根
+    DecreaseKey(p, MinData, H);
+
+    // 第二步：删除根（最小值）
+    DeleteMin(H);
+}
+```
+
+- `BuildHeap`：
+       - 把 N 个元素直接放进数组（不用排序）
+       - 找到最后一个非叶子节点：下标 = N/2
+       - 从 N/2 一直到 1，每个节点执行一次 Percolate Down（下滤）
+       - 时间复杂度为 O(n)。
+
+
+```C
+// 下滤函数（给BuildHeap用）
+void PercolateDown(int p, PriorityQueue H) {
+    int i, child;
+    ElementType last = H->Elements[p];
+    for (i = p; i * 2 <= H->Size; i = child) {
+        child = i * 2;
+        if (child != H->Size && H->Elements[child + 1] < H->Elements[child]) {
+            child++;
+        }
+        if (last > H->Elements[child]) {
+            H->Elements[i] = H->Elements[child];
+        } else {
+            break;
+        }
+    }
+    H->Elements[i] = last;
+}
+
+// 批量建堆 O(N)
+void BuildHeap(PriorityQueue H, ElementType arr[], int n) {
+    H->Size = n;
+    // 把n个元素直接放进数组
+    for (int i = 1; i <= n; i++) {
+        H->Elements[i] = arr[i - 1];
+    }
+    // 从 n/2 一直到 1，逐个下滤
+    for (int i = n / 2; i >= 1; i--) {
+        PercolateDown(i, H);
+    }
+}
+```

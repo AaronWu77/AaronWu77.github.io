@@ -1,4 +1,4 @@
-# Chapter 2 A Quantitive Approach
+# Chapter 4 A Pipeline
 
 ## What is pipelining?
 
