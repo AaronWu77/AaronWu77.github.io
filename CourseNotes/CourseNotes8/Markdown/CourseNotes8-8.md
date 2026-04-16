@@ -380,3 +380,6 @@ void transDec(S_table venv, S_table tenv, A_dec d) {
 ## Recuresive Functions
 
 `f calls g, g calls f` 的情况，我们需要先将 `f` 和 `g` 都绑定为一个函数类型变量(占位符)，然后再将 `f` 和 `g` 的类型绑定为一个函数类型，这样就可以处理递归函数了
+
+> - 第一次遍历：收集每个函数头部的信息（函数名、形式参数列表、返回类型），但不处理函数体。
+> - 第二次遍历：使用增强后的环境处理所有函数的函数体。
