@@ -62,7 +62,7 @@ GoF 把设计模式分成三类：
 
 ## Frameworks
 
-Framework 可以理解成一种 **mini-architecture**，也就是带插槽的骨架结构。  
+Framework是一种针对具体实现的用于设计工作的框架结构。可以理解成一种 **mini-architecture**，也就是带插槽的骨架结构。  
 它比 pattern 更具体，能直接落地，但仍然保留一部分可扩展性。
 
 ## Describing a Pattern
@@ -118,6 +118,9 @@ Framework 可以理解成一种 **mini-architecture**，也就是带插槽的骨
 - 选错模式还硬套
 - 忽略模式不覆盖的关键约束
 - 只照着名字用，没有做实际适配
+
+## Pattern Organizing Table
+![alt text](PIC/PIC9-1.png)
 
 ## Architectural Patterns
 
@@ -192,11 +195,3 @@ WebApp patterns 面向 Web 应用，通常分成五类：
 - 触控交互
 - 简化流程
 - 上下文感知
-
-## 总结
-
-这一章的重点可以记成一句话：
-
-> **模式是可复用的设计经验，设计时要先看 context，再选合适层次的 pattern。**
-
-真正好的设计不是机械套模式，而是把多个模式按层次组合起来，让系统既好用又可维护。
