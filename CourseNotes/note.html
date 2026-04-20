@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Note</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked@14.1.2/marked.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+</head>
+<body>
+    <div class="background-glow"></div>
+
+    <div style="max-width: 900px; margin: 20px auto; padding: 0 30px; display: flex; justify-content: space-between; align-items: center;">
+        <a id="back-link" href="../CourseNotes.html" class="header-back-link">&larr; Back to List</a>
+    </div>
+
+    <div class="header">
+        <h1 id="note-title">Course Note</h1>
+    </div>
+
+    <div class="note-container">
+        <div id="markdown-output" class="markdown-body">
+            <p class="note-loading">Loading note content...</p>
+        </div>
+    </div>
+
+    <script src="../assets/js/script.js"></script>
+    <script>
+        (function () {
+            const params = new URLSearchParams(window.location.search);
+            const title = params.get('title');
+            const back = params.get('back');
+
+            if (title) {
+                document.getElementById('note-title').textContent = title;
+                document.title = title;
+            }
+            const isSafeBackPath = (value) => {
+                if (!value || typeof value !== 'string') return false;
+                const trimmed = value.trim();
+                const lower = trimmed.toLowerCase();
+                if (lower.startsWith('javascript:') || lower.startsWith('data:')) return false;
+                if (trimmed.startsWith('/') || trimmed.startsWith('//')) return false;
+                if (trimmed.includes('://')) return false;
+                return trimmed.startsWith('./') || trimmed.startsWith('../');
+            };
+
+            if (isSafeBackPath(back)) {
+                document.getElementById('back-link').href = back.trim();
+            }
+        })();
+    </script>
+    <script src="../assets/js/note-renderer.js"></script>
+</body>
+</html>

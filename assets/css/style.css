@@ -177,6 +177,100 @@ body {
     text-shadow: 0 0 8px #00f3ff;
 }
 
+/* --- Shared list-page styles (Course Notes + Reading Papers + Course sections) --- */
+.paper-list-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.paper-item {
+    background: rgba(20, 20, 20, 0.7);
+    border: 1px solid #333;
+    border-left: 3px solid #bc13fe;
+    padding: 25px;
+    margin-bottom: 30px;
+    border-radius: 4px;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.paper-item:hover {
+    transform: translateX(10px);
+    border-color: #00f3ff;
+    box-shadow: 0 0 15px rgba(0, 243, 255, 0.1);
+    border-left-color: #00f3ff;
+}
+
+.paper-title {
+    font-size: 1.5rem;
+    color: #fff;
+    margin-bottom: 10px;
+    font-weight: bold;
+    text-shadow: 0 0 5px rgba(188, 19, 254, 0.5);
+}
+
+.paper-abstract {
+    color: #ccc;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.paper-meta {
+    font-size: 0.8rem;
+    color: #666;
+    margin-bottom: 15px;
+    font-style: italic;
+}
+
+.read-btn {
+    display: inline-block;
+    padding: 8px 20px;
+    background: transparent;
+    border: 1px solid #bc13fe;
+    color: #bc13fe;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    transition: all 0.3s;
+}
+
+.read-btn:hover {
+    background: #bc13fe;
+    color: #000;
+    box-shadow: 0 0 15px #bc13fe;
+}
+
+.paper-number {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 3rem;
+    color: rgba(255, 255, 255, 0.05);
+    font-weight: 900;
+    pointer-events: none;
+}
+
+.header-back-link {
+    color: #bc13fe;
+    text-decoration: none;
+    border: 1px solid #bc13fe;
+    padding: 5px 10px;
+    font-size: 0.8rem;
+    margin-top: 15px;
+    display: inline-block;
+    transition: all 0.3s;
+}
+
+.header-back-link:hover {
+    background-color: #bc13fe;
+    color: #000;
+    box-shadow: 0 0 15px #bc13fe;
+}
+
 /* Markdown note pages: keep author-entered soft line breaks inside blockquotes */
 .markdown-body blockquote p {
     white-space: pre-line;

@@ -4,37 +4,37 @@
       "title": "线性代数",
       "date": "2026.2.6",
       "summary": "大三需要补一门浙江大学《线性代数II(H)》，所以就顺便根据课本把线性代数的所有内容统一整合在这里",
-      "url": "./CourseNotes/CourseNotes1.html"
+      "url": "./CourseNotes/线性代数.html"
     },
     {
       "title": "普通物理学",
       "date": "2026.3.2",
       "summary": "主体是修读浙江大学《普通物理学I(H)》的课程笔记，如果有时间的话努力把《普通物理学II(H)》也加入进去",
-      "url": "./CourseNotes/CourseNotes2.html"
+      "url": "./CourseNotes/普通物理学.html"
     },
     {
       "title": "雅思",
       "date": "2026.3.2",
       "summary": "2026.4.11 IELTS考试备考内容",
-      "url": "./CourseNotes/CourseNotes3.html"
+      "url": "./CourseNotes/IELTS.html"
     },
     {
       "title": "软件工程",
       "date": "2026.3.2",
       "summary": "浙江大学 2025-2026学年 尹建伟 软件工程",
-      "url": "./CourseNotes/CourseNotes4.html"
+      "url": "./CourseNotes/软件工程.html"
     },
     {
       "title": "数据结构基础",
       "date": "2026.3.3",
       "summary": "浙江大学 2025-2026学年 何钦铭 数据结构基础",
-      "url": "./CourseNotes/CourseNotes5.html"
+      "url": "./CourseNotes/数据结构基础.html"
     },
     {
       "title": "计算机体系结构",
       "date": "2026.3.3",
       "summary": "浙江大学 2025-2026学年 陈文智/魏成坤 计算机体系结构",
-      "url": "./CourseNotes/CourseNotes6.html"
+      "url": "./CourseNotes/计算机体系结构.html"
     },
     {
       "title": "数字逻辑设计",
@@ -46,7 +46,7 @@
       "title": "编译原理",
       "date": "2026.3.4",
       "summary": "浙江大学 2025-2026学年 陈明帅 编译原理",
-      "url": "./CourseNotes/CourseNotes8.html"
+      "url": "./CourseNotes/编译原理.html"
     }
   ],
   "readingPapers": [

@@ -35,3 +35,11 @@
   - preserve `marked`, `highlight.js`, and `KaTeX` CDN includes (the shared renderer depends on them)
 - Image layout inside Markdown is controlled through words in the image alt text. The note shells map `right`, `left`, `small`, `medium`, and `large` to CSS classes after rendering.
 - The photo lightbox code in `assets/js/script.js` only activates on pages that provide the expected DOM hooks (`#lightbox`, `#lightbox-img`, `#caption`, `.close-btn`, and `.gallery-container`). Stream-style photo pages without that markup only use the shared background animation.
+
+## Planning and execution workflow
+
+- When starting an execution or planning task, first provide a concrete execution plan with clear steps.
+- If a task naturally breaks into multiple subtasks, ask the user about each subtask with `ask_user` before including it in the final plan.
+- After the plan is finalized, present the user with the specific tasks and the execution plan in the conversation before proceeding.
+- When a plan is saved in the session workspace, also save a readable copy to `.github/plan.md` in this repository so it is easy for the user to review later.
+- Write plans in Chinese when possible so they are easier for the user to read and review.
