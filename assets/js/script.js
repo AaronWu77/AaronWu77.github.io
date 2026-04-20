@@ -15,19 +15,33 @@ if (lightbox) {
                 const img = e.target;
                 
                 // 显示灯箱
-                lightbox.style.display = "block";
+                lightbox.style.display = "flex";
                 setTimeout(() => lightbox.classList.add('show'), 10);
                 
                 // 智能判断：如果标签上有 data-full-src (高清图地址)，就加载高清图；否则还用原来的图
                 const highResUrl = img.getAttribute('data-full-src');
                 lightboxImg.src = highResUrl ? highResUrl : img.src; 
                 
-                // 获取图片下方的文字 (photo-overlay 里的文字)
-                const overlay = img.nextElementSibling;
-                if (overlay) {
-                    captionText.innerText = overlay.innerText;
-                } else {
-                    captionText.innerText = "";
+                const container = img.closest('.stream-item') || img.closest('.photo-item');
+                const titleSource = container ? container.querySelector('.stream-caption, .photo-overlay') : null;
+                const metaSources = container ? Array.from(container.querySelectorAll('.stream-meta')) : [];
+
+                captionText.innerHTML = '';
+                if (titleSource && titleSource.textContent.trim()) {
+                    const titleLine = document.createElement('div');
+                    titleLine.className = 'lightbox-title';
+                    titleLine.textContent = titleSource.textContent.trim();
+                    captionText.appendChild(titleLine);
+                }
+                metaSources.forEach((meta) => {
+                    if (!meta.textContent.trim()) return;
+                    const metaLine = document.createElement('div');
+                    metaLine.className = 'lightbox-meta';
+                    metaLine.textContent = meta.textContent.trim();
+                    captionText.appendChild(metaLine);
+                });
+                if (!captionText.childNodes.length) {
+                    captionText.textContent = '';
                 }
             }
         });
@@ -55,11 +69,116 @@ if (lightbox) {
 
     // 按 ESC 键关闭
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && lightbox.style.display === 'block') {
+        if (e.key === 'Escape' && lightbox.classList.contains('show')) {
             closeLightbox();
         }
     });
 }
+
+/* --- 图片加载优化：多尺寸 WebP 响应式加载 --- */
+const PHOTO_OPTIMIZED_WIDTHS = [480, 960, 1600];
+const webpAvailabilityCache = new Map();
+
+function getOptimizedBasePath(src) {
+    const url = new URL(src, window.location.href);
+    const marker = '/assets/images/';
+    const idx = url.pathname.indexOf(marker);
+    if (idx === -1) return null;
+    const relPath = url.pathname.slice(idx + marker.length);
+    const dotIndex = relPath.lastIndexOf('.');
+    const base = dotIndex === -1 ? relPath : relPath.slice(0, dotIndex);
+    return '/assets/images/optimized/' + base;
+}
+
+function buildWebpSrcset(src) {
+    const base = getOptimizedBasePath(src);
+    if (!base) return null;
+    return PHOTO_OPTIMIZED_WIDTHS.map((width) => {
+        const path = encodeURI(base + '-' + width + 'w.webp');
+        return `${path} ${width}w`;
+    }).join(', ');
+}
+
+function checkWebpAvailability(src) {
+    const base = getOptimizedBasePath(src);
+    if (!base) return Promise.resolve(false);
+    if (webpAvailabilityCache.has(base)) {
+        return Promise.resolve(webpAvailabilityCache.get(base));
+    }
+    const probe = encodeURI(base + '-' + PHOTO_OPTIMIZED_WIDTHS[0] + 'w.webp');
+    return fetch(probe, { method: 'HEAD' })
+        .then((response) => {
+            const ok = response.ok;
+            webpAvailabilityCache.set(base, ok);
+            return ok;
+        })
+        .catch(() => {
+            webpAvailabilityCache.set(base, false);
+            return false;
+        });
+}
+
+function upgradeResponsiveImage(img, sizesAttr) {
+    if (!img || img.dataset.optimized === 'true') return;
+    const originalSrc = img.getAttribute('src');
+    if (!originalSrc) return;
+
+    checkWebpAvailability(originalSrc).then((available) => {
+        if (!available || img.dataset.optimized === 'true') return;
+        const webpSrcset = buildWebpSrcset(originalSrc);
+        if (!webpSrcset) return;
+
+        if (img.closest('.gallery-container') && !img.getAttribute('data-full-src')) {
+            img.setAttribute('data-full-src', originalSrc);
+        }
+
+        img.decoding = 'async';
+        if (!img.getAttribute('loading')) {
+            img.setAttribute('loading', 'lazy');
+        }
+        if (sizesAttr) {
+            img.setAttribute('sizes', sizesAttr);
+        }
+
+        const picture = document.createElement('picture');
+        const source = document.createElement('source');
+        source.type = 'image/webp';
+        source.srcset = webpSrcset;
+        if (sizesAttr) {
+            source.setAttribute('sizes', sizesAttr);
+        }
+        picture.appendChild(source);
+
+        const parent = img.parentNode;
+        parent.insertBefore(picture, img);
+        picture.appendChild(img);
+        img.dataset.optimized = 'true';
+    });
+}
+
+function applyResponsiveImages() {
+    const coverSizes = '(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw';
+    const streamSizes = '(max-width: 600px) 100vw, (max-width: 1200px) 90vw, 1000px';
+    const gallerySizes = '(max-width: 800px) 100vw, 400px';
+
+    const coverImages = Array.from(document.querySelectorAll('.album-cover-img'));
+    coverImages.forEach((img, index) => {
+        if (index === 0) img.setAttribute('fetchpriority', 'high');
+        upgradeResponsiveImage(img, coverSizes);
+    });
+
+    const streamImages = Array.from(document.querySelectorAll('.stream-img'));
+    streamImages.forEach((img, index) => {
+        if (index === 0) img.setAttribute('fetchpriority', 'high');
+        upgradeResponsiveImage(img, streamSizes);
+    });
+
+    document.querySelectorAll('.gallery-container img').forEach((img) => {
+        upgradeResponsiveImage(img, gallerySizes);
+    });
+}
+
+applyResponsiveImages();
 
 /* --- 动态激光背景特效 (Canvas) --- */
 /* 霓虹线条背景：长线条、随机角度、缓慢漂浮、呼吸闪烁 */
