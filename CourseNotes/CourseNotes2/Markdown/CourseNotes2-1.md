@@ -78,7 +78,17 @@
 
 ![alt text medium](PIC/PIC1-3.png)
 
-## Vectors in Cartesian coordinate
+从单位向量的角度看向量的乘法：
+- $\vec a = a_x \hat i + a_y \hat j + a_z \hat k$
+- $\vec b = b_x \hat i + b_y \hat j + b_z \hat k$
+- $\vec a \cdot \vec b = a_x b_x + a_y b_y + a_z b_z$
+- $\vec a \times \vec b = (a_y b_z - a_z b_y) \hat i + (a_z b_x - a_x b_z) \hat j + (a_x b_y - a_y b_x) \hat k$
+
+点乘和叉乘的一些交换：
+- $\vec a \cdot \vec b = \vec b \cdot \vec a$
+- $\vec a \times \vec b = -\vec b \times \vec a$
+- $\vec a \cdot (\vec b \times \vec c) = \vec c \cdot (\vec a \times \vec b) = \vec b \cdot (\vec c \times \vec a)$
+- $\vec a \times (\vec b \times \vec c) = \vec b (\vec a \cdot \vec c) - \vec c (\vec a \cdot \vec b)$
 
 
 
