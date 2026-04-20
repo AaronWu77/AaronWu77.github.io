@@ -177,6 +177,123 @@ body {
     text-shadow: 0 0 8px #00f3ff;
 }
 
+/* Markdown note pages: keep author-entered soft line breaks inside blockquotes */
+.markdown-body blockquote p {
+    white-space: pre-line;
+}
+
+/* --- Shared Markdown note page styles (CourseNotes + ReadingPaper) --- */
+.note-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 30px;
+    background: rgba(10, 10, 10, 0.8);
+    backdrop-filter: blur(10px);
+    border-left: 1px solid #333;
+    border-right: 1px solid #333;
+    min-height: 80vh;
+}
+
+.markdown-body {
+    color: #ccc;
+    line-height: 1.8;
+    font-size: 1.05rem;
+}
+
+.markdown-body h1, .markdown-body h2, .markdown-body h3 {
+    color: #fff;
+    margin-top: 1.5em;
+    margin-bottom: 0.8em;
+    text-shadow: 0 0 10px rgba(188, 19, 254, 0.3);
+}
+
+.markdown-body h1 {
+    font-size: 2.2rem;
+    border-bottom: 2px solid #bc13fe;
+    padding-bottom: 15px;
+}
+
+.markdown-body h2 {
+    font-size: 1.6rem;
+    border-left: 4px solid #00f3ff;
+    padding-left: 15px;
+}
+
+.markdown-body p {
+    margin-bottom: 1.2em;
+    text-align: justify;
+}
+
+.markdown-body strong {
+    color: #00f3ff;
+}
+
+.markdown-body em {
+    color: #bc13fe;
+    font-style: italic;
+}
+
+.markdown-body blockquote {
+    border-left: 4px solid #555;
+    margin: 20px 0;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.05);
+    color: #aaa;
+}
+
+.markdown-body code {
+    background: #222;
+    color: #ff00de;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9em;
+}
+
+.markdown-body pre {
+    background: #111;
+    padding: 20px;
+    border-radius: 6px;
+    border: 1px solid #333;
+    overflow-x: auto;
+    margin: 20px 0;
+}
+
+.markdown-body pre code {
+    color: #eee;
+    background: transparent;
+    padding: 0;
+}
+
+.markdown-body img {
+    max-width: 100%;
+    border-radius: 4px;
+    border: 1px solid #333;
+    margin: 20px 0;
+    transition: all 0.3s ease;
+}
+
+.markdown-body img.align-right { float: right; margin: 0 0 20px 20px; clear: right; }
+.markdown-body img.align-left { float: left; margin: 0 20px 20px 0; clear: left; }
+.markdown-body img.width-small { max-width: 30%; min-width: 200px; }
+.markdown-body img.width-medium { max-width: 50%; min-width: 300px; }
+.markdown-body img.width-large { max-width: 80%; }
+.markdown-body::after { content: ""; display: table; clear: both; }
+
+.markdown-body ul, .markdown-body ol {
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+.markdown-body li {
+    margin-bottom: 8px;
+}
+
+.note-loading {
+    color: #666;
+    text-align: center;
+}
+
 /* --- 摄影集样式适配 --- */
 .gallery-container {
     max-width: 1200px;
