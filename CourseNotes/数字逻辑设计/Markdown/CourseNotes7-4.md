@@ -1,3 +1,10 @@
+
+
+
+
+
+
+
 # Homework of Chapter 1
 
 **1.3** List the binary, octal, and hexadecimal numbers from 16 to 31
