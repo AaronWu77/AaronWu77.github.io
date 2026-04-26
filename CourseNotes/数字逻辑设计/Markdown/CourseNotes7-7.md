@@ -1,4 +1,4 @@
-# Course Notes 7 - Homework Solutions
+# Homework of Chapter 3
 
 ## Problem 3-7
 **Solution:**
