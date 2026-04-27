@@ -356,7 +356,11 @@ $$
 </table>
 
 - **Sum-of-minterms:** $F(X,Y,Z) = \sum m(3, 5, 6, 7)$
+
+所以用SOM表示就是 $F(X,Y,Z) = \overline X YZ + X\overline Y Z + XY\overline Z + XYZ$
 - **Product-of-maxterms:** $F(X,Y,Z) = \prod M(0, 1, 2, 4)$
+  
+所以用POM表示就是 $F(X,Y,Z) = (X + Y + Z)(X + Y + \overline Z)(X + \overline Y + Z)(\overline X + Y + Z)$
 
 (c) 先化简：$F = WX\overline{Y} + WX\overline{Z} + WXZ + Y\overline{Z} = WX\overline{Y} + WX(\overline{Z} + Z) + Y\overline{Z} = WX(1+\overline{Y}) + Y\overline{Z} = WX + Y\overline{Z}$
 
@@ -391,7 +395,13 @@ $$
 </table>
 
 - **Sum-of-minterms:** $F(W,X,Y,Z) = \sum m(2, 6, 10, 12, 13, 14, 15)$
+
+所以用SOM表示就是 $F(W,X,Y,Z) = \overline{W}\ \overline{X}Y\overline{Z} + \overline{W}X\overline{Y}\overline{Z} + \overline{W}XY\overline{Z} + W\overline{X}\ \overline{Y}\ \overline{Z} + W\overline{X}\ \overline{Y}Z + W\overline{X}YZ + WXYZ$
+
 - **Product-of-maxterms:** $F(W,X,Y,Z) = \prod M(0, 1, 3, 4, 5, 7, 8, 9, 11)$
+
+所以用POM表示就是 $F(W,X,Y,Z) = (W + X + Y + Z)(W + X + Y + \overline{Z})(W + X + \overline{Y} + Z)(W + X + \overline{Y} + \overline{Z})(W + \overline{X} + Y + Z)(W + \overline{X} + Y + \overline{Z})(\overline{W} + X + Y + Z)(\overline{W} + X + Y + \overline{Z})(\overline{W} + X + \overline{Y} + Z)$
+
 
 ---
 
@@ -439,7 +449,7 @@ For the Boolean functions E and F, as given in the following truth table:
 
 ---
 
-**2.12 b** Convert the following expressions into sum- of- products and product- of-sums forms:
+**2.12 b** Convert the following expressions into sum-of-products and product-of-sums forms:
 (b) $\overline{X} + X(X + \overline{Y})(Y + \overline{Z})$
 
 **Answer**
@@ -492,7 +502,7 @@ $$
 
 ---
 
-**2.22 a** Optimize the following expressions in (1) sum- of- products and (2) product-of-sums forms:
+**2.22 a** Optimize the following expressions in (1) sum-of-products and (2) product-of-sums forms:
 (a) $A\overline{C} + \overline{B}D + \overline{A}CD + ABCD$
 
 **Answer**
