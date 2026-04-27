@@ -8,7 +8,7 @@
     <thead>
         <tr style="border-bottom: 1px solid #e0e0e0;">
             <th style="padding: 10px; font-weight: bold;">Binary</th>
-            <th style="padding: 10px; font-weight: bold;">Ocral</th>
+            <th style="padding: 10px; font-weight: bold;">Octal</th>
             <th style="padding: 10px; font-weight: bold;">Hexadecimal</th>
         </tr>
     </thead>
@@ -48,7 +48,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr><td style="padding: 8px;">369.3125</td><td style="padding: 8px;">1011 1000 1.0101</td><td style="padding: 8px;">561.21</td><td style="padding: 8px;">171.5</td></tr>
+        <tr><td style="padding: 8px;">369.3125</td><td style="padding: 8px;">1011 1000 1.0101</td><td style="padding: 8px;">561.24</td><td style="padding: 8px;">171.5</td></tr>
         <tr><td style="padding: 8px;">189.625</td><td style="padding: 8px;">1011 1101.101</td><td style="padding: 8px;">275.5</td><td style="padding: 8px;">BD.A</td></tr>
         <tr><td style="padding: 8px;">214.625</td><td style="padding: 8px;">1101 0110.101</td><td style="padding: 8px;">326.5</td><td style="padding: 8px;">D6.A</td></tr>
         <tr><td style="padding: 8px;">62407.625</td><td style="padding: 8px;">1111 0011 1100 0111.101</td><td style="padding: 8px;">171707.50</td><td style="padding: 8px;">F3C7.A</td></tr>
@@ -66,7 +66,9 @@ c. 1111001 x 011101
 *Answer:*
 
 a.
-$$ \begin{array}{cccccc}
+
+$$
+\begin{array}{cccccc}
 & & & 1 & 0 & 1 & 0 \\
 \times & & & 1 & 1 & 0 & 0 \\ 
 \hline
@@ -76,10 +78,13 @@ $$ \begin{array}{cccccc}
 1 & 0 & 1 & 0 & 0 & 0 & 0\\
 \hline
 1& 1 & 1 & 1 & 0 & 0 & 0\\
-\end{array} $$
+\end{array}
+$$
 
 b.
-$$ \begin{array}{cccccc}
+
+$$
+\begin{array}{cccccc}
 & & & 0 & 1 & 1 & 0 \\
 \times & & & 1 & 0 & 0 & 1 \\
 \hline
@@ -89,10 +94,13 @@ $$ \begin{array}{cccccc}
 0 & 1 & 1 & 0 & 0 & 0 & 0 \\
 \hline
 0 & 1 & 1 & 0 & 1 & 1 & 0 \\
-\end{array} $$
+\end{array}
+$$
 
 c.
-$$ \begin{array}{cccccc}
+
+$$
+\begin{array}{cccccc}
 & & & & & 1 & 1 & 1 & 1 & 0 & 0 & 1 \\
 \times & & & & & & 0 & 1 & 1 & 1 & 0 & 1 \\
 \hline
@@ -103,10 +111,8 @@ $$ \begin{array}{cccccc}
 & 1 & 1 & 1 & 1 & 0 & 0 & 1 & 0 & 0 & 0 & 0\\
 \hline
 1 & 1 & 0 & 1 & 1 & 0 & 1 & 1 & 0 & 1 & 0 & 1 \\
-\end{array} $$
-
-
-
+\end{array}
+$$
 
 **1.13** Division is composed of multiplications and subtractions. Perform the binary division 1010110 ÷ 101 to obtain a quotient and remainder
 
@@ -124,23 +130,39 @@ b. $(365)_{r} = (194)_{10}$
 
 *Answer:*
 
-a. 
-$$\begin{aligned}
+a.
+
+$$
+\begin{aligned}
 (BEE)_r &= 11 \cdot r^2 + 14 \cdot r + 14 \\
 &= 11r^2 + 14r + 14 \\
 &= 2699
-\end{aligned}$$
+\end{aligned}
+$$
 
-解得$$r = 15$$
+解得
+
+$$
+r = 15
+$$
+
 
 b.
-$$\begin{aligned}
+
+$$
+\begin{aligned}
 (365)_r &= 3 \cdot r^2 + 6 \cdot r + 5 \\
 &= 3r^2 + 6r + 5 \\
 &= 194
-\end{aligned}$$
+\end{aligned}
+$$
 
-解得$$r = 7$$
+解得
+
+$$
+r = 7
+$$
+
 
 **1.18** Find the binary representations for each of the following BCD numbers:
 
@@ -150,8 +172,10 @@ b. 0011 0111 1000.0111 0101
 
 *Answer:*
 
-a. $0100 1000 0110 0111 = (4867)_{BCD}$
-b. $0011 0111 1000.0111 0101 = (378.75)_{BCD}$
+a. $0100\ 1000\ 0110\ 0111 = (4867)_{BCD}$
+然后将上述BCD数转换为二进制数：$(1\ 0011\ 0000\ 0011)_2$
+b. $0011\ 0111\ 1000.\ 0111\ 0101 = (378.75)_{BCD}$
+然后将上述BCD数转换为二进制数：$(1\ 0111\ 1010.\ 11)_2$
 
 **1.19** Represent the decimal numbers 715 and 354 in BCD
 
@@ -166,6 +190,7 @@ b. 354 in BCD is represented as 0011 0101 0100
 根据 1-7 节的镜像反射法（Binary Reflected Gray Code），十六进制（0-15，即 4 位二进制）的格雷码构造如下：
 
 1. **前一半（0~7）**：
+
    - 0 (0000) &rarr; **0000**
    - 1 (0001) &rarr; **0001**
    - 2 (0010) &rarr; **0011**
@@ -174,8 +199,8 @@ b. 354 in BCD is represented as 0011 0101 0100
    - 5 (0101) &rarr; **0111**
    - 6 (0110) &rarr; **0101**
    - 7 (0111) &rarr; **0100**
-
 2. **后一半（8~15）**（由前一半倒序排列，并将首位的 `0` 替换为 `1`）：
+
    - 8 (1000) &rarr; **1100** (由 0100 变换首位)
    - 9 (1001) &rarr; **1101** (由 0101 变换首位)
    - A (1010) &rarr; **1111** (由 0111 变换首位)
@@ -195,14 +220,13 @@ b. 354 in BCD is represented as 0011 0101 0100
 **2. 格雷码的构造方法**
 书中针对 $0$ 到 $2^n-1$ 的连续数字序列，主要给出了两种推导构造方法：
 
-*   **镜像反射法（Binary Reflected Gray Code）**
-    *   **步骤 1**：把需要生成的格雷码平分成两半，先求出前一半数字的 $n$ 位格雷码序列（这通常与 $n-1$ 位的格雷码相同，前面直接添 `0`）。
-    *   **步骤 2**：提取出前一半的序列，**按照倒序排列**，作为后半部分的雏形。
-    *   **步骤 3**：将后半部分所有倒序数字的最左侧首位的 `0` 统一替换为 `1`，即可得到后一半对应的格雷码。
+* **镜像反射法（Binary Reflected Gray Code）**
 
-*   **直接转换法（偶校验/异或原二进制数）**
-    *   对于一个已知的正常二进制数，也可以将其直接快速转换为对应的格雷码格式，而不用画表反射。
-    *   **规则**：格雷码的最左边第一位，直接拷贝原二进制值的最左边第一位。格雷码对应的其他剩余各位，分别等于原二进制数对应位字与其左侧相邻位进行**偶校验**（即逻辑“异或”运算：两数相同取 `0`，不同取 `1`）。
-    *   *示例*：将二进制数 `0100` 转换为格雷码：第一位原样为 `0`；第二位是 `parity(0,1)=1`；第三位 `parity(1,0)=1`；第四位 `parity(0,0)=0`。因此最终生成的格雷码为 `0110`。
+  * **步骤 1**：把需要生成的格雷码平分成两半，先求出前一半数字的 $n$ 位格雷码序列（这通常与 $n-1$ 位的格雷码相同，前面直接添 `0`）。
+  * **步骤 2**：提取出前一半的序列，**按照倒序排列**，作为后半部分的雏形。
+  * **步骤 3**：将后半部分所有倒序数字的最左侧首位的 `0` 统一替换为 `1`，即可得到后一半对应的格雷码。
+* **直接转换法（偶校验/异或原二进制数）**
 
-
+  * 对于一个已知的正常二进制数，也可以将其直接快速转换为对应的格雷码格式，而不用画表反射。
+  * **规则**：格雷码的最左边第一位，直接拷贝原二进制值的最左边第一位。格雷码对应的其他剩余各位，分别等于原二进制数对应位字与其左侧相邻位进行**偶校验**（即逻辑“异或”运算：两数相同取 `0`，不同取 `1`）。
+  * *示例*：将二进制数 `0100` 转换为格雷码：第一位原样为 `0`；第二位是 `parity(0,1)=1`；第三位 `parity(1,0)=1`；第四位 `parity(0,0)=0`。因此最终生成的格雷码为 `0110`。
