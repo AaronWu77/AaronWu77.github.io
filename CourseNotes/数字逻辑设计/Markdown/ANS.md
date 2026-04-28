@@ -1,10 +1,31 @@
 # Homework of Chapter 3
 
 ## Problem 3-7
-A trafic light control at a simple intersection uses a binary counter to produce the following sequence of combinations on lines A, B, C, D: 0000, 0001, 0011, 0010, 0110, 0111, 0101, 0100, 1100, 1101, 1111, 1110, 1010, 1011, 1001, 1000. After 1000, the sequence repeats, beginning again with 0000,forever. Each combination is present for 5 seconds before the next one appears. These lines drive combinational logic with outputs to lamps RNS (red—north/south), YNS (yellow—north/south), GNS (green—north/south), REW (red—east/west), YEW (yellow—east/west), and GEW (green—east/west). The lamp controlled by each output is ON for a 1 applied and OFF for a 0 applied. For a given direction, assume that green is on for 30 seconds, yellow for 5 seconds, and red for 45 seconds. (The red intervals overlap for 5 seconds.) Divide the 80 seconds available for the cycle through the 16 combinations into 16 intervals and determine which lamps should be lit in each interval based on expected driver behavior. Assume that, for interval 0000, a change has just occurred and that GNS = 1, REW = 1, and all other outputs are 0. Design the logic to produce the six outputs using AND and OR gates and inverters.
+**Solution:**
+The states cycle through 16 intervals (0000 to 1111). We partition the 80 seconds into 16 intervals of 5 seconds each.
+- GNS (Green North/South) is on for 30s (6 intervals).
+- YNS (Yellow North/South) is on for 5s (1 interval).
+- RNS (Red North/South) is on for 45s (9 intervals).
+- REW (Red East/West) is on for 45s (9 intervals). (Overlaps with RNS for 5s, 1 interval).
+- GEW (Green East/West) is on for 30s (6 intervals).
+- YEW (Yellow East/West) is on for 5s (1 interval).
+
+Using K-maps or truth tables for the inputs $A, B, C, D$ to map to the 6 light outputs, we can minimize the logic to AND/OR gates and inverters.
 
 ## Problem 3-8
-Design a combinational circuit that accepts a 3-bit number and generates a 6-bit binary number output equal to the square of the input number
+**Solution:**
+A 3-bit input $X = X_2 X_1 X_0$ represents values from 0 to 7. The output $Y = X^2$ can range from 0 to 49 (requiring 6 bits $Y_5 Y_4 Y_3 Y_2 Y_1 Y_0$).
+Truth table maps:
+- 000 -> 000000
+- 001 -> 000001
+- 010 -> 000100
+- 011 -> 001001
+- 100 -> 010000
+- 101 -> 011001
+- 110 -> 100100
+- 111 -> 110001
+
+Boolean equations can be simplified from this truth table for each output bit $Y_i$.
 
 ## Problem 3-11
 **Solution:**
