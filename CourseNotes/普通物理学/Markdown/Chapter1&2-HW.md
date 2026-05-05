@@ -18,7 +18,7 @@ where H is the vertical drop of the aquifer over the horizontal distance $L$; se
 
 **Answer**:
 
-Since $V/t=KAH/L$, thus $K=VH/tAL$, the SI units of $K$ is $m^3\cdot m \cdot s^{-1} \cdot m^{-2} \cdot m^{-1} = m/s$.
+Since $V/t=KAH/L$, thus $K=VL/tAH$, the SI units of $K$ is $m^3\cdot m \cdot s^{-1} \cdot m^{-2} \cdot m^{-1} = m/s$.
 
 Then we know that the SI units of $K$ is $m/s$.
 
