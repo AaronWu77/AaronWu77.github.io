@@ -7,13 +7,31 @@ A trafic light control at a simple intersection uses a binary counter to produce
 Design a combinational circuit that accepts a 3-bit number and generates a 6-bit binary number output equal to the square of the input number
 
 ## Problem 3-11
-**Solution:**
-Inputs: $PS, LS, RS, RR$
-Outputs: $PL, LL, RL$
-**Operation rules mapped to logic:**
-1. $PL = PS$
-2. $LL = \overline{PS} \cdot \overline{RS} \cdot LS + \overline{PS} \cdot LS \cdot RS \cdot RR$
-3. $RL = \overline{PS} \cdot \overline{LS} \cdot RS + \overline{PS} \cdot LS \cdot RS \cdot \overline{RR}$
+A Traffic metering system for controlling the release of traffic from an entrance ramp onto a superhighway has the following specifications for a part of its contrller. There are three parallel metering lanes, each with its own stop(red)-go(green) light. Oneof these lanes, the car pool lan, is given priority for a green light over the other two lanes. Otherwise, a "round robin" scheme in which the green lights alternate is used for the other twp (left and right) lanes. The part of the controller that determines which light is to be gren (rather than red) is to be designed. The specifications for the contrller follow:
+```
+Inputs
+    PS  Car pool lane sensor (car present -1; car absent -0)
+    LS  Left lane sensor (car present -1; car absent -0)
+    RS  Right lane sensor (car present -1; car absent -0)
+    RR  Roud robin signal (select left -1; select right -0)
+
+Outputs
+    PL  Car pool lane light (green —1; red —0)
+    LL  Left lane light (green —1; red —0)
+    RL  Right lane light (green —1; red —0)
+
+Operation
+    1. If there is a car in the car pool lane, PL is 1.
+    2. If there are no cars in the car pool lane and the right lane, and there is a car in the left lane, LL is 1.
+    3. If there are no cars in the car pool lane and in the left lane, and there is a car in the right lane, RL is 1.
+    4. If there is no car in the car pool lane, there are cars in both the left and right lanes, and RR is 1, then LL=1.
+    5. If there is no car in the car pool lane, there are cars in both the left and right lanes, and RR is 0, then RL=1.
+    6. If any PL, LL, or RL is not speciied to be 1 above, then it has value 0
+```
+(a) Find the truth table for the controller part
+(b) Find a minimum multiple-level gate implementation with minimum gate-input cost using AND gates, OR gates and inverters
+
+
 
 ## Problem 3-13
 **Solution:**
