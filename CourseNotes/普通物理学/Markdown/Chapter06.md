@@ -74,7 +74,7 @@ $$\begin{align}
 - **实验室参考系 (lab frame)：** 地面/静止的惯性参考系，为常规观测参考系
 - **质心参考系(cm frame)：** 以系统质心为原点的惯性参考系，特点是系统的总动量为 0，是分析碰撞的简便参考系
 
-对于质心参考系来说，和新的计算优势时总动量恒为0，因为：
+对于质心参考系来说，核心的计算优势是总动量恒为0，因为：
 - 根据质心速度的计算公式$\vec v_{cm}=\frac{m_1\vec v_{1i}+m_2 \vec v_{2i}}{m_1+m_2}$
 - 变换两个质子的速度：
 $v_{1i}'=v_{1i}-v_{cm}$
@@ -87,32 +87,4 @@ $v_{2f}'=-v_{2i}'$
 $v_{1f}=v_{1f}'+v_{cm}$
 $v_{2f}=v_{2f}'+v_{cm}$
 
-# Chapter 7 Systems of Partical
 
-**质心的计算**
-
-多质子系统的质心求解方法从两个质子的系统推广而来
-
-位置：
-$$\begin{align}
-\vec r_{cm}&=\frac{m_1\vec r_1+m_2\vec r_2+\cdots + m_N\vec r_N}{m_1+m_2+\cdots +m_N} = \frac{1}{M}\sum m_i \vec r_i\\
-x_{cm}&=\frac{1}{M}\sum m_i x_i\\
-y_{cm}&=\frac{1}{M}\sum m_i y_i\\
-z_{cm}&=\frac{1}{M}\sum m_i z_i\\
-\end{align}
-$$
-
-速度和加速度：
-$$\begin{align}
-\vec v_{cm}&=\frac{1}{M}\sum m_i \vec v_i\\
-\vec a_{cm}&=\frac{1}{M}\sum m_i \vec a_i\\
-\end{align}
-$$
-
-对于一个实心的物体 (solid body) 来说，求解质心的方法需要使用微分和积分，即
-
-$$\vec r_{cm} = \frac{1}{M}\int \vec r dm\\
-x_{cm}=\frac{1}{M}\int xdm\\
-y_{cm}=\frac{1}{M}\int ydm\\
-z_{cm}=\frac{1}{M}\int zdm\\
-$$

@@ -1,123 +1,197 @@
-# 小作文
+# 雅思学术类小作文宝典（Task 1）
 
-## 表格题
+## 一句话原则
 
-![alt text left medium](PIC/小作文1.png) 
+Task 1 只做一件事：**客观描述图表里的主要特征**。  
+不写原因，不发表观点，不写结论式议论。
 
-### Examples from howtodoielts.com
+## 考试要求
 
-The first table below shows changes in the total population of New York City from 1800 to 2000. The second and third tables show changes in the population of the five districts of the city (Manhattan, Brooklyn, Bronx, Queens, Staten Island) over the same period.
+| 项目 | 要求 |
+| --- | --- |
+| 任务 | 描述图表、表格、地图或流程图 |
+| 字数 | 至少 150 词 |
+| 时间 | 约 20 分钟 |
+| 评分重点 | Task Achievement / Coherence and Cohesion / Lexical Resource / Grammatical Range and Accuracy |
 
-**开头简洁明了，表明题目所提供的图标描述了什么即可**
+## 标准结构
 
-The tables detail overall population figures in New York City and statistics concerning the surrounding **boroughs（同义词替换districts）** compared to Manhattan from the year 1800 to 2000. **Looking from an overall perspective, it is readily apparent that the dramatic overall growth is strongly correlated with increases in population growth outside of Manhattan. The proportional dominance of the outer boroughs over Manhattan has widened notably in the last century in particular.**
+### 1. Introduction
 
-In the year 1800, **the vast majority of（绝大多数）** New York City’s total population (79,216) was situated in Manhattan (60,515 or 76%), **far above the corresponding figure for other outlying districts** (18,710 or 24%). **Over the subsequent century, there occurred a pronounced shift（在接下来的一个世纪里，出现了一个显著的转变）** with a narrow majority of 54% of the population (1,850,093) living in Manhattan and 46% outside the city center (1,587,109). The total population figure also surged to 3,437,202.
+改写题目，不要照抄。写清楚：
 
-### My version
+- 图表类型
+- 数据主题
+- 地点
+- 时间范围
 
-Among three tables, the first table illustrates the **changes in（固定搭配，不要使用其他介词）** the total population of New York City between 1800 and 2000 while the other two show the trends of population of the five districts including Manhattan, Brooklyn, Bronx, Queens and Staten Island in the same **time span(时间段)**.
+**模板**
 
-**Looking from an overall perspective, it is readily apparent that（固定句式）** the total population of New York City increased significantly from 1800 to 2000. More detailedly, the total of population grew from 79,216 in 1800 to 3,437,202 in 1900 and ended in 8,009,185 in 2000.
+- The chart illustrates ...
+- The table compares ...
+- The line graph shows ...
+- The maps depict ...
+- The process diagram presents ...
 
-Comparing the other two charts, Manhattan's population as percentage of total population declined dramatically from 76% to 19% while the other districts' population as percentage of total population grew. The population of Manhattan started at 60,515 in 1800, increased to the peak of 1,850,093 and dropped to 1,538,096 in 2000. Meanwhile, the number of people of the other districts increased from 18,701 to 6,471,089 which was **far greater（远大于）** than the total population of Manhattan in 2000.
+### 2. Overview
 
----
+只写**总体特征**，不写细节数字。
 
-## 多种图标结合题
+你要找的通常是：
 
-![alt text left medium](PIC/小作文3.png) 
+- 总体上升/下降
+- 哪个类别最高/最低
+- 哪些项目变化最大
+- 哪些项目比较稳定
+- 是否存在明显分组或对比
 
-### Examples from howtodoielts.com
+**模板**
 
-The various charts provide details about total loans, **age demographics（年龄结构）**, and genres at the public library of Little Chalfont. Looking from an overall perspective, it is readily apparent that adults aged 18-64 represented by far the majority of library-goers, **with roughly equal proportions for** other age groups. The total number of loans **rose considerably overall**, with children’s and adult’s fiction representing clearly the most common genres for borrowers by 2016.
+- Overall, it is clear that ...
+- Looking at the figures as a whole, ...
+- The most notable feature is that ...
+- A striking feature is that ...
 
-In terms of the age demographics for the public library in 2016, **a sizable majority of** 51% were between the ages of 18 and 64. **Other age brackets**, adults 65 and over, children, and young adults 13-17, stood at 12%, 22%, and 15% respectively.
+## howtodoielts 常见格式
 
-Regarding genres, fiction for children and adults were borrowed at the same rate of 38% in 2016. The next closest genre was adult non-fiction at 13%. All other kinds of  books (children’s non-fiction, children’s DVDs, young adults, and adult audio books) were loaned at marginal rates ranging from 6 to 1%. Lastly, the total number of loans began in 2007 at just over 15,000, **rose steadily to a plateau** over 20,000 from 2010 to 2012, before **a slight dip** in 2013 (to under 20,000), and more than full recovery to near 22,000 by the end of the period.
+Howtodoielts 的 Task 1 模板很稳定，核心就是：
 
-### My version
+1. **Introduction** 只用 1 句话改写题目。
+2. **Overview** 用 1 到 2 句话概括主趋势或主对比。
+3. **Body 1 / Body 2** 只按“同类特征分组”，不要逐条抄数字。
+4. **Overview** 里不写原因、不写结论式分析，只写最明显的变化。
 
-The given tables illustrate the statistics about a public library which is called Little Chalfont. Specifically, the pie chart shows the age of library members,  the histogram shows changes of the total number of loans from 2007 to 2016 and the other table shows the total loans by category.
+常见开头句：
 
-Focusing on the pie chart, it is obviously that in 2016 over a half(51%) of the library members were adults between 18 to 64 while 22% and 15% of the members came from children and young adults between 13 to 17 respectively. There were only 12% of library members aged over 65 in 2016. 
+- Looking from an overall perspective, it is readily apparent that ...
+- Overall, the most notable feature is that ...
+- The data suggest that ...
 
-Looking at the bar graph, it is readily apparent that the total number of loans grew steadily from about 15500 to 20500 between 2007 and 2011. Over the subsequent 5 years, the number of loans marginal declined in 2012 and 2013 and quickly bounced back to the peak at about 21000 in 2016. 
+## 范文示例 1：折线图怎么写
 
-Among the total loans in 2016, there are both 38% of loans about children's fiction and Adult fiction and both 2% of loans about young adult and adult audio books. The other 19% loans were about children's non-fiction(6%) and adult non-fiction(13%)
+**题目类型**：Melbourne social centre 的活动参与人数折线图  
+**写作重点**：先总述，再分组写“稳定项”和“变化最大项”
 
+**Introduction**
 
----
+The line graph illustrates the number of people taking part in five activities at a social centre in Melbourne between 2000 and 2020.
 
-![alt text left medium](PIC/小作文5.png) 
+**Overview**
 
-### Examples from howtodoielts.com
+Looking from an overall perspective, it is readily apparent that film club remained the most popular activity throughout the period, while table tennis recorded the strongest growth. By contrast, amateur dramatics declined sharply, whereas musical performances rose steadily after appearing in the data.
 
-The pie chart and bar chart **detail information concerning** dance classes currently being attended by young people in an Australian town. Looking from an overall perspective, it is readily apparent that **the vast majority of** classes are hosted in private studios, **followed by** school halls, community halls, and, most distantly, college studios. For very young children, ballet and tap dancing are more popular, while the preferred option for older students is modern dance.
+**Body 1**
 
-**第一段不陈列数据，第一段描述总体趋势和总体表现**
+Regarding the two most stable activities, film club started at 64 participants in 2000, dipped slightly to 60 in 2010, and then recovered to finish at 65 in 2020. Martial arts showed a similar pattern, moving from 38 at the beginning of the period to 39 in 2010 before ending at 37.
 
-Regarding the location of dance classes in the town, private studios **account for** 48% of the total, **precisely double** the figure for after-school school halls (24%). Community and other halls trail this data point slightly at 18% and **the least common** venue is college-based studios at just 10%.
+**Body 2**
 
-Concerning the varieties of dance classes popular with different age demographics, ballet is most notable with over 600 students under age 11, and only 300 students aged 11 to 16. The age disparity narrows for tap classes with 410 older students and 440 younger ones. Modern dance **displays the opposite trend** to ballet with far more older students (520) relative to their younger counterparts (300).
+The remaining activities followed much less stable trends. Amateur dramatics fell from 27 in 2000 to just 5 by 2020, while table tennis underwent the opposite trend, rising from 18 to 52 over the same period. Musical performances were absent in 2000 but gradually increased from 2005 onwards, reaching just under 20 by the end.
 
-### My version
+**怎么套用**
 
-The given charts outline the statistics about the location and the age demographics of dance classes in Australia. Looking from an overall perspective, it is readily apparent that a sizable majority of 48% prefer sttending dance classes in private studios.
+- 第 1 句只改题目信息
+- Overview 只说“谁最稳、谁涨最多、谁跌最多”
+- Body 里按“稳定组 / 变化组”分段
 
-For the rest 52% of people, only 10% people attend the dance classes in college-based studios. Ohter people take the courses in school halls after-school(24%) or Community halls and other places(18%).
+## 范文示例 2：静态图怎么写
 
-Interms of the age distibution for types of dance classes, a huge number of 600 students under 11 prefer ballet while anther 450 and 300 students under 11 choose tap and modern dance respectively. For the elder age between 11-16, the age demographics show the completely different distribution type. Most students between 11 and 16 attend the modern dance classes(nearly 520)
+**题目类型**：澳大利亚城市咖啡/茶购买方式的柱状图与饼图对比  
+**写作重点**：先分“高位组”和“低位组”，再做比较
 
----
+**Introduction**
 
-## 折线图题
+The charts compare how residents in five Australian cities bought coffee or tea in the last four weeks.
 
-![alt text](PIC/小作文8.png)
+**Overview**
 
-### Examples from howtodoielts.com
+Looking at the data as a whole, it is clear that going to a cafe was the most common choice in most cities, while fresh coffee was generally less popular than instant coffee. Adelaide was the only city where cafe visits were not the dominant option.
 
-The line chart details participants according to activity at a social center in the Australian city of Melbourne from 2000 to 2020. Looking from an overall perspective, it is readily apparent that participants for all activities **increased to varying degrees** except in terms of martial arts and amateur drama. Film club was by far the most popular activity throughout, though table tennis **demonstrated the strongest growth**
+**Body 1**
 
-In 2000, 64 individuals participated in film club, a figure that dipped to 60 in 2010 and then more than recovered to finish the period at 65. The trend for martial arts was similarly stable with a beginning data point of 38, a high of 39 in 2010, and a final figure of 37.
+In Sydney, Melbourne and Hobart, more than 60% of residents went to a cafe, which was far greater than the proportion buying fresh coffee. Brisbane followed a similar pattern, though the figure was slightly lower at around 55%. Adelaide stood out as an exception, with just under half of residents choosing cafes.
 
-The remaining activities started the period lower with 27 participants for amateur drama, 18 for table tennis, and 0 for musical performances (unavailable at the time). Over the next 10 years, amateur dramatics **commenced a decline** that would end at just 5 by 2020, while table tennis **underwent the inverse transformation**, **peaking at** 52 by the same year. Musical performances were only an option starting in 2005, with participants growing and levelling off to just under 20 by the end of the period.
+**Body 2**
 
-### My version
+Among coffee buyers, instant coffee was more common than fresh coffee in every city. The gap was especially large in Adelaide, Brisbane and Hobart, where instant coffee accounted for roughly half of purchases, while fresh coffee remained notably lower.
 
-The line graph details the information concerning the statistics of participants for various activities in Melbourne between 2000 and 2020. Looking from an overall perspective, it is readily apparent that a sizable majority of the activity is Film club while Table tennis gained the most participants in 20 years.
+**怎么套用**
 
-Regarding the two most stable activities - Film club and Martial arts, the number of participants of the former started at 64 in 2000, and steadily rose to 66 between 2010 and 2020 after a small dip in 2010 (about 60). For the latter, the number of participants was 35 in 2000 and fluctuated **over the period(throughout the period)**. The participants of martial arts reached its peak in 2010(nearly 38).
+- 先找“最常见”和“最少见”
+- overview 里写总体倾向，不列全数据
+- body 用 `far greater than`、`was more common than` 这类比较句
 
-For another three activities, both musical performances' and table tennis' participants increased steadily while amateur dramatics' rose to about 29 from 2000 to 2005 **before experiencing a a pronounced shift** in 2005. More specifically, the participants of table tennis rose steadily to a plateau about 20 from 2000 to 2005 and significantly increased to nearly 55 in the subsequent decade. The participants of musical performances remained 0 in 2000 and 2005 and steadily grew to 15 between 2005 and 2020.
+### 3. Body Paragraph 1
 
-![alt text](PIC/小作文12.png)
+写第一组主要特征，优先写**最大变化**或**第一组同类项目**。
 
-![alt text](PIC/小作文9.png) 
+### 4. Body Paragraph 2
 
----
+写第二组主要特征，继续做比较和概括，不要逐条罗列。
 
-## 柱状图题
-![alt text](PIC/小作文10.png) 
+## 写作顺序
 
----
+1. 先看题目要什么：时间、地点、单位、对象。
+2. 先找 overview。
+3. 再分组：按上升/下降、大小、时间段、区域、类别来分。
+4. 选最重要的数据写，不抄全表。
+5. 检查有没有比较、有没有 overview、有没有客观表达。
 
-## 地图题
-![alt text](PIC/小作文4.png)
+## 不同题型看什么
 
-![alt text](PIC/小作文11.png) 
+| 题型 | 核心抓手 |
+| --- | --- |
+| 折线图 | 趋势、拐点、峰值、谷值、波动 |
+| 柱状图 | 分类比较、排名、差距、最大最小 |
+| 饼图 | 比例、占比、主次关系 |
+| 表格 | 关键数字、前后变化、横向对比 |
+| 地图 | 位置变化、增删改、前后对照 |
+| 流程图 | 步骤顺序、被动语态、阶段衔接 |
 
----
+## overview 的写法
 
-![alt text](PIC/小作文7.png) 
+### 图表类
 
----
+- Overall, X increased steadily, while Y fell slightly.
+- Overall, A accounted for the largest share, whereas B and C were much smaller.
+- Overall, there was a clear shift from ... to ...
 
-## 流程图题
+### 地图类
 
-![alt text](PIC/小作文2.png) 
+- Overall, the area became more built-up and modern.
+- Overall, several facilities were added, while some old structures were removed.
 
+### 流程图类
 
-![alt text](PIC/小作文6.png) 
+- Overall, the process consists of ... stages.
+- Overall, the procedure moves from ... to ... through a series of steps.
 
+## 小作文最稳的 body 写法
 
+### 动态图
+
+- 先写起点、终点、峰值、谷值
+- 再补关键拐点
+- 同类数据放在一起
+
+### 静态图
+
+- 先分高低组
+- 再写对比组
+- 同类项目尽量放同一段
+
+## 高分检查清单
+
+- 有 overview
+- 有比较
+- 没有写原因
+- 没有写观点
+- 没有逐项机械抄数据
+- 数字准确
+- 时态正确
+
+## 参考来源
+
+- IELTS.org Academic Writing format
+- British Council IELTS Writing Task 1 guidance
+- IDP IELTS Task 1 analysis guidance
