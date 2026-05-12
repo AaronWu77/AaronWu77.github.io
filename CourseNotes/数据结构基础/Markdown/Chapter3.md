@@ -2,35 +2,33 @@
 
 ## Abstract Data Type (ADT)
 
-**Definition**: $\text{Data Type} = \text{\{Objects\}} \cup \text{\{Operations\}}$
+$\text{Data Type} = \text{\{Objects\}} \cup \text{\{Operations\}}$
 
-An ADT is a data type that is organized in such a way that the specification on the objects are seperated from the representation of the objects and the implementation on the operations.
-
-> 抽象数据类型（ADT）是一种数据类型，对外来说用户只知道数据对象是什么，以及可以进行什么操作；而其内部数据的存储方法以及代码实现方法对于使用则隐藏
+**抽象数据类型 (ADT)**：把对象和操作的定义分离开，用户只知道对象数据是什么以及可以进行什么操作；而其内部数据的存储方法以及代码实现方法对于使用则隐藏。
 
 ## The List ADT
 
 - **Objects**: $(\text{item}_0, \text{item}_1, \text{item}_2, \ldots, \text{item}_{n-1})$
 
-- **Operations**:
-  - Finding the *length* of a list
-  - *Printing all* the items in a list
-  - Making an *empty list*
-  - *Finding the k-th* item froam a list
-  - *Inserting a new item* after the k-th item of a list
-  - *Deleting* the k-th item of a list
-  - Finding the *next* of the current item in a list
-  - Finding the *previous* of the current item in a list
+- **操作**:
+  - 求长度
+  - 打印
+  - 置空
+  - 找第K个元素
+  - 在第K个之后插入
+  - 删除
+  - 找后继节点
+  - 找前驱节点
 
-**Simple Array implementation of List**
+**数组实现的简单列表**
 
 $$\text{array}[i]=\text{item}_i$$
 
-- MaxSize has to be estimated
-- Find_Kth takes $O(1)$ time
-- Insertion and deletion not only take $O(n)$ time, but also involve a lot of data movements which takes time.
+- 最大尺寸需要估计
+- 查找第K个元素需要 $O(1)$ 时间
+- 插入和删除不仅需要 $O(n)$ 时间，还涉及大量的数据移动，耗时较多。
 
-**Linked List implementation of List**
+**链表实现的列表**
 
 <!-- Standard Academic Table ("Three-Line Table") Style in HTML -->
 <table style="width: 100%; border-collapse: collapse; border-top: 2px solid #e0e0e0; border-bottom: 2px solid #e0e0e0; text-align: left; background-color: transparent;">
@@ -60,7 +58,7 @@ $$\text{array}[i]=\text{item}_i$$
     </tbody>
 </table>
 
-*Initialization*
+*初始化*
 ``` C
 typedef struct list_node *list_ptr;
 typedef struct list_node{
@@ -70,7 +68,8 @@ typedef struct list_node{
 list_ptr ptr;
 ```
 
-*To link the nodes together*
+*链接节点*
+
 ``` C
 list_ptr N1, N2;
 N1 = (list_ptr)malloc(sizeof(struct list_node));
@@ -82,9 +81,9 @@ N2->next = NULL;
 ptr = N1;
 ```
 
-*Improving the lkinked list to doubly linked circular lists*
+*改进链表为双向循环链表*
 ``` C
-typedef struct node *node_str;
+typedef struct node *node_ptr;
 typedef struct node{
     node_ptr llink;
     element item;
@@ -92,17 +91,17 @@ typedef struct node{
 }
 ```
 
-## Two Applications of List
+## 列表的应用
 
 **The Polynomial ADT**
 
 - **Objects**: $P(x) = a_1 x^{e1} + a_{2} x^{e2} + \ldots + a_n x^{e_n}$
-- **Operations**:
-  - *Finding the degree* of a polynomial
-  - *Addition* of two polynomials
-  - *Subtraction* of two polynomials
-  - *Multiplication* of two polynomials
-  - *Differentiation* of a polynomial
+- **操作**:
+  - 求多项式的次数
+  - 两个多项式的加法
+  - 两个多项式的减法
+  - 两个多项式的乘法
+  - 多项式的求导
 
 
 ```C
@@ -115,7 +114,7 @@ typedef struct poly_node{
 typedef poly_ptr a;
 ```
 
-**Multilists**
+**多链表 (Multilists)**
 
 多链表的诞生主要是为了解决多对多的问题，比如需要存储学生-课程选课系统的信息存储。多链表的核心是：**一个节点可以属于多个不同的链表**，通过为节点设置多个指针域，分别指向不同链表的后记节点，实现多对多关系的双向关联存储。
 
@@ -139,7 +138,7 @@ typedef struct multi_node{
 typedef multi_ptr Multilist;
 ```
 
-## Cursor Implementation of Linked lists (No pointer)
+## 游标实现的链表 (无指针)
 
 普通的链表实现依赖编程语言的指针和动态内存管理函数，但部分编程语言不支持指针或动态内存管理存在效率损耗。
 
@@ -159,10 +158,11 @@ typedef cursor_ptr Cursor;
 
 **ADT**
 
-A stack is a Last-in-First-out (LIFO) data structure. Thus an ordered list in which insertions and deletions are made at the top only.
+栈是后进先出 **LIFO** 的线性表，所有插入删除只在栈顶进行。
 
-- **Objects**: A finite ordered list with zero or more elements.
-- **Operations**:
+
+- **对象**: 一个有限的有序列表，包含零个或多个元素。
+- **操作**:
   - Int IsEmpty(S)  --- 判断栈是否为空
   - Stack CreateStack() --- 创建一个空栈
   - DisposeStack(Stack S) --- 销毁一个栈
@@ -171,7 +171,7 @@ A stack is a Last-in-First-out (LIFO) data structure. Thus an ordered list in wh
   - ElementType Top(Stack S) --- 返回栈S的栈顶元素
   - Pop(Stack S) --- 将栈S的栈顶元素弹出
 
-**Linked List Implementation (with a header node)
+**链表实现的栈 (带头节点)**
 **
 *Push:*
 - `TmpCell->Next = S->Next`
@@ -189,10 +189,10 @@ A stack is a Last-in-First-out (LIFO) data structure. Thus an ordered list in wh
 
 > Pop操作是将栈顶元素弹出，即将header node的Next指向原来栈顶元素的Next，然后释放原来栈顶元素的内存。
 
-**Array Implementation**
+**数组实现的栈**
 
 ```C
-struct SrackRecord{
+struct StackRecord{
     int Capacity;   // 栈的容量
     int TopOfStack; // 栈顶元素的下标
     ElementType *Array; // 存储栈元素的数组
@@ -202,7 +202,7 @@ struct SrackRecord{
 > 栈模型必须封装良好。也就是说，除了栈例程之外，您的代码的任何部分都不能尝试访问“数组”或“栈顶”变量。
 > 在执行“入栈”或“出栈（栈顶）”操作之前，必须进行错误检查。
 
-## Application of Stack
+## Stack的应用
 
 **Balancing Symbols**
 
@@ -236,7 +236,7 @@ struct SrackRecord{
 > 时间复杂度：$O(n)$，其中 $n$ 是后缀表达式的长度。每个token被访问一次，且每个运算符对应的操作数弹出和结果入栈操作都是常数时间。
 > 无需考虑运算符优先级
 
-**Infix to Postfix Conversion**
+**中缀表达式转后缀表达式**
 
 *规则*
 - 操作数顺序不变
