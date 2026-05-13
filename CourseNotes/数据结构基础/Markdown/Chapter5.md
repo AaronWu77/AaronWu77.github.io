@@ -1,36 +1,39 @@
-# Chapter5 Priority Queues (Heaps)
+# Chapter 5 Priority Queues (Heaps)
 
-## ADT Model
+## ADT 模型
 
-**Objects**: A finite ordered list with zero or more elements.
+**对象**: 一个有限的有序列表，包含零个或多个元素
 **Operations**:
 - `PriorityQueue Initialize(int Max Elements)`: 创建一个空的优先队列，最大元素个数为 Max Elements。
 - `ElementType DeleteMin(PriorityQueue H)`: 从优先队列 H 中删除并返回最小元素。
 - `void insert(ElementType X, PriorityQueue H)`: 将元素 X 插入优先队列 H 中。
 - `int FindMin(PriorityQueue H)`: 返回优先队列 H 中最小元素的值。
 
----
-## Simple Implementation
+优先队列是一种特殊的队列，元素按照优先级大小出队，而不是按照插入顺序。
 
-**Array**
+---
+## 简单实现方式
+
+**普通数组**
 - `Insertion`：将元素插入数组末尾，时间复杂度为 O(1)。
 - `DeleteMin`：扫描整个数组找到最小元素并删除，时间复杂度为 O(n)。
 
-**Linked List**
+**普通链表**
 - `Insertion`：将元素插入链表末尾，时间复杂度为 O(1)。
 - `DeleteMin`：扫描整个链表找到最小元素并删除，时间复杂度为 O(n)。
 
-**Ordered Array**
+**有序数组**
 - `Insertion`：将元素插入数组中合适的位置，时间复杂度为 O(n)。
 - `DeleteMin`：直接删除数组第一个元素，时间复杂度为 O(1)。
 
-**Ordered Linked List**
+**有序链表**
 - `Insertion`：将元素插入链表中合适的位置，时间复杂度为 O(n)。
 - `DeleteMin`：直接删除链表第一个元素，时间复杂度为 O(1)。
 
-## Binary Heap
+## 二叉堆 Binary Heap
 
-**Stucture Property**: 一棵具有 n 个节点和高度 h 的二叉树是完全二叉树，当且仅当其节点与高度为 h 的完美二叉树中编号从 1 到 n 的节点相对应。
+**完全二叉树**：节点编号与完美二叉树的前n个节点一一对应
+
 - 一个高度为h的完全二叉树有 $2^h$ 到 $2^{h+1}-1$ 个节点。($h=\lfloor \log_2 n \rfloor$)
 
 **Lemma**: 在一个拥有n个节点的完全二叉树中，节点编号为 $1, 2, \ldots, n$，则对于每个节点 $i$：
@@ -58,13 +61,19 @@ PriorityQueue  Initialize( int  MaxElements )
 }
 ```
 
-**Heap Order Priority**: 最小树的每个节点的键值都不大于其子节点（如果有）的键值。最小堆是一种完全二叉树，同时也是一棵最小树。
+**堆序性质**: 最小堆的每个节点的键值都不大于其子节点（如果有）的键值。最小堆是一种完全二叉树，同时也是一棵最小树。
 
 ![alt text](PIC/PIC4-1.png)
 
-**Basic Heap Operations**:
+如上图所示，对于最大堆来说，每个节点的节点值都大于或等于其子节点，所以根节点为最大值。最小堆反过来。
+
+**堆的基础操作**:
 
 `Insert`：将元素插入堆中，时间复杂度为 O(log n)。
+
+- 将新元素放在数组的末尾（完全二叉树的下一个位置）
+- 如果比父节点小，就交换（最小堆）
+- 重复直到满足堆序
 
 ```C
 /* H->Element[ 0 ] is a sentinel */ 
@@ -84,7 +93,10 @@ void  Insert( ElementType  X,  PriorityQueue  H )
 }
 ```
 
-- `DeleteMin`：删除堆中的最小元素，时间复杂度为 O(log n)。
+`DeleteMin`：删除堆中的最小元素，时间复杂度为 O(log n)。
+- 根节点是最小值，保存之后删除
+- 用最后一个元素替换根节点
+- 向下下滤，直到满足堆序
 
 ```C
 ElementType  DeleteMin( PriorityQueue  H ) 
@@ -109,7 +121,7 @@ ElementType  DeleteMin( PriorityQueue  H )
 }
 ```
 
-**Other Heap Operations**:
+**其他堆操作**:
 
 ```C
 // 最小堆结构
@@ -175,12 +187,12 @@ void IncreaseKey(int p, ElementType value, PriorityQueue H) {
 }
 ```
 
-- `Delete`：
-       - 删除堆中某个元素，
-       - 先DecreaseKey到最小，
-       - 然后上浮到根，
-       - 最后DeleteMin，
-       - 时间复杂度为 O(log n)。
+`Delete`：
+   - 删除堆中某个元素，
+   - 先DecreaseKey到最小，
+   - 然后上浮到根，
+   - 最后DeleteMin，
+   - 时间复杂度为 O(log n)。
 
 ```C
 // 删除位置 p 的元素
@@ -193,12 +205,13 @@ void Delete(int p, PriorityQueue H) {
 }
 ```
 
-- `BuildHeap`：
+`BuildHeap`：
        - 把 N 个元素直接放进数组（不用排序）
        - 找到最后一个非叶子节点：下标 = N/2
        - 从 N/2 一直到 1，每个节点执行一次 Percolate Down（下滤）
        - 时间复杂度为 O(n)。
 
+![image](PIC/Chapter5-1.png)
 
 ```C
 // 下滤函数（给BuildHeap用）
@@ -232,3 +245,11 @@ void BuildHeap(PriorityQueue H, ElementType arr[], int n) {
     }
 }
 ```
+
+**应用：找第K大元素**
+
+给定N个元素和整数K，找到第K大元素
+- 排序:O(NlogN)
+将数组按照降序排序，然后直接取第K个元素
+- 用最小堆维护K个最大元素:O(NlogK)
+- 用快速选择算法:O(N)平均

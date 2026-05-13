@@ -1,4 +1,4 @@
-# Chapter3 Lists, Stacks, and Queues
+# Chapter 3 Lists, Stacks, and Queues
 
 ## Abstract Data Type (ADT)
 
