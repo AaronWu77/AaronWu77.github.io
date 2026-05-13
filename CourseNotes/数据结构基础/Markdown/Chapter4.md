@@ -1,43 +1,42 @@
 # Chapter4 Tree
 
-## Preliminaries
+## 预备知识
 
-**Definition**
+**定义**
 
-A *tree* is a collection of nodes. The collection can be empty; otherwise, a tree consists of
-- a distinguished node r, called the root
-- zero or more nonempty subtrees T1, T2, ..., Tk, each of whose roots are connected by a directed edge from r.
+树是一种节点的集合。该集合可以为空；否则，树由以下部分组成：
+- 一个特殊的节点 r，称为根节点
+- 零个或多个非空子树 T1, T2, ..., Tk，每个子树的根节点通过一条有向边与 r 相连
 
-> 空树含就是一个空集合
 > 非空树包含一个根节点和零个或多个子树
 > 有N个节点的树有N-1条边
 
 **术语**
-- *Degree of a node*: 节点拥有的子树数量
-- *Degree of a tree*: 树中所有节点的度的最大值
-- *parent*: 拥有子树的节点
-- *children*: 父节点的子树根节点
-- *siblings*:  同一父节点的子节点
-- *leaf*: 度为 0 的节点（无子女）
-- *path from n1 to nk*: 从n1​到nk​的唯一节点序列，ni​是ni+1​的父节点
-- *length of a path*: 路径上边的数量
-- *Depth of a node*: 从根节点到该节点的路径长度
-- *Height of a node*: 从该节点到叶节点的最长路径长度
-- *Height of a tree*: 根节点的高度
-- *ancestors of a node*: 从根节点到该节点路径上的所有节点
-- *descendants of a node*: 以该节点为根的子树中的所有
+- *节点度 Degree of a node*: 节点拥有的子树数量
+- *树的度 Degree of a tree*: 树中所有节点的度的最大值
+- *父节点 parent*: 拥有子树的节点
+- *子节点 children*: 父节点的子树根节点
+- *兄弟节点 siblings*:  同一父节点的子节点
+- *叶子节点 leaf*: 度为 0 的节点（无子女）
+- *从 n1 到 nk 的路径 path from n1 to nk*: 从n1​到nk​的唯一节点序列，ni​是ni+1​的父节点
+- *路径长度 length of a path*: 路径上边的数量
+- *节点深度 Depth of a node*: 从根节点到该节点的路径长度
+- *节点高度 Height of a node*: 从该节点到叶节点的最长路径长度
+- *树的高度 Height of a tree*: 根节点的高度
+- *节点的祖先 ancestors of a node*: 从根节点到该节点路径上的所有节点
+- *节点的子孙 descendants of a node*: 以该节点为根的子树中的所有节点
 
-## Implementation
+## 树的表示方法
 
-**Linked Representation**
+**链式表示**
 
-用潜逃列表表示树的层级关系，跟节点为外层列表首元素，子数以此作为后续元素嵌套
+用嵌套列表表示树的层级关系，根节点为外层列表首元素，子树以此作为后续元素嵌套
 
 ![alt text](PIC/PIC3-1.png)
 
 > 每个节点的存储空间由子节点数量决定，大小不固定，不利于统一管理。
 
-**First Child/Next Sibling Representation**
+**First Child/Next Sibling 表示法**
 
 为每个节点设计三个域：`Element`, `FirstChild`, `NextSibling`，分别存储节点元素、指向第一个子节点的指针、指向下一个兄弟节点的指针。
 
@@ -47,12 +46,12 @@ A *tree* is a collection of nodes. The collection can be empty; otherwise, a tre
 
 二叉树是每个节点的子节点数量不超过 2的树（即度≤2），每个节点最多有*左孩子（Left）*和*右孩子（Right）*。
 
-**Expression Tree**
+**表达树 Expression Tree**
 
 表达式树是语法树的一种，用于表达算术表达式，叶节点为操作数，非叶节点为操作符，完美契合二叉树的结构。
 
 *表达式树的创建*
-1. 有限从后缀表达式（逆波兰表达式）创建，遇到操作数则创建节点并压栈
+1. 优先从后缀表达式（逆波兰表达式）创建，遇到操作数则创建节点并压栈
 2. 遇到操作符则弹出栈顶的两个节点（先弹出的为右子树，后弹出的为左子树），创建新节点并将其作为父节点连接两个子树，再将新节点压栈
 3. 最后栈顶的节点即为表达式树的根节点
 
