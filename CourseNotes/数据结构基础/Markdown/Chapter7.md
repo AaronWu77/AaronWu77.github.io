@@ -279,7 +279,7 @@ void Unweighted(Table T) {
 }
 ```
 
-**Dijkstra算法**
+## Dijkstra算法
 
 适用条件：
 - 所有边的权重非负
