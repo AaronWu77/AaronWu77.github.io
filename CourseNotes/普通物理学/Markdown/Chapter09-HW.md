@@ -34,9 +34,25 @@ Fig. 9-45 shows the solid rod considered in Section 9-3 (see also Fig. 9-12) div
 
 ## T6 (P200 Ex.33)
 
+A cylinder having a mass of 1.92kg rotates about its axis of symmetry. Forces are applied as shown in Fig. 9-53: $F_1=5.88\ N$, $F_2=4.13\ N$, and $F_3=2.12\ N$. Also $R_1=4.93\ cm$, $R_2=11.8\ cm$. Find the magnitude and direction of the angular accreleration of the cylinder.
+
+![image](PIC/Chapter9-HW-5.png)
+
 ## T7 (P200 Ex.38)
 
+Two identical blocks, each of mass M, are connected by a light string over a frictionless pulley of radius R and rotational inertia I(Fig. 9-55).The string does not slip on the pulley, and it is not known whether or not there is friction between the plane and the sliding block. When this system is released, it is found that the pulley turns through an angle $\theta$ in a time t and the acceleration of the blocks is constant.
+(a) What is the angular acceleration of the pulley?
+(b) What is the acceleration of the two blocks?
+(c) What are the tensions in the upper and lower sections of the string? All answers are to be expressed in terms of M, R, I, $\theta$, and t.
+
+![image](PIC/Chapter9-HW-6.png)
+
 ## T8 (P200 Ex.41)
+
+An automobile traveling 78.3 km/h has tires of 77.0cm diameter.
+(a) What is the angular speed of the tires about the axle?
+(b) If the car is brought to a stop uniformly in 28.6 turns of the tires (no skidding), what is the angular acceleration of the tires?
+(c) How far does the car advance during the braking period?
 
 ## T9 (P200 Ex.42)
 
