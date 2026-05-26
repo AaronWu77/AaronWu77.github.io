@@ -1,0 +1,5 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/wuyuchen/Desktop/DFS-P1/project1'
+relocations:     []
+...
